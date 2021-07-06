@@ -1,12 +1,30 @@
 .container {
+  max-width: 1600px;
+  margin: 0 auto;
+
+  @media screen and (orientation: landscape) {
+    width: 130vh;
+  }
+}
+
+.stage {
+  max-width: 1600px;
+  margin: 0 auto 40px;
+
   [class^="konvajs-content"] {
-    min-width: 100%;
-    max-height: 70vh;
+    width: auto !important; // stylelint-disable-line
+    height: auto !important; // stylelint-disable-line
+    padding: 56.25% 0 0;
   }
 
   canvas {
     right: 0;
-    max-height: 70vh;
+    max-width: 100%;
+    max-height: 100%;
     margin: 0 auto !important; // stylelint-disable-line
+  }
+
+  @media screen and (orientation: landscape) {
+    width: 130vh;
   }
 }

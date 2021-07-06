@@ -23,22 +23,10 @@ function App() {
 
     return <></>;
   };
-    // text?: string;
-    // fontFamily?: string;
-    // fontSize?: number;
-    // fontStyle?: string;
-    // fontVariant?: string;
-    // textDecoration?: string;
-    // align?: string;
-    // verticalAlign?: string;
-    // padding?: number;
-    // lineHeight?: number;
-    // letterSpacing?: number;
-    // wrap?: string;
-    // ellipsis?: boolean;
+
   return (
-    <>
-      <Stage width={1600} height={900} className={styles.container}>
+    <div className={styles.container}>
+      <Stage width={1600} height={900} className={styles.stage}>
         <Layer>
           <Base />
           <Ribbon />
@@ -87,7 +75,7 @@ function App() {
           <input onChange={(e) => setText(e.target.value)} value={text} />
         </label>
       </p>
-    </>
+    </div>
   );
 }
 
