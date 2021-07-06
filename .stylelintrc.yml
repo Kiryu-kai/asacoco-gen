@@ -78,7 +78,7 @@ rules:
   - max-width
   media-feature-name-no-vendor-prefix: true
   at-rule-no-vendor-prefix: true
-  at-rule-property-requirelist:
+  at-rule-property-required-list:
     font-face:
     - font-display
     - font-family
