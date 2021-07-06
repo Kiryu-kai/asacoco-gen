@@ -1,0 +1,13 @@
+# ==== Emojis ====
+# ✨  :sparkles: A new feature
+# 🐛  :bug: A bug fix
+# 📚  :books: Documentation only changes
+# 🚿  :shower: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
+# ♻️  :recycle: A code change that neither fixes a bug nor adds a feature
+# 🐎  :racehorse: A code change that improves performance
+# 🚨  :rotating_light: Adding missing or correcting existing tests
+# 🔧  :wrench: Changes to the build process or auxiliary tools and libraries such as documentation generation
+# ⚡️  :zap: Other updates
+
+# ==== Example ====
+# :zap: commit message
