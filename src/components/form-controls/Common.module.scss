@@ -20,6 +20,12 @@
   letter-spacing: 1px;
 }
 
+.input {
+  &[type="color"] {
+    height: 40px;
+  }
+}
+
 .textarea {
   max-width: 100%;
   resize: vertical;

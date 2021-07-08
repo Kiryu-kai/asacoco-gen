@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {Layer, Text, Image, Line, Stage, Group} from 'react-konva';
 import {Input} from './components/form-controls/Input';
-import {Checkbox} from './components/form-controls/Checkbox';
 import {Textarea} from './components/form-controls/Textarea';
 import baseImg from './images/base.jpg';
 import maskImg from './images/mask.png';
@@ -24,7 +23,7 @@ function App() {
   const [isMasked, setMask] = useState(true);
   const [isStreamable, setStreamable] = useState(true);
   const [ribbon, setRibbon] = useState('');
-  const [text, setText] = useState('');
+  const [text, setText] = useState('好きなテロップ');
   const [comment, setComment] = useState(`
   チュングス：草
   西成じじい：草
@@ -39,6 +38,9 @@ function App() {
   西成じじい：草
 
   `.trim().replace(/^\s+/gm, ''));
+  const [comentSize, setComentSize] = useState(90);
+  const [comentColor, setComentColor] = useState('#fff');
+  const [comentEdgeColor, setComentEdgeColor] = useState('#000');
   const parts = {
     Base() {
       return <Image image={getImageObj(baseImg)} x={0} y={0} width={1600} height={900} />;
@@ -124,12 +126,12 @@ function App() {
     Telop() {
       const attrs = {
         text: text.trim(),
-        y: 130,
+        y: 122,
         x: 70,
-        fontSize: 90,
+        fontSize: comentSize,
         align: 'center',
         wrap: 'word',
-        lineHeight: 1.4,
+        lineHeight: 1.2,
         verticalAlign: 'bottom',
         width: 1100,
         height: 690,
@@ -140,13 +142,13 @@ function App() {
           <Text
             {...attrs}
             lineJoin="round"
-            stroke="#000"
+            stroke={comentEdgeColor}
             strokeWidth={13}
           />
           <Text
             {...attrs}
-            fill="#fff"
-            stroke="#fff"
+            fill={comentColor}
+            stroke={comentColor}
             strokeWidth={3}
           />
         </Group>
@@ -190,11 +192,11 @@ function App() {
         </p>
 
         <p>
-          <Checkbox label="マスク" onChange={() => setMask(!isMasked)} checked={isMasked} />
+          <Input label="マスク" type="checkbox" onChange={() => setMask(!isMasked)} checked={isMasked} />
         </p>
 
         <p>
-          <Checkbox label="生放送権限" onChange={() => setStreamable(!isStreamable)} checked={isStreamable} />
+          <Input label="生放送権限" type="checkbox" onChange={() => setStreamable(!isStreamable)} checked={isStreamable} />
         </p>
 
         <p>
@@ -203,6 +205,18 @@ function App() {
 
         <p>
           <Textarea label="テロップ" onChange={(e) => setText(e.target.value)} value={text} />
+        </p>
+
+        <p>
+          <Input label="文字サイズ" type="range" min="60" max="120" step="10" onChange={(e) => setComentSize(Number(e.target.value))} value={comentSize} />
+        </p>
+
+        <p>
+          <Input label="文字色" type="color" onChange={(e) => setComentColor(e.target.value)} value={comentColor} />
+        </p>
+
+        <p>
+          <Input label="縁色" type="color" onChange={(e) => setComentEdgeColor(e.target.value)} value={comentEdgeColor} />
         </p>
       </div>
     </div>
