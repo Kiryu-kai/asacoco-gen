@@ -21,7 +21,7 @@ const getImageObj = (img: string) => {
 };
 
 function App() {
-  const [isMasked, setMask] = useState(false);
+  const [isMasked, setMask] = useState(true);
   const [isStreamable, setStreamable] = useState(true);
   const [ribbon, setRibbon] = useState('');
   const [text, setText] = useState('');
@@ -89,6 +89,9 @@ function App() {
     Kaicho() {
       return <Image image={getImageObj(kaicho01)} x={0} y={0} width={1600} height={900} />;
     },
+    Main() {
+      return <Image image={getImageObj(watame)} x={0} y={0} width={1600} height={900} />;
+    },
     Ribbon() {
       if (ribbon) {
         const value = ribbon.trim();
@@ -123,7 +126,7 @@ function App() {
         text: text.trim(),
         y: 130,
         x: 70,
-        fontSize: 60,
+        fontSize: 90,
         align: 'center',
         wrap: 'word',
         lineHeight: 1.4,
@@ -169,7 +172,7 @@ function App() {
         <Stage width={1600} height={900} className={styles.stage}>
           <Layer>
             <parts.Base />
-            <Image image={getImageObj(watame)} x={0} y={0} width={1024} height={1065} />
+            <parts.Main />
             {
               isMasked ? <parts.Mask /> : <></>
             }
