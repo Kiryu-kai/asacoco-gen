@@ -1,15 +1,15 @@
-.container {
+.canvas {
   max-width: 1600px;
   margin: 0 auto;
 
   @media screen and (orientation: landscape) {
-    width: 130vh;
+    width: 100%;
   }
 }
 
 .stage {
   max-width: 1600px;
-  margin: 0 auto 40px;
+  margin: 0 auto;
 
   [class^="konvajs-content"] {
     width: auto !important; // stylelint-disable-line
@@ -23,8 +23,26 @@
     max-height: 100%;
     margin: 0 auto !important; // stylelint-disable-line
   }
+}
 
-  @media screen and (orientation: landscape) {
-    width: 130vh;
+@media screen and (min-width: 1200px) {
+  .container {
+    display: grid;
+    grid-template-rows: auto auto auto;
+    grid-template-columns: auto minmax(20%, 340px);
+  }
+
+  .canvas,
+  .ui {
+    grid-row: 2 / 3;
+  }
+
+  .canvas {
+    grid-column: 1 / 2;
+    align-self: center;
+  }
+
+  .ui {
+    grid-column: 2 / 3;
   }
 }
