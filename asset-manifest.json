@@ -1,24 +1,24 @@
 {
   "files": {
     "main.css": "/asacoco-gen/static/css/main.f99c46be.chunk.css",
-    "main.js": "/asacoco-gen/static/js/main.0da0fadc.chunk.js",
-    "main.js.map": "/asacoco-gen/static/js/main.0da0fadc.chunk.js.map",
+    "main.js": "/asacoco-gen/static/js/main.a4c49587.chunk.js",
+    "main.js.map": "/asacoco-gen/static/js/main.a4c49587.chunk.js.map",
     "runtime-main.js": "/asacoco-gen/static/js/runtime-main.6d118441.js",
     "runtime-main.js.map": "/asacoco-gen/static/js/runtime-main.6d118441.js.map",
-    "static/js/2.5b4f4baa.chunk.js": "/asacoco-gen/static/js/2.5b4f4baa.chunk.js",
-    "static/js/2.5b4f4baa.chunk.js.map": "/asacoco-gen/static/js/2.5b4f4baa.chunk.js.map",
+    "static/js/2.2102598a.chunk.js": "/asacoco-gen/static/js/2.2102598a.chunk.js",
+    "static/js/2.2102598a.chunk.js.map": "/asacoco-gen/static/js/2.2102598a.chunk.js.map",
     "static/js/3.3f32d8be.chunk.js": "/asacoco-gen/static/js/3.3f32d8be.chunk.js",
     "static/js/3.3f32d8be.chunk.js.map": "/asacoco-gen/static/js/3.3f32d8be.chunk.js.map",
     "index.html": "/asacoco-gen/index.html",
     "static/css/main.f99c46be.chunk.css.map": "/asacoco-gen/static/css/main.f99c46be.chunk.css.map",
-    "static/js/2.5b4f4baa.chunk.js.LICENSE.txt": "/asacoco-gen/static/js/2.5b4f4baa.chunk.js.LICENSE.txt",
+    "static/js/2.2102598a.chunk.js.LICENSE.txt": "/asacoco-gen/static/js/2.2102598a.chunk.js.LICENSE.txt",
     "static/media/base.224f4f02.jpg": "/asacoco-gen/static/media/base.224f4f02.jpg",
     "static/media/ribbon.8c34f0f7.png": "/asacoco-gen/static/media/ribbon.8c34f0f7.png"
   },
   "entrypoints": [
     "static/js/runtime-main.6d118441.js",
-    "static/js/2.5b4f4baa.chunk.js",
+    "static/js/2.2102598a.chunk.js",
     "static/css/main.f99c46be.chunk.css",
-    "static/js/main.0da0fadc.chunk.js"
+    "static/js/main.a4c49587.chunk.js"
   ]
 }
