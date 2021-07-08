@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Layer, Text, Image, Line, Stage, Group} from 'react-konva';
+import {Layer, Text, Image, Rect, Stage, Group} from 'react-konva';
 import {Input} from './form-controls/Input';
 import {Textarea} from './form-controls/Textarea';
 import {Select} from './form-controls/Select';
@@ -41,6 +41,11 @@ const maskImgSrc = [
 function App() {
   const [version, setVersion] = useState('0');
   const [isMasked, setMask] = useState(true);
+  const [useBlindfold, setUseBlindfold] = useState(false);
+  const [blindfoldX, setBlindfoldX] = useState(0);
+  const [blindfoldY, setBlindfoldY] = useState(0);
+  const [blindfoldW, setBlindfoldW] = useState(0);
+  const [blindfoldH, setBlindfoldH] = useState(0);
   const [isStreamable, setStreamable] = useState(true);
   const [ribbon, setRibbon] = useState('クソザコ');
   const [text, setText] = useState('好きなテロップ');
@@ -152,6 +157,15 @@ function App() {
     Main() {
       return <Image image={getImageObj(mainImgSrc)} x={0} y={0} width={1600} height={900} />;
     },
+    blindfold() {
+      return <Rect
+        x={504 + blindfoldX}
+        y={296 + blindfoldY}
+        fill="#000"
+        width={200 + blindfoldW}
+        height={30 + blindfoldH}
+      />;
+    },
     Ribbon() {
       if (ribbon) {
         const value = ribbon.trim();
@@ -225,6 +239,9 @@ function App() {
               {
                 isMasked ? <parts.Mask /> : <></>
               }
+              {
+                useBlindfold ? <parts.blindfold /> : <></>
+              }
               <parts.Comment />
               <parts.Time />
               <parts.Kaicho />
@@ -260,23 +277,43 @@ function App() {
           </p>
 
           <p>
-            <Input label="マスク" type="checkbox" onChange={() => setMask(!isMasked)} checked={isMasked} />
+            <Input label="範囲マスク" type="checkbox" onChange={() => setMask(!isMasked)} checked={isMasked} />
           </p>
 
           <p>
-            <Input label="リボン" onChange={(e) => setRibbon(e.target.value)} value={ribbon} />
+            <Input label="目隠し" type="checkbox" onChange={() => setUseBlindfold(!useBlindfold)} checked={useBlindfold} />
+          </p>
+
+          <p hidden={!useBlindfold}>
+            <Input label="目隠し（X）" type="number" onChange={(e) => setBlindfoldX(Number(e.target.value))} value={blindfoldX} />
+          </p>
+
+          <p hidden={!useBlindfold}>
+            <Input label="目隠し（Y）" type="number" onChange={(e) => setBlindfoldY(Number(e.target.value))} value={blindfoldY} />
+          </p>
+
+          <p hidden={!useBlindfold}>
+            <Input label="目隠し（W）" type="number" onChange={(e) => setBlindfoldW(Number(e.target.value))} value={blindfoldW} />
+          </p>
+
+          <p hidden={!useBlindfold}>
+            <Input label="目隠し（H）" type="number" onChange={(e) => setBlindfoldH(Number(e.target.value))} value={blindfoldH} />
+          </p>
+
+          <p>
+            <Input label="リボン" placeholder="クソザコ/速報/悲報" onChange={(e) => setRibbon(e.target.value)} value={ribbon} />
           </p>
 
           <p>
             <Input label="生放送権限" type="checkbox" onChange={() => setStreamable(!isStreamable)} checked={isStreamable} />
           </p>
 
-          <p>
-            <Input label="時間" type="time" onChange={(e) => setTime(e.target.value)} value={time} disabled={!isStreamable} />
+          <p hidden={!isStreamable}>
+            <Input label="時間" type="time" onChange={(e) => setTime(e.target.value)} value={time} />
           </p>
 
-          <p>
-            <Textarea label="コメント" rows={10} onChange={(e) => setComment(e.target.value)} value={comment} disabled={!isStreamable} />
+          <p hidden={!isStreamable}>
+            <Textarea label="コメント" rows={10} onChange={(e) => setComment(e.target.value)} value={comment} />
           </p>
 
           <p>
