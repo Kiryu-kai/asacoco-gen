@@ -14,11 +14,29 @@ const getImageObj = (img: string) => {
 
 function App() {
   const [checked, setChecked] = useState(false);
+  const [ribbon, setRibbon] = useState('');
   const [text, setText] = useState('');
   const Base = () => <Image image={getImageObj(baseImg)} x={0} y={0} width={1600} height={900} />;
   const Ribbon = () => {
-    if (checked) {
-      return <Image image={getImageObj(ribbonImg)} x={44} y={100} width={892 / 3.2} height={542 / 3.2} />;
+    if (ribbon) {
+      return (
+        <>
+          <Image image={getImageObj(ribbonImg)} x={44} y={100} width={892 / 3.2} height={542 / 3.2} />
+          <Text
+            text={ribbon}
+            y={112}
+            x={42}
+            fontSize={86}
+            align="center"
+            wrap="word"
+            lineHeight={1.5}
+            verticalAlign="bottom"
+            fill="#fff"
+            stroke="#fff"
+            width={892 / 3.2}
+          />
+        </>
+      );
     }
 
     return <></>;
@@ -62,10 +80,17 @@ function App() {
         </Layer>
       </Stage>
 
-      <p>
+      {/* <p>
         <label>
           <input type="checkbox" onChange={() => setChecked(!checked)} checked={checked} />
           速報
+        </label>
+      </p> */}
+
+      <p>
+        <label>
+          リボン
+          <input onChange={(e) => setRibbon(e.target.value)} value={ribbon} />
         </label>
       </p>
 
