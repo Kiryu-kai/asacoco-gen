@@ -1,3 +1,5 @@
+@use "./utils/mixin.scss" as *;
+
 *,
 *::before,
 *::after {
@@ -34,4 +36,17 @@ small {
 
 input {
   font-size: 16px;
+}
+
+a {
+  color: inherit;
+}
+
+@include min-screen() {
+  a {
+    &:hover,
+    &:focus {
+      color: orange;
+    }
+  }
 }
