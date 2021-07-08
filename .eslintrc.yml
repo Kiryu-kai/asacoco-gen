@@ -17,3 +17,4 @@ rules:
   require-jsdoc: 'off'
   max-len: 'off'
   no-unused-vars: 'off'
+  react/prop-types: 'off'
