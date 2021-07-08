@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/asacoco-gen/static/css/main.c019be17.chunk.css",
+    "main.css": "/asacoco-gen/static/css/main.2819a6b6.chunk.css",
     "main.js": "/asacoco-gen/static/js/main.cf65c90f.chunk.js",
     "main.js.map": "/asacoco-gen/static/js/main.cf65c90f.chunk.js.map",
     "runtime-main.js": "/asacoco-gen/static/js/runtime-main.f1e2af38.js",
@@ -10,7 +10,7 @@
     "static/js/3.73b8113a.chunk.js": "/asacoco-gen/static/js/3.73b8113a.chunk.js",
     "static/js/3.73b8113a.chunk.js.map": "/asacoco-gen/static/js/3.73b8113a.chunk.js.map",
     "index.html": "/asacoco-gen/index.html",
-    "static/css/main.c019be17.chunk.css.map": "/asacoco-gen/static/css/main.c019be17.chunk.css.map",
+    "static/css/main.2819a6b6.chunk.css.map": "/asacoco-gen/static/css/main.2819a6b6.chunk.css.map",
     "static/js/2.4ff53c8d.chunk.js.LICENSE.txt": "/asacoco-gen/static/js/2.4ff53c8d.chunk.js.LICENSE.txt",
     "static/media/01.31d5a1e7.png": "/asacoco-gen/static/media/01.31d5a1e7.png",
     "static/media/ban-stream.f368f872.png": "/asacoco-gen/static/media/ban-stream.f368f872.png",
@@ -30,7 +30,7 @@
   "entrypoints": [
     "static/js/runtime-main.f1e2af38.js",
     "static/js/2.4ff53c8d.chunk.js",
-    "static/css/main.c019be17.chunk.css",
+    "static/css/main.2819a6b6.chunk.css",
     "static/js/main.cf65c90f.chunk.js"
   ]
 }
