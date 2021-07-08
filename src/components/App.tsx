@@ -52,10 +52,10 @@ function App() {
   const [time, setTime] = useState('06:04');
   const [comment, setComment] = useState(`
   チュングス：草
+  紫龍組構成員：NEEEEEEEEE
   西成じじい：草
-  西成じじい：草
-  西成じじい：草
-  西成じじい：草
+  KAIGAINIKI：lol
+  桐生会構成員：メンバーシップまだですか
   西成じじい：草
   人外ニキ：YABE
   ガチ変勢：草
