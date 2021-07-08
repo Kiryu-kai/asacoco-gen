@@ -5,6 +5,19 @@
   bottom: 0;
   padding: 10px 20px;
   text-align: right;
+
+  [data-color="1"] &,
+  [data-color="2"] & {
+    background-color: rgba(255, 255, 255, .8);
+  }
+
+  [data-color="1"] & {
+    background-color: rgba(21, 33, 43, .8);
+  }
+
+  [data-color="2"] & {
+    background-color: rgba(0, 0, 0, .8);
+  }
 }
 
 .material {
