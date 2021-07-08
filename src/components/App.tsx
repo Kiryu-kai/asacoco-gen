@@ -263,15 +263,15 @@ function App() {
         </p>
 
         <p>
-          <Input label="時間" type="time" onChange={(e) => setTime(e.target.value)} value={time} />
-        </p>
-
-        <p>
           <Input label="生放送権限" type="checkbox" onChange={() => setStreamable(!isStreamable)} checked={isStreamable} />
         </p>
 
         <p>
-          <Textarea label="コメント" rows={10} onChange={(e) => setComment(e.target.value)} value={comment} disabled={isStreamable} />
+          <Input label="時間" type="time" onChange={(e) => setTime(e.target.value)} value={time} disabled={!isStreamable} />
+        </p>
+
+        <p>
+          <Textarea label="コメント" rows={10} onChange={(e) => setComment(e.target.value)} value={comment} disabled={!isStreamable} />
         </p>
 
         <p>
