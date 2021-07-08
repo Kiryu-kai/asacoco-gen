@@ -2,11 +2,12 @@ import React, {useState} from 'react';
 import {Layer, Text, Image, Line, Stage, Group} from 'react-konva';
 import {Input} from './components/form-controls/Input';
 import {Textarea} from './components/form-controls/Textarea';
+import {Select} from './components/form-controls/Select';
 import baseImg from './images/base.jpg';
 import maskImg from './images/mask.png';
 import ribbonImg from './images/ribbon.png';
 import ribbonKusoZakoImg from './images/ribbon--kusozako.png';
-import watame from './images/talents/tsunomaki-watame--gangimari.png';
+import {talents} from './utils/main-img-loader';
 import banStreamImg from './images/ban-stream.png';
 import kaicho01 from './images/kaicho/01.png';
 import styles from './App.module.scss';
@@ -41,6 +42,7 @@ function App() {
   const [comentSize, setComentSize] = useState(90);
   const [comentColor, setComentColor] = useState('#fff');
   const [comentEdgeColor, setComentEdgeColor] = useState('#000');
+  const [mainImgSrc, setMainImgSrc] = useState<string | null>(null);
   const parts = {
     Base() {
       return <Image image={getImageObj(baseImg)} x={0} y={0} width={1600} height={900} />;
@@ -92,7 +94,11 @@ function App() {
       return <Image image={getImageObj(kaicho01)} x={0} y={0} width={1600} height={900} />;
     },
     Main() {
-      return <Image image={getImageObj(watame)} x={0} y={0} width={1600} height={900} />;
+      return (
+        mainImgSrc ?
+        <Image image={getImageObj(mainImgSrc)} x={0} y={0} width={1600} height={900} /> :
+        <></>
+      );
     },
     Ribbon() {
       if (ribbon) {
@@ -187,6 +193,10 @@ function App() {
       </div>
 
       <div className={styles.ui}>
+        <p>
+          <Select label="メイン画像" options={talents} onChange={(e) => setMainImgSrc(e.target.value)} value={mainImgSrc || ''} />
+        </p>
+
         <p>
           <Input label="リボン" onChange={(e) => setRibbon(e.target.value)} value={ribbon} />
         </p>
