@@ -64,6 +64,7 @@ function App() {
   const [comentEdgeColor, setComentEdgeColor] = useState('#000000');
   const [kaichoImgSrc, setKaichoImgSrc] = useState<string>(kaicho01);
   const [mainImgSrc, setMainImgSrc] = useState<string>(dummyImg);
+  const [emit, setEmit] = useState('');
   const parts = {
     Base() {
       return <Image image={getImageObj(baseImgSrc[Number(version)])} x={0} y={0} width={1600} height={900} />;
@@ -214,86 +215,107 @@ function App() {
   };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.canvas}>
-        <Stage width={1600} height={900} className={styles.stage}>
-          <Layer>
-            <parts.Base />
-            <parts.Main />
-            {
-              isMasked ? <parts.Mask /> : <></>
-            }
-            <parts.Comment />
-            <parts.Time />
-            <parts.Kaicho />
-            <parts.Ribbon />
-            <parts.Telop />
-            <Image image={getImageObj(cursorImg)} x={0} y={0} width={1600} height={900} draggable={true} />
-          </Layer>
-        </Stage>
+    <>
+      <div className={styles.container}>
+        <div className={styles.canvas} id="canvas-wrapper">
+          <Stage width={1600} height={900} className={styles.stage}>
+            <Layer>
+              <parts.Base />
+              <parts.Main />
+              {
+                isMasked ? <parts.Mask /> : <></>
+              }
+              <parts.Comment />
+              <parts.Time />
+              <parts.Kaicho />
+              <parts.Ribbon />
+              <parts.Telop />
+              <Image image={getImageObj(cursorImg)} x={0} y={0} width={1600} height={900} draggable={true} />
+            </Layer>
+          </Stage>
+        </div>
+
+        <div className={styles.ui}>
+          <p>
+            <Select label="Ver" options={[
+              ['1.0', '0'],
+              ['2.0', '1'],
+              ['3.0', '2'],
+              // ['1.0', base3Img],
+            ]} onChange={(e) => setVersion(e.target.value)} value={version} />
+          </p>
+
+          <p>
+            <Select label="会長" options={[
+              ['01 - ガンギマリ正面', kaichoImgSrc],
+            ]} onChange={(e) => setKaichoImgSrc(e.target.value)} value={kaichoImgSrc} />
+          </p>
+
+          <p>
+            <Select label="メイン画像" options={[
+              ['選択してください', dummyImg],
+              ['transparent - 画像なし', transparentImg],
+              ...talents,
+            ]} onChange={(e) => setMainImgSrc(e.target.value)} value={mainImgSrc} />
+          </p>
+
+          <p>
+            <Input label="マスク" type="checkbox" onChange={() => setMask(!isMasked)} checked={isMasked} />
+          </p>
+
+          <p>
+            <Input label="リボン" onChange={(e) => setRibbon(e.target.value)} value={ribbon} />
+          </p>
+
+          <p>
+            <Input label="生放送権限" type="checkbox" onChange={() => setStreamable(!isStreamable)} checked={isStreamable} />
+          </p>
+
+          <p>
+            <Input label="時間" type="time" onChange={(e) => setTime(e.target.value)} value={time} disabled={!isStreamable} />
+          </p>
+
+          <p>
+            <Textarea label="コメント" rows={10} onChange={(e) => setComment(e.target.value)} value={comment} disabled={!isStreamable} />
+          </p>
+
+          <p>
+            <Textarea label="テロップ" onChange={(e) => setText(e.target.value)} value={text} />
+          </p>
+
+          <p>
+            <Input label="文字サイズ" type="range" min="60" max="120" step="10" onChange={(e) => setComentSize(Number(e.target.value))} value={comentSize} />
+          </p>
+
+          <p>
+            <Input label="文字色" type="color" onChange={(e) => setComentColor(e.target.value)} value={comentColor} />
+          </p>
+
+          <p>
+            <Input label="縁色" type="color" onChange={(e) => setComentEdgeColor(e.target.value)} value={comentEdgeColor} />
+          </p>
+        </div>
       </div>
 
-      <div className={styles.ui}>
-        <p>
-          <Select label="Ver" options={[
-            ['1.0', '0'],
-            ['2.0', '1'],
-            ['3.0', '2'],
-            // ['1.0', base3Img],
-          ]} onChange={(e) => setVersion(e.target.value)} value={version} />
-        </p>
-
-        <p>
-          <Select label="会長" options={[
-            ['01 - ガンギマリ正面', kaichoImgSrc],
-          ]} onChange={(e) => setKaichoImgSrc(e.target.value)} value={kaichoImgSrc} />
-        </p>
-
-        <p>
-          <Select label="メイン画像" options={[
-            ['選択してください', dummyImg],
-            ['transparent - 画像なし', transparentImg],
-            ...talents,
-          ]} onChange={(e) => setMainImgSrc(e.target.value)} value={mainImgSrc} />
-        </p>
-
-        <p>
-          <Input label="マスク" type="checkbox" onChange={() => setMask(!isMasked)} checked={isMasked} />
-        </p>
-
-        <p>
-          <Input label="リボン" onChange={(e) => setRibbon(e.target.value)} value={ribbon} />
-        </p>
-
-        <p>
-          <Input label="生放送権限" type="checkbox" onChange={() => setStreamable(!isStreamable)} checked={isStreamable} />
-        </p>
-
-        <p>
-          <Input label="時間" type="time" onChange={(e) => setTime(e.target.value)} value={time} disabled={!isStreamable} />
-        </p>
-
-        <p>
-          <Textarea label="コメント" rows={10} onChange={(e) => setComment(e.target.value)} value={comment} disabled={!isStreamable} />
-        </p>
-
-        <p>
-          <Textarea label="テロップ" onChange={(e) => setText(e.target.value)} value={text} />
-        </p>
-
-        <p>
-          <Input label="文字サイズ" type="range" min="60" max="120" step="10" onChange={(e) => setComentSize(Number(e.target.value))} value={comentSize} />
-        </p>
-
-        <p>
-          <Input label="文字色" type="color" onChange={(e) => setComentColor(e.target.value)} value={comentColor} />
-        </p>
-
-        <p>
-          <Input label="縁色" type="color" onChange={(e) => setComentEdgeColor(e.target.value)} value={comentEdgeColor} />
+      <div className={styles.download}>
+        {
+          emit ?
+          <>
+            <h2 className={styles.download__h2}>ダウンロード</h2>
+            <p className={styles.download__note}>画像を右クリック、またはホールドで保存してください。</p>
+            <p className={styles.download__imgWrap}>
+              <img src={emit} alt="作った画像" className={styles.download__img} />
+            </p>
+          </> :
+          <></>
+        }
+        <p className={styles.download__btnWrap}>
+          <button onClick={() => {
+            setEmit(document.querySelector<HTMLCanvasElement>('#canvas-wrapper canvas')!.toDataURL());
+          }} className={styles.download__btn}>画像として書き出し（スマホ向け）</button>
         </p>
       </div>
-    </div>
+    </>
   );
 }
 

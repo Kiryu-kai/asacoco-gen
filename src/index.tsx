@@ -22,8 +22,6 @@ ReactDOM.render(
             <li>本ツールを利用して被ったいかなる損害について、一切責任は負えません。自己責任でお願いします。</li>
             <li>素材提供やアイディア、利用素材の中止申請等は<a href="https://github.com/Kiryu-kai/asacoco-gen/issues">Issue</a>へお願いいたします。</li>
           </ul>
-
-          <p>作った画像は右クリックで保存できます（スマホはホールド）。</p>
         </div>
       </main>
       <Footer />
