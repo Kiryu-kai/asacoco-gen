@@ -6,8 +6,12 @@ import {Select} from './components/form-controls/Select';
 import dummyImg from './images/dummy.png';
 import liveImg from './images/live.png';
 import transparentImg from './images/transparent.png';
-import baseImg from './images/base.jpg';
+import baseImg from './images/base.png';
+import base2Img from './images/base--2.png';
+import base3Img from './images/base--3.png';
 import maskImg from './images/mask.png';
+import mask2Img from './images/mask--2.png';
+import mask3Img from './images/mask--3.png';
 import ribbonImg from './images/ribbon.png';
 import ribbonKusoZakoImg from './images/ribbon--kusozako.png';
 import {talents} from './utils/main-img-loader';
@@ -22,8 +26,19 @@ const getImageObj = (img: string) => {
 
   return obj;
 };
+const baseImgSrc = [
+  baseImg,
+  base2Img,
+  base3Img,
+];
+const maskImgSrc = [
+  maskImg,
+  mask2Img,
+  mask3Img,
+];
 
 function App() {
+  const [version, setVersion] = useState('0');
   const [isMasked, setMask] = useState(true);
   const [isStreamable, setStreamable] = useState(true);
   const [ribbon, setRibbon] = useState('クソザコ');
@@ -49,10 +64,10 @@ function App() {
   const [mainImgSrc, setMainImgSrc] = useState<string | null>(dummyImg);
   const parts = {
     Base() {
-      return <Image image={getImageObj(baseImg)} x={0} y={0} width={1600} height={900} />;
+      return <Image image={getImageObj(baseImgSrc[Number(version)])} x={0} y={0} width={1600} height={900} />;
     },
     Mask() {
-      return <Image image={getImageObj(maskImg)} x={0} y={0} width={1600} height={900} />;
+      return <Image image={getImageObj(maskImgSrc[Number(version)])} x={0} y={0} width={1600} height={900} />;
     },
     Comment() {
       const attrs = {
@@ -232,6 +247,15 @@ function App() {
       </div>
 
       <div className={styles.ui}>
+        <p>
+          <Select label="Ver" options={[
+            ['1.0', '0', true],
+            ['2.0', '1'],
+            ['3.0', '2'],
+            // ['1.0', base3Img],
+          ]} onChange={(e) => setVersion(e.target.value)} value={version} />
+        </p>
+
         <p>
           <Select label="メイン画像" options={[
             ['選択してください', dummyImg, true],
