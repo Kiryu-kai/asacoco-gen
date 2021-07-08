@@ -349,7 +349,7 @@ function App() {
         <p className={styles.download__btnWrap}>
           <button onClick={() => {
             setEmit(document.querySelector<HTMLCanvasElement>('#canvas-wrapper canvas')!.toDataURL());
-          }} className={styles.download__btn}>画像として書き出し（スマホ向け）</button>
+          }} className={styles.download__btn}>画像として書き出し</button>
         </p>
       </div>
     </>
