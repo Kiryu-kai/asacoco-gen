@@ -62,6 +62,7 @@ function App() {
   const [comentSize, setComentSize] = useState(90);
   const [comentColor, setComentColor] = useState('#ffffff');
   const [comentEdgeColor, setComentEdgeColor] = useState('#000000');
+  const [kaichoImgSrc, setKaichoImgSrc] = useState<string>(kaicho01);
   const [mainImgSrc, setMainImgSrc] = useState<string>(dummyImg);
   const parts = {
     Base() {
@@ -145,7 +146,7 @@ function App() {
       );
     },
     Kaicho() {
-      return <Image image={getImageObj(kaicho01)} x={0} y={0} width={1600} height={900} />;
+      return <Image image={getImageObj(kaichoImgSrc)} x={0} y={0} width={1600} height={900} />;
     },
     Main() {
       return <Image image={getImageObj(mainImgSrc)} x={0} y={0} width={1600} height={900} />;
@@ -240,6 +241,12 @@ function App() {
             ['3.0', '2'],
             // ['1.0', base3Img],
           ]} onChange={(e) => setVersion(e.target.value)} value={version} />
+        </p>
+
+        <p>
+          <Select label="会長" options={[
+            ['01 - ガンギマリ正面', kaichoImgSrc],
+          ]} onChange={(e) => setKaichoImgSrc(e.target.value)} value={kaichoImgSrc} />
         </p>
 
         <p>
