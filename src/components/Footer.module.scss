@@ -62,6 +62,7 @@
   font-size: 12px;
 
   a {
+    color: inherit;
     text-underline-offset: auto;
     cursor: pointer;
   }
@@ -70,6 +71,7 @@
 .btn {
   padding: 0;
   font-size: 12px;
+  color: inherit;
   text-decoration: underline;
   background: transparent;
   border: 0;
