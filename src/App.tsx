@@ -4,6 +4,7 @@ import {Input} from './components/form-controls/Input';
 import {Textarea} from './components/form-controls/Textarea';
 import {Select} from './components/form-controls/Select';
 import dummyImg from './images/dummy.png';
+import liveImg from './images/live.png';
 import transparentImg from './images/transparent.png';
 import baseImg from './images/base.jpg';
 import maskImg from './images/mask.png';
@@ -27,6 +28,7 @@ function App() {
   const [isStreamable, setStreamable] = useState(true);
   const [ribbon, setRibbon] = useState('クソザコ');
   const [text, setText] = useState('好きなテロップ');
+  const [time, setTime] = useState('06:04');
   const [comment, setComment] = useState(`
   チュングス：草
   西成じじい：草
@@ -90,6 +92,40 @@ function App() {
           />
         </Group> :
         <Image image={getImageObj(banStreamImg)} x={0} y={0} width={1600} height={900} />
+      );
+    },
+    Time() {
+      const text = time.trim();
+      const attrs = {
+        text,
+        y: 34,
+        x: 1372,
+        fontSize: 76,
+        fontFamily: '"Times New Roman", "YuMincho", "Hiragino Mincho ProN", "Yu Mincho", "MS PMincho", serif',
+        align: 'left',
+        verticalAlign: 'top',
+        width: 380,
+        height: 500,
+      };
+
+      return (
+        isStreamable && text ?
+        <Group>
+          <Image image={getImageObj(liveImg)} x={0} y={0} width={1600} height={900} />
+          <Text
+            {...attrs}
+            strokeWidth={6}
+            stroke="#000"
+            lineJoin="round"
+          />
+          <Text
+            {...attrs}
+            fill="#fff"
+            stroke="#fff"
+            strokeWidth={1}
+          />
+        </Group> :
+        <></>
       );
     },
     Kaicho() {
@@ -187,6 +223,7 @@ function App() {
               isMasked ? <parts.Mask /> : <></>
             }
             <parts.Comment />
+            <parts.Time />
             <parts.Kaicho />
             <parts.Ribbon />
             <parts.Telop />
@@ -212,11 +249,15 @@ function App() {
         </p>
 
         <p>
+          <Input label="時間" type="time" onChange={(e) => setTime(e.target.value)} value={time} />
+        </p>
+
+        <p>
           <Input label="生放送権限" type="checkbox" onChange={() => setStreamable(!isStreamable)} checked={isStreamable} />
         </p>
 
         <p>
-          <Textarea label="コメント" rows={10} onChange={(e) => setComment(e.target.value)} value={comment} />
+          <Textarea label="コメント" rows={10} onChange={(e) => setComment(e.target.value)} value={comment} disabled={isStreamable} />
         </p>
 
         <p>
