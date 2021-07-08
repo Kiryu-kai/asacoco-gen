@@ -3,6 +3,8 @@ import {Layer, Text, Image, Line, Stage, Group} from 'react-konva';
 import {Input} from './components/form-controls/Input';
 import {Textarea} from './components/form-controls/Textarea';
 import {Select} from './components/form-controls/Select';
+import dummyImg from './images/dummy.png';
+import transparentImg from './images/transparent.png';
 import baseImg from './images/base.jpg';
 import maskImg from './images/mask.png';
 import ribbonImg from './images/ribbon.png';
@@ -23,7 +25,7 @@ const getImageObj = (img: string) => {
 function App() {
   const [isMasked, setMask] = useState(true);
   const [isStreamable, setStreamable] = useState(true);
-  const [ribbon, setRibbon] = useState('');
+  const [ribbon, setRibbon] = useState('クソザコ');
   const [text, setText] = useState('好きなテロップ');
   const [comment, setComment] = useState(`
   チュングス：草
@@ -40,9 +42,9 @@ function App() {
 
   `.trim().replace(/^\s+/gm, ''));
   const [comentSize, setComentSize] = useState(90);
-  const [comentColor, setComentColor] = useState('#fff');
-  const [comentEdgeColor, setComentEdgeColor] = useState('#000');
-  const [mainImgSrc, setMainImgSrc] = useState<string | null>(null);
+  const [comentColor, setComentColor] = useState('#ffffff');
+  const [comentEdgeColor, setComentEdgeColor] = useState('#000000');
+  const [mainImgSrc, setMainImgSrc] = useState<string | null>(dummyImg);
   const parts = {
     Base() {
       return <Image image={getImageObj(baseImg)} x={0} y={0} width={1600} height={900} />;
@@ -194,15 +196,19 @@ function App() {
 
       <div className={styles.ui}>
         <p>
-          <Select label="メイン画像" options={talents} onChange={(e) => setMainImgSrc(e.target.value)} value={mainImgSrc || ''} />
-        </p>
-
-        <p>
-          <Input label="リボン" onChange={(e) => setRibbon(e.target.value)} value={ribbon} />
+          <Select label="メイン画像" options={[
+            ['選択してください', dummyImg, true],
+            ['transparent - 画像なし', transparentImg],
+            ...talents,
+          ]} onChange={(e) => setMainImgSrc(e.target.value)} value={mainImgSrc ?? ''} />
         </p>
 
         <p>
           <Input label="マスク" type="checkbox" onChange={() => setMask(!isMasked)} checked={isMasked} />
+        </p>
+
+        <p>
+          <Input label="リボン" onChange={(e) => setRibbon(e.target.value)} value={ribbon} />
         </p>
 
         <p>
