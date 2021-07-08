@@ -153,6 +153,18 @@ function App() {
 
   return (
     <div className={styles.container}>
+      <div className={styles.bgSwitch}>
+        <p className={styles.bgSwitch__item}>
+          <button className={styles.bgSwitch__btn} onClick={() => document.body.dataset.color ='0'}>デフォルト</button>
+        </p>
+        <p className={styles.bgSwitch__item}>
+          <button className={styles.bgSwitch__btn} onClick={() => document.body.dataset.color ='1'}>ダークブルー</button>
+        </p>
+        <p className={styles.bgSwitch__item}>
+          <button className={styles.bgSwitch__btn} onClick={() => document.body.dataset.color ='2'}>ブラック</button>
+        </p>
+      </div>
+
       <div className={styles.canvas}>
         <Stage width={1600} height={900} className={styles.stage}>
           <Layer>
@@ -183,7 +195,7 @@ function App() {
         </p>
 
         <p>
-          <Textarea label="コメント" onChange={(e) => setComment(e.target.value)} value={comment} />
+          <Textarea label="コメント" rows={10} onChange={(e) => setComment(e.target.value)} value={comment} />
         </p>
 
         <p>
