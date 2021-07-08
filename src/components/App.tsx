@@ -62,7 +62,7 @@ function App() {
   const [comentSize, setComentSize] = useState(90);
   const [comentColor, setComentColor] = useState('#ffffff');
   const [comentEdgeColor, setComentEdgeColor] = useState('#000000');
-  const [mainImgSrc, setMainImgSrc] = useState<string | null>(dummyImg);
+  const [mainImgSrc, setMainImgSrc] = useState<string>(dummyImg);
   const parts = {
     Base() {
       return <Image image={getImageObj(baseImgSrc[Number(version)])} x={0} y={0} width={1600} height={900} />;
@@ -148,11 +148,7 @@ function App() {
       return <Image image={getImageObj(kaicho01)} x={0} y={0} width={1600} height={900} />;
     },
     Main() {
-      return (
-        mainImgSrc ?
-        <Image image={getImageObj(mainImgSrc)} x={0} y={0} width={1600} height={900} /> :
-        <></>
-      );
+      return <Image image={getImageObj(mainImgSrc)} x={0} y={0} width={1600} height={900} />;
     },
     Ribbon() {
       if (ribbon) {
@@ -239,7 +235,7 @@ function App() {
       <div className={styles.ui}>
         <p>
           <Select label="Ver" options={[
-            ['1.0', '0', true],
+            ['1.0', '0'],
             ['2.0', '1'],
             ['3.0', '2'],
             // ['1.0', base3Img],
@@ -248,10 +244,10 @@ function App() {
 
         <p>
           <Select label="メイン画像" options={[
-            ['選択してください', dummyImg, true],
+            ['選択してください', dummyImg],
             ['transparent - 画像なし', transparentImg],
             ...talents,
-          ]} onChange={(e) => setMainImgSrc(e.target.value)} value={mainImgSrc ?? ''} />
+          ]} onChange={(e) => setMainImgSrc(e.target.value)} value={mainImgSrc} />
         </p>
 
         <p>

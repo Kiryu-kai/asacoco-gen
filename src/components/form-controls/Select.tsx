@@ -4,7 +4,7 @@ import styles from './Common.module.scss';
 type Component = React.FC<React.SelectHTMLAttributes<HTMLSelectElement> & {
   label: string
   /** [選択項目名, 値][] */
-  options: ([string, string] | [string, string, boolean])[]
+  options: [string, string][]
 }>
 
 export const Select: Component = ({label, options, ...props}) => {
@@ -16,8 +16,8 @@ export const Select: Component = ({label, options, ...props}) => {
       <span className={styles.wrap}>
         <select {...props} className={styles.input}>
           {
-            options.map(([name, value, selected]) => (
-              <option value={value} key={name} selected={selected}>{name}</option>
+            options.map(([name, value]) => (
+              <option value={value} key={name}>{name}</option>
             ))
           }
         </select>
