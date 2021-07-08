@@ -3,6 +3,7 @@ import {Layer, Text, Image, Line, Stage, Group} from 'react-konva';
 import {Input} from './components/form-controls/Input';
 import {Textarea} from './components/form-controls/Textarea';
 import {Select} from './components/form-controls/Select';
+import cursorImg from './images/cursor.png';
 import dummyImg from './images/dummy.png';
 import liveImg from './images/live.png';
 import transparentImg from './images/transparent.png';
@@ -242,6 +243,7 @@ function App() {
             <parts.Kaicho />
             <parts.Ribbon />
             <parts.Telop />
+            <Image image={getImageObj(cursorImg)} x={0} y={0} width={1600} height={900} draggable={true} />
           </Layer>
         </Stage>
       </div>
