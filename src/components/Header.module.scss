@@ -2,17 +2,32 @@
 
 .header {
   padding: 0 0 20px;
+
+  --bgcolor: #fff;
+  --borderColor: #ccc;
+
+  [data-color="1"] &,
+  [data-color="2"] & {
+
+    --bgcolor: transparent;
+    --borderColor: #777;
+  }
 }
 
 .h1 {
   padding: 20px 20px 24px;
   margin: 0 0 20px;
-  background: #fff;
+  background: var(--bgcolor);
 }
 
 .logo {
   display: block;
   max-width: 100%;
+
+  [data-color="1"] &,
+  [data-color="2"] & {
+    filter: invert(100);
+  }
 }
 
 .ui {
@@ -41,8 +56,8 @@
     align-items: center;
     padding: 0;
     margin: 0 0 40px;
-    background: #fff;
-    border-bottom: 1px solid #ccc;
+    background: var(--bgcolor);
+    border-bottom: 1px solid var(--borderColor);
   }
 
   .h1 {
