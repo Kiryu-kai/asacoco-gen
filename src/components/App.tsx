@@ -6,7 +6,6 @@ import {Select} from './form-controls/Select';
 import cursorImg from '../images/cursor.png';
 import dummyImg from '../images/dummy.png';
 import liveImg from '../images/live.png';
-import transparentImg from '../images/transparent.png';
 import baseImg from '../images/base.png';
 import base2Img from '../images/base--2.png';
 import base3Img from '../images/base--3.png';
@@ -47,6 +46,7 @@ function App() {
   const [blindfoldW, setBlindfoldW] = useState(0);
   const [blindfoldH, setBlindfoldH] = useState(0);
   const [isStreamable, setStreamable] = useState(true);
+  const [useOriginal, setUseOriginal] = useState(false);
   const [ribbon, setRibbon] = useState('クソザコ');
   const [text, setText] = useState('好きなテロップ');
   const [time, setTime] = useState('06:04');
@@ -69,6 +69,12 @@ function App() {
   const [comentEdgeColor, setComentEdgeColor] = useState('#000000');
   const [kaichoImgSrc, setKaichoImgSrc] = useState<string>(kaicho01);
   const [mainImgSrc, setMainImgSrc] = useState<string>(dummyImg);
+  const [originalImgSrc, setOriginalImgSrc] = useState('');
+  const [originalImgWidth, setOriginalImgWidth] = useState(0);
+  const [originalImgHeight, setOriginalImgHeight] = useState(0);
+  const [originalImgScale, setOriginalImgScale] = useState(1);
+  const [originalImgY, setOriginalImgY] = useState(0);
+  const [originalImgX, setOriginalImgX] = useState(0);
   const [emit, setEmit] = useState('');
   const parts = {
     Base() {
@@ -155,7 +161,24 @@ function App() {
       return <Image image={getImageObj(kaichoImgSrc)} x={0} y={0} width={1600} height={900} />;
     },
     Main() {
-      return <Image image={getImageObj(mainImgSrc)} x={0} y={0} width={1600} height={900} />;
+      return (
+        mainImgSrc !== '__NO_IMAGE__' ?
+        <Image image={getImageObj(mainImgSrc)} x={0} y={0} width={1600} height={900} /> :
+        <></>
+      );
+    },
+    Original() {
+      return (
+        originalImgSrc && useOriginal ?
+        <Image
+          image={getImageObj(originalImgSrc)}
+          x={0 + originalImgX}
+          y={0 + originalImgY}
+          width={originalImgWidth * originalImgScale}
+          height={originalImgHeight * originalImgScale}
+        /> :
+        <></>
+      );
     },
     blindfold() {
       return <Rect
@@ -236,6 +259,7 @@ function App() {
             <Layer>
               <parts.Base />
               <parts.Main />
+              <parts.Original />
               {
                 isMasked ? <parts.Mask /> : <></>
               }
@@ -271,9 +295,45 @@ function App() {
           <p>
             <Select label="メイン画像" options={[
               ['選択してください', dummyImg],
-              ['transparent - 画像なし', transparentImg],
+              ['画像なし', '__NO_IMAGE__'],
               ...talents,
             ]} onChange={(e) => setMainImgSrc(e.target.value)} value={mainImgSrc} />
+          </p>
+
+          <p>
+            <Input label="手持ちの画像" type="checkbox" onChange={() => setUseOriginal(!useOriginal)} checked={useOriginal} />
+          </p>
+
+          <p className={styles.ui__child} hidden={!useOriginal}>
+            <Input label="ファイル選択" type="file" onChange={(e) => {
+              if (e.target.files) {
+                const fileReader = new FileReader();
+                const img = new globalThis.Image();
+                const [blob] = e.target.files;
+
+                fileReader.onload = () => {
+                  img.src = String(fileReader.result);
+                  img.onload = () => {
+                    setOriginalImgWidth(img.naturalWidth);
+                    setOriginalImgHeight(img.naturalHeight);
+                  };
+                  setOriginalImgSrc(String(fileReader.result));
+                };
+                fileReader.readAsDataURL(blob);
+              }
+            }} />
+          </p>
+
+          <p className={styles.ui__child} hidden={!useOriginal}>
+            <Input label="スケール" type="range" min="0.1" max="2" step="0.1" onChange={(e) => setOriginalImgScale(Number(e.target.value))} value={originalImgScale} />
+          </p>
+
+          <p className={styles.ui__child} hidden={!useOriginal}>
+            <Input label="X座標" type="number" onChange={(e) => setOriginalImgX(Number(e.target.value))} value={originalImgX} />
+          </p>
+
+          <p className={styles.ui__child} hidden={!useOriginal}>
+            <Input label="Y座標" type="number" onChange={(e) => setOriginalImgY(Number(e.target.value))} value={originalImgY} />
           </p>
 
           <p>
@@ -284,20 +344,20 @@ function App() {
             <Input label="目隠し" type="checkbox" onChange={() => setUseBlindfold(!useBlindfold)} checked={useBlindfold} />
           </p>
 
-          <p hidden={!useBlindfold}>
-            <Input label="目隠し（X）" type="number" onChange={(e) => setBlindfoldX(Number(e.target.value))} value={blindfoldX} />
+          <p className={styles.ui__child} hidden={!useBlindfold}>
+            <Input label="X座標" type="number" onChange={(e) => setBlindfoldX(Number(e.target.value))} value={blindfoldX} />
           </p>
 
-          <p hidden={!useBlindfold}>
-            <Input label="目隠し（Y）" type="number" onChange={(e) => setBlindfoldY(Number(e.target.value))} value={blindfoldY} />
+          <p className={styles.ui__child} hidden={!useBlindfold}>
+            <Input label="Y座標" type="number" onChange={(e) => setBlindfoldY(Number(e.target.value))} value={blindfoldY} />
           </p>
 
-          <p hidden={!useBlindfold}>
-            <Input label="目隠し（W）" type="number" onChange={(e) => setBlindfoldW(Number(e.target.value))} value={blindfoldW} />
+          <p className={styles.ui__child} hidden={!useBlindfold}>
+            <Input label="幅" type="number" onChange={(e) => setBlindfoldW(Number(e.target.value))} value={blindfoldW} />
           </p>
 
-          <p hidden={!useBlindfold}>
-            <Input label="目隠し（H）" type="number" onChange={(e) => setBlindfoldH(Number(e.target.value))} value={blindfoldH} />
+          <p className={styles.ui__child} hidden={!useBlindfold}>
+            <Input label="高さ" type="number" onChange={(e) => setBlindfoldH(Number(e.target.value))} value={blindfoldH} />
           </p>
 
           <p>
@@ -308,11 +368,11 @@ function App() {
             <Input label="生放送権限" type="checkbox" onChange={() => setStreamable(!isStreamable)} checked={isStreamable} />
           </p>
 
-          <p hidden={!isStreamable}>
+          <p className={styles.ui__child} hidden={!isStreamable}>
             <Input label="時間" type="time" onChange={(e) => setTime(e.target.value)} value={time} />
           </p>
 
-          <p hidden={!isStreamable}>
+          <p className={styles.ui__child} hidden={!isStreamable}>
             <Textarea label="コメント" rows={10} onChange={(e) => setComment(e.target.value)} value={comment} />
           </p>
 

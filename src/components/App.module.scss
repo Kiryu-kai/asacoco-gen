@@ -32,6 +32,39 @@
 
 .ui {
   padding: 20px;
+
+  p {
+    padding: 8px 0;
+    margin: 0;
+
+    &:first-child {
+      padding-top: 0;
+    }
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+
+  .ui__child {
+    padding-left: 10px;
+    background: #f6f9f9;
+    border-left: 3px solid #eff3f4;
+
+    [data-color="1"] & {
+      background-color: #192834;
+      border-left-color: #38444d;
+    }
+
+    [data-color="2"] & {
+      background-color: #17191d;
+      border-left-color: #2f3336;
+    }
+
+    + p:not(.ui__child) {
+      margin-top: 8px;
+    }
+  }
 }
 
 .download {
