@@ -6,7 +6,7 @@ type Component = React.FC<React.InputHTMLAttributes<HTMLInputElement> & {
   label: string,
 }>
 
-export const Input: Component = ({label, datalist, ...props}) => {
+export const Input: Component = ({label, ...props}) => {
   return (
     <label className={styles.host}>
       <span className={styles.label}>
