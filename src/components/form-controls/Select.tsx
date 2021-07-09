@@ -14,7 +14,7 @@ export const Select: Component = ({label, options, ...props}) => {
         {label}
       </span>
       <span className={styles.wrap}>
-        <select {...props} className={styles.input}>
+        <select {...props} className={styles.select}>
           {
             options.map(([name, value]) => (
               <option value={value} key={name}>{name}</option>

@@ -1,11 +1,9 @@
-.host {
-  display: flex;
-  align-items: center;
-}
+@use "../../utils/mixin.scss" as *;
 
 .label {
+  display: block;
   min-width: 120px;
-  padding: 0 8px 0 0;
+  padding: 0 0 8px;
 }
 
 .wrap {
@@ -13,10 +11,11 @@
 }
 
 .input,
-.textarea {
+.textarea,
+.select {
   width: 100%;
-  padding: 4px 8px 6px;
-  font-size: 20px;
+  padding: 8px;
+  font-size: 16px;
   letter-spacing: 1px;
 }
 
@@ -29,4 +28,20 @@
 .textarea {
   max-width: 100%;
   resize: vertical;
+}
+
+@include min-screen (375px) {
+  .host {
+    display: flex;
+    align-items: center;
+  }
+
+  .label {
+    padding: 0 8px 0 0;
+  }
+
+  .input,
+  .textarea {
+    font-size: 20px;
+  }
 }
