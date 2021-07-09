@@ -1,7 +1,6 @@
 .canvas {
   position: sticky;
   top: 0;
-  z-index: 1;
   max-width: 1600px;
   margin: 0 auto;
   cursor: move;
@@ -113,6 +112,7 @@
   .stage {
     position: sticky;
     top: 0;
+    z-index: 1;
   }
 
   .ui {
