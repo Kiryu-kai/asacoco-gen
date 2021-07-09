@@ -14,6 +14,10 @@ import mask2Img from '../images/mask--2.png';
 import mask3Img from '../images/mask--3.png';
 import ribbonImg from '../images/ribbon.png';
 import ribbonKusoZakoImg from '../images/ribbon--kusozako.png';
+import ribbonKusoDasaImg from '../images/ribbon--kusodasa.png';
+import ribbonGeboKawaImg from '../images/ribbon--gebokawa.png';
+import ribbonGachikoiImg from '../images/ribbon--gachikoi.png';
+import ribbonOmedeteiImg from '../images/ribbon--omedetei.png';
 import {talents} from '../utils/main-img-loader';
 import banStreamImg from '../images/ban-stream.png';
 import kaicho01 from '../images/kaicho/01.png';
@@ -192,9 +196,29 @@ function App() {
     Ribbon() {
       if (ribbon) {
         const value = ribbon.trim();
-        const isKusozako = /^(クソザコ|くそざこ|ｸｿｻﾞｺ)$/.test(value);
-        const img = isKusozako ? ribbonKusoZakoImg : ribbonImg;
-        const text = isKusozako ? '' : value;
+        const [img, text] = (() => {
+          if (/^(クソザコ|くそざこ|ｸｿｻﾞｺ)$/.test(value)) {
+            return [ribbonKusoZakoImg, ''];
+          }
+
+          if (/^(クソダサ|くそださ|ｸｿﾀﾞｻ)$/.test(value)) {
+            return [ribbonKusoDasaImg, ''];
+          }
+
+          if (/^(げぼかわ|ゲボカワ|ｹﾞﾎﾞｶﾜ)$/.test(value)) {
+            return [ribbonGeboKawaImg, ''];
+          }
+
+          if (/^(がちこい|ガチコイ|ｶﾞﾁｺｲ)$/.test(value)) {
+            return [ribbonGachikoiImg, ''];
+          }
+
+          if (/^(おめでてい)$/.test(value)) {
+            return [ribbonOmedeteiImg, ''];
+          }
+
+          return [ribbonImg, value];
+        })();
 
         return (
           <>
@@ -361,7 +385,19 @@ function App() {
           </p>
 
           <p>
-            <Input label="リボン" placeholder="クソザコ/速報/悲報" onChange={(e) => setRibbon(e.target.value)} value={ribbon} />
+            <Input
+              label="リボン"
+              placeholder="クソザコ/速報/悲報"
+              datalist={[
+                'クソザコ',
+                'クソダサ',
+                'ゲボカワ',
+                'ガチコイ',
+                'おめでてい',
+              ]}
+              onChange={(e) => setRibbon(e.target.value)}
+              value={ribbon}
+            />
           </p>
 
           <p>
