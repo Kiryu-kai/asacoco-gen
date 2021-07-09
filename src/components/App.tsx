@@ -404,16 +404,21 @@ function App() {
             <Input
               label="リボン"
               placeholder="クソザコ/速報/悲報"
-              datalist={[
-                'クソザコ',
-                'クソダサ',
-                'ゲボカワ',
-                'ガチコイ',
-                'おめでてい',
-              ]}
               onChange={(e) => setRibbon(e.target.value)}
               value={ribbon}
+              list="リボン"
             />
+            <datalist id="リボン">
+              {
+                [
+                  'クソザコ',
+                  'クソダサ',
+                  'ゲボカワ',
+                  'ガチコイ',
+                  'おめでてい',
+                ].map((value) => <option value={value} key={value} />)
+              }
+            </datalist>
           </p>
 
           <p>
