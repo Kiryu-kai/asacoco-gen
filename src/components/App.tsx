@@ -40,6 +40,21 @@ const maskImgSrc = [
   mask2Img,
   mask3Img,
 ];
+const watchNow = (() => {
+  let key = -1;
+
+  return (isStart: boolean, callback: (x: string) => void) => {
+    clearInterval(key);
+
+    if (isStart) {
+      key = window.setInterval(() => {
+        const date = new Date();
+
+        callback(`${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}`);
+      }, 1000);
+    }
+  };
+})();
 
 function App() {
   const [version, setVersion] = useState('0');
@@ -53,7 +68,8 @@ function App() {
   const [useOriginal, setUseOriginal] = useState(false);
   const [ribbon, setRibbon] = useState('クソザコ');
   const [text, setText] = useState('好きなテロップ');
-  const [time, setTime] = useState('06:04');
+  const [time, setTime] = useState('00:00');
+  const [useNow, setUseNow] = useState(true);
   const [comment, setComment] = useState(`
   チュングス：草
   紫龍組構成員：NEEEEEEEEE
@@ -405,7 +421,20 @@ function App() {
           </p>
 
           <p className={styles.ui__child} hidden={!isStreamable}>
-            <Input label="時間" type="time" onChange={(e) => setTime(e.target.value)} value={time} />
+            <Input label="現在時刻" type="checkbox" onChange={(() => {
+              const run = (isStart: boolean) => watchNow(isStart, (val: string) => setTime(val));
+
+              run(useNow);
+
+              return () => {
+                setUseNow(!useNow);
+                run(!useNow);
+              };
+            })()} checked={useNow} />
+          </p>
+
+          <p className={styles.ui__child} hidden={!isStreamable}>
+            <Input label="時間" type="time" onChange={(e) => setTime(e.target.value)} value={time} disabled={useNow} />
           </p>
 
           <p className={styles.ui__child} hidden={!isStreamable}>
