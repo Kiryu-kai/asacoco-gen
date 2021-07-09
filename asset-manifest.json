@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/asacoco-gen/static/css/main.07a42f8d.chunk.css",
-    "main.js": "/asacoco-gen/static/js/main.d0d266fe.chunk.js",
-    "main.js.map": "/asacoco-gen/static/js/main.d0d266fe.chunk.js.map",
+    "main.css": "/asacoco-gen/static/css/main.e579247c.chunk.css",
+    "main.js": "/asacoco-gen/static/js/main.c9419395.chunk.js",
+    "main.js.map": "/asacoco-gen/static/js/main.c9419395.chunk.js.map",
     "runtime-main.js": "/asacoco-gen/static/js/runtime-main.f1e2af38.js",
     "runtime-main.js.map": "/asacoco-gen/static/js/runtime-main.f1e2af38.js.map",
     "static/js/2.4fbf4257.chunk.js": "/asacoco-gen/static/js/2.4fbf4257.chunk.js",
@@ -10,7 +10,7 @@
     "static/js/3.73b8113a.chunk.js": "/asacoco-gen/static/js/3.73b8113a.chunk.js",
     "static/js/3.73b8113a.chunk.js.map": "/asacoco-gen/static/js/3.73b8113a.chunk.js.map",
     "index.html": "/asacoco-gen/index.html",
-    "static/css/main.07a42f8d.chunk.css.map": "/asacoco-gen/static/css/main.07a42f8d.chunk.css.map",
+    "static/css/main.e579247c.chunk.css.map": "/asacoco-gen/static/css/main.e579247c.chunk.css.map",
     "static/js/2.4fbf4257.chunk.js.LICENSE.txt": "/asacoco-gen/static/js/2.4fbf4257.chunk.js.LICENSE.txt",
     "static/media/01.31d5a1e7.png": "/asacoco-gen/static/media/01.31d5a1e7.png",
     "static/media/ban-stream.f368f872.png": "/asacoco-gen/static/media/ban-stream.f368f872.png",
@@ -23,14 +23,18 @@
     "static/media/mask--2.a63750e5.png": "/asacoco-gen/static/media/mask--2.a63750e5.png",
     "static/media/mask--3.1f2f9b8e.png": "/asacoco-gen/static/media/mask--3.1f2f9b8e.png",
     "static/media/mask.3c58db06.png": "/asacoco-gen/static/media/mask.3c58db06.png",
+    "static/media/ribbon--gachikoi.bbcc8971.png": "/asacoco-gen/static/media/ribbon--gachikoi.bbcc8971.png",
+    "static/media/ribbon--gebokawa.59a9b931.png": "/asacoco-gen/static/media/ribbon--gebokawa.59a9b931.png",
+    "static/media/ribbon--kusodasa.eb9a8490.png": "/asacoco-gen/static/media/ribbon--kusodasa.eb9a8490.png",
     "static/media/ribbon--kusozako.710cdf57.png": "/asacoco-gen/static/media/ribbon--kusozako.710cdf57.png",
+    "static/media/ribbon--omedetei.310be08b.png": "/asacoco-gen/static/media/ribbon--omedetei.310be08b.png",
     "static/media/ribbon.8c34f0f7.png": "/asacoco-gen/static/media/ribbon.8c34f0f7.png",
     "static/media/tsunomaki-watame--gangimari.19ac736d.png": "/asacoco-gen/static/media/tsunomaki-watame--gangimari.19ac736d.png"
   },
   "entrypoints": [
     "static/js/runtime-main.f1e2af38.js",
     "static/js/2.4fbf4257.chunk.js",
-    "static/css/main.07a42f8d.chunk.css",
-    "static/js/main.d0d266fe.chunk.js"
+    "static/css/main.e579247c.chunk.css",
+    "static/js/main.c9419395.chunk.js"
   ]
 }
