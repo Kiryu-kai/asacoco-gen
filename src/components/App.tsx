@@ -66,7 +66,7 @@ function App() {
   const [blindfoldH, setBlindfoldH] = useState(0);
   const [isStreamable, setStreamable] = useState(true);
   const [useOriginal, setUseOriginal] = useState(false);
-  const [ribbon, setRibbon] = useState('クソザコ');
+  const [ribbon, setRibbon] = useState('');
   const [text, setText] = useState('好きなテロップ');
   const [time, setTime] = useState('00:00');
   const [useNow, setUseNow] = useState(true);
