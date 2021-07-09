@@ -30,7 +30,7 @@
   resize: vertical;
 }
 
-@include min-screen (375px) {
+@include min-screen (400px) {
   .host {
     display: flex;
     align-items: center;
