@@ -20,8 +20,9 @@
 }
 
 .input {
-  &[type="color"] {
-    height: 40px;
+  &[type="color"],
+  &[type="range"] {
+    height: 44px;
   }
 }
 
