@@ -3,7 +3,7 @@ import styles from './Common.module.scss';
 
 type Component = React.FC<React.InputHTMLAttributes<HTMLInputElement> & {
   /** アクセシビリティネーム */
-  label: string,
+  label: string | React.ReactNode,
 }>
 
 export const Input: Component = ({label, ...props}) => {

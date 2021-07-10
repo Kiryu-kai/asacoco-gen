@@ -107,6 +107,7 @@ function App() {
   const [originalImgY, setOriginalImgY] = useState(0);
   const [originalImgX, setOriginalImgX] = useState(0);
   const [emit, setEmit] = useState('');
+  const [agree, setAgree] = useState(false);
   const parts = {
     Base() {
       return <Image image={getImageObj(baseImgSrc[Number(version)])} x={0} y={0} width={1600} height={900} />;
@@ -400,7 +401,14 @@ function App() {
   return (
     <>
       <div className={styles.container}>
-        <div className={styles.canvas} id="canvas-wrapper">
+        <div
+          className={styles.canvas}
+          id="canvas-wrapper"
+          onContextMenu={(e) => {
+            e.preventDefault();
+            alert('書き出しボタンを押して保存してくださいねー！');
+          }}
+        >
           <Stage width={1600} height={900} className={styles.stage}>
             <Layer>
               <parts.Base />
@@ -600,19 +608,39 @@ function App() {
       <div className={styles.download}>
         {
           emit ?
-          <>
+          <div hidden={!agree}>
             <h2 className={styles.download__h2}>ダウンロード</h2>
             <p className={styles.download__note}>画像を右クリック、またはホールドで保存してください。</p>
             <p className={styles.download__imgWrap}>
               <img src={emit} alt="作った画像" className={styles.download__img} />
             </p>
-          </> :
+          </div> :
           <></>
         }
+
+        <p className={styles.agree}>
+          <Input
+            label={(
+              <>
+                <a href="#guidelines">お願いと免責事項</a>を読み、所属タレントの心情に配慮することに同意します。
+              </>
+            )}
+            type="checkbox"
+            checked={agree}
+            onChange={() => {
+              setAgree(!agree);
+            }}
+          />
+        </p>
+
         <p className={styles.download__btnWrap}>
-          <button onClick={() => {
-            setEmit(document.querySelector<HTMLCanvasElement>('#canvas-wrapper canvas')!.toDataURL());
-          }} className={styles.download__btn}>画像として書き出し</button>
+          <button
+            onClick={() => {
+              setEmit(document.querySelector<HTMLCanvasElement>('#canvas-wrapper canvas')!.toDataURL());
+            }}
+            className={styles.download__btn}
+            disabled={!agree}
+          >画像として書き出し</button>
         </p>
       </div>
     </>

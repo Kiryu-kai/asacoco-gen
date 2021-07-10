@@ -12,8 +12,8 @@ ReactDOM.render(
       <Header />
       <main>
         <App />
-        <div className={styles.content}>
-          <h2>免責事項</h2>
+        <div className={styles.content} id="guidelines">
+          <h2>お願い・免責事項</h2>
 
           <p>利用に際しては深い愛を以って、<a href="https://www.hololive.tv/terms">カバー株式会社のガイドライン</a>に準拠してください。</p>
 
