@@ -40,6 +40,10 @@ const maskImgSrc = [
   mask2Img,
   mask3Img,
 ];
+const mainAreaPos = {
+  x: 63,
+  y: 111,
+};
 const watchNow = (() => {
   let key = -1;
 
@@ -90,6 +94,8 @@ function App() {
   const [kaichoImgSrc, setKaichoImgSrc] = useState<string>(kaicho01);
   const [mainImgSrc, setMainImgSrc] = useState<string>(dummyImg);
   const [originalImgSrc, setOriginalImgSrc] = useState('');
+  const [originalImgStartX, setOriginalImgStartX] = useState(mainAreaPos.x);
+  const [originalImgStartY, setOriginalImgStartY] = useState(mainAreaPos.y);
   const [originalImgBaseY, setOriginalImgBaseY] = useState(0);
   const [originalImgBaseX, setOriginalImgBaseX] = useState(0);
   const [originalImgWidth, setOriginalImgWidth] = useState(0);
@@ -359,8 +365,11 @@ function App() {
                     // ベース座標
                     // 0, 0 は 63, 111
                     // 1125 * 696
-                    setOriginalImgBaseX(63 + (1125 / 2) - (img.naturalWidth / 2));
-                    setOriginalImgBaseY(111 + (696 / 2) - (img.naturalHeight / 2));
+                    const baseX = originalImgStartX + (1125 / 2) - (img.naturalWidth * originalImgScale / 2);
+                    const baseY = originalImgStartY + (696 / 2) - (img.naturalHeight * originalImgScale / 2);
+
+                    setOriginalImgBaseX(baseX);
+                    setOriginalImgBaseY(baseY);
                     setOriginalImgWidth(img.naturalWidth);
                     setOriginalImgHeight(img.naturalHeight);
                   };
@@ -372,7 +381,15 @@ function App() {
           </p>
 
           <p className={styles.ui__child} hidden={!useOriginal}>
-            <Input label="スケール" type="range" min="0.1" max="2" step="0.1" onChange={(e) => setOriginalImgScale(Number(e.target.value))} value={originalImgScale} />
+            <Input label={`スケール（x${String(originalImgScale).padEnd(3, '.0')}）`} type="range" min="0.1" max="2" step="0.01" onChange={(e) => {
+              const scalse = Number(e.target.value);
+              const baseX = originalImgStartX + (1125 / 2) - (originalImgWidth * scalse / 2);
+              const baseY = originalImgStartY + (696 / 2) - (originalImgHeight * scalse / 2);
+
+              setOriginalImgScale(scalse);
+              setOriginalImgBaseX(baseX);
+              setOriginalImgBaseY(baseY);
+            }} value={originalImgScale} />
           </p>
 
           <p className={styles.ui__child} hidden={!useOriginal}>
