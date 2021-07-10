@@ -15,7 +15,7 @@ ReactDOM.render(
         <div className={styles.content}>
           <h2>免責事項</h2>
 
-          <p>利用に際しては、<a href="https://www.hololive.tv/terms">カバー株式会社のガイドライン</a>に準拠してください。</p>
+          <p>利用に際しては深い愛を以って、<a href="https://www.hololive.tv/terms">カバー株式会社のガイドライン</a>に準拠してください。</p>
 
           <ul>
             <li>Twitterへ投稿するときは、公式ではないこと・これまでの企画との混同を避けるために「<a href="https://twitter.com/intent/tweet?url=https://kiryu-kai.github.io/asacoco-gen&amp;hashtags=あさココジェネレーター" target="_blank" rel="noreferrer">#あさココジェネレーター</a>」をつけて投稿してください。</li>

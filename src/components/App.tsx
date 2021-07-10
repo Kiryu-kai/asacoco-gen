@@ -97,8 +97,8 @@ function App() {
   const [kaichoImgSrc, setKaichoImgSrc] = useState<string>(kaicho01);
   const [mainImgSrc, setMainImgSrc] = useState<string>(dummyImg);
   const [originalImgSrc, setOriginalImgSrc] = useState('');
-  const [originalImgStartX, setOriginalImgStartX] = useState(mainAreaPos.x);
-  const [originalImgStartY, setOriginalImgStartY] = useState(mainAreaPos.y);
+  const [originalImgStartX, setOriginalImgStartX] = useState(mainAreaPos.x); // TODO: なんでStateにしたんだっけにぇ…
+  const [originalImgStartY, setOriginalImgStartY] = useState(mainAreaPos.y); // TODO: わすれちゃったにぇ…
   const [originalImgBaseY, setOriginalImgBaseY] = useState(0);
   const [originalImgBaseX, setOriginalImgBaseX] = useState(0);
   const [originalImgWidth, setOriginalImgWidth] = useState(0);
