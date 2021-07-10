@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/asacoco-gen/static/css/main.98f24591.chunk.css",
-    "main.js": "/asacoco-gen/static/js/main.dcbcbea2.chunk.js",
-    "main.js.map": "/asacoco-gen/static/js/main.dcbcbea2.chunk.js.map",
+    "main.js": "/asacoco-gen/static/js/main.84cfdb52.chunk.js",
+    "main.js.map": "/asacoco-gen/static/js/main.84cfdb52.chunk.js.map",
     "runtime-main.js": "/asacoco-gen/static/js/runtime-main.f1e2af38.js",
     "runtime-main.js.map": "/asacoco-gen/static/js/runtime-main.f1e2af38.js.map",
     "static/js/2.fb79953f.chunk.js": "/asacoco-gen/static/js/2.fb79953f.chunk.js",
@@ -23,6 +23,7 @@
     "static/media/mask--2.a63750e5.png": "/asacoco-gen/static/media/mask--2.a63750e5.png",
     "static/media/mask--3.1f2f9b8e.png": "/asacoco-gen/static/media/mask--3.1f2f9b8e.png",
     "static/media/mask.3c58db06.png": "/asacoco-gen/static/media/mask.3c58db06.png",
+    "static/media/ribbon--detawane.8cc7f0dd.png": "/asacoco-gen/static/media/ribbon--detawane.8cc7f0dd.png",
     "static/media/ribbon--gachikoi.bbcc8971.png": "/asacoco-gen/static/media/ribbon--gachikoi.bbcc8971.png",
     "static/media/ribbon--gebokawa.59a9b931.png": "/asacoco-gen/static/media/ribbon--gebokawa.59a9b931.png",
     "static/media/ribbon--kusodasa.eb9a8490.png": "/asacoco-gen/static/media/ribbon--kusodasa.eb9a8490.png",
@@ -35,6 +36,6 @@
     "static/js/runtime-main.f1e2af38.js",
     "static/js/2.fb79953f.chunk.js",
     "static/css/main.98f24591.chunk.css",
-    "static/js/main.dcbcbea2.chunk.js"
+    "static/js/main.84cfdb52.chunk.js"
   ]
 }
