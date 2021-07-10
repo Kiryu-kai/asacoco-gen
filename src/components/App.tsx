@@ -18,6 +18,7 @@ import ribbonKusoDasaImg from '../images/ribbon--kusodasa.png';
 import ribbonGeboKawaImg from '../images/ribbon--gebokawa.png';
 import ribbonGachikoiImg from '../images/ribbon--gachikoi.png';
 import ribbonOmedeteiImg from '../images/ribbon--omedetei.png';
+import ribbonDetawaneImg from '../images/ribbon--detawane.png';
 import {talents} from '../utils/main-img-loader';
 import banStreamImg from '../images/ban-stream.png';
 import kaicho01 from '../images/kaicho/01.png';
@@ -237,7 +238,11 @@ function App() {
             return [ribbonGachikoiImg, ''];
           }
 
-          if (/^(おめでてい)$/.test(value)) {
+          if ('でたわね' === value) {
+            return [ribbonDetawaneImg, ''];
+          }
+
+          if ('おめでてい' === value) {
             return [ribbonOmedeteiImg, ''];
           }
 
@@ -439,6 +444,7 @@ function App() {
                   'クソダサ',
                   'ゲボカワ',
                   'ガチコイ',
+                  'でたわね',
                   'おめでてい',
                 ].map((value) => <option value={value} key={value} />)
               }
