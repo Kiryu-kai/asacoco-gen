@@ -508,7 +508,7 @@ function App() {
           </p>
 
           <p className={styles.ui__child} hidden={!useBlindfold}>
-            <Input label="X座標" type="range" min={-300} max={300} onChange={(e) => setBlindfoldX(Number(e.target.value))} value={blindfoldX} />
+            <Input label="X座標" type="range" min={-440} max={300} onChange={(e) => setBlindfoldX(Number(e.target.value))} value={blindfoldX} />
           </p>
 
           <p className={styles.ui__child} hidden={!useBlindfold}>
@@ -516,11 +516,11 @@ function App() {
           </p>
 
           <p className={styles.ui__child} hidden={!useBlindfold}>
-            <Input label="幅" type="range" min={0} max={200} onChange={(e) => setBlindfoldW(Number(e.target.value))} value={blindfoldW} />
+            <Input label="幅" type="range" min={-50} max={200} onChange={(e) => setBlindfoldW(Number(e.target.value))} value={blindfoldW} />
           </p>
 
           <p className={styles.ui__child} hidden={!useBlindfold}>
-            <Input label="高さ" type="range" min={0} max={200} onChange={(e) => setBlindfoldH(Number(e.target.value))} value={blindfoldH} />
+            <Input label="高さ" type="range" min={-10} max={200} onChange={(e) => setBlindfoldH(Number(e.target.value))} value={blindfoldH} />
           </p>
 
           <p>
