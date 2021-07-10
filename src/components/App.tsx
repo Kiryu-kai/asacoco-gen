@@ -607,18 +607,15 @@ function App() {
 
       <div className={styles.download}>
         <p className={styles.agree}>
-          <Input
-            label={(
-              <>
-                <a href="#guidelines">お願いと免責事項</a>を読み、所属タレントの心情に配慮することに同意します。
-              </>
-            )}
-            type="checkbox"
-            checked={agree}
-            onChange={() => {
-              setAgree(!agree);
-            }}
-          />
+          <label className={styles.agree__wrap}>
+            <input
+              type="checkbox"
+              checked={agree}
+              onChange={() => setAgree(!agree)}
+              className={styles.agree__input}
+            />
+            <span className={styles.agree__label}><a href="#guidelines">お願いと免責事項</a>を読み、所属タレントの心情に配慮することに同意します。</span>
+          </label>
         </p>
 
         {
