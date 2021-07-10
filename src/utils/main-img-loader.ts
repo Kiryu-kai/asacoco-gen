@@ -6,6 +6,8 @@ import lamy3dk from '../images/talents/lamy--3dkeibetsu.png';
 import lamy3dt from '../images/talents/lamy--3dtehepero.png';
 import lamy3dn from '../images/talents/lamy--3dnohohon.png';
 import lamy3ds from '../images/talents/lamy--3dsad.png';
+import lamy3dp from '../images/talents/lamy--3dpose.png';
+import lamy3dpt from '../images/talents/lamy--3dposetere.png';
 import mio2s from '../images/talents/okami-mio--02sad.png';
 import watames from '../images/talents/tsunomaki-watame--smile.png';
 import watamek from '../images/talents/tsunomaki-watame--kossori.png';
@@ -24,6 +26,8 @@ export const talents: [string, string][] = [
   ['lamy - 雪花ラミィ（3D・てへぺろ）', lamy3dt],
   ['lamy - 雪花ラミィ（3D・のほほん）', lamy3dn],
   ['lamy - 雪花ラミィ（3D・かなしい）', lamy3ds],
+  ['lamy - 雪花ラミィ（3D・ポーズ）', lamy3dp],
+  ['lamy - 雪花ラミィ（3D・ポーズ照れ）', lamy3dpt],
   ['mio - 大神ミオ（2019新衣装・かなしい）', mio2s],
   ['watame - 角巻わため（笑顔）', watames],
   ['watame - 角巻わため（ガンギマリ）', watameg],
