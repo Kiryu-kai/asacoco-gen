@@ -90,6 +90,8 @@ function App() {
   const [kaichoImgSrc, setKaichoImgSrc] = useState<string>(kaicho01);
   const [mainImgSrc, setMainImgSrc] = useState<string>(dummyImg);
   const [originalImgSrc, setOriginalImgSrc] = useState('');
+  const [originalImgBaseY, setOriginalImgBaseY] = useState(0);
+  const [originalImgBaseX, setOriginalImgBaseX] = useState(0);
   const [originalImgWidth, setOriginalImgWidth] = useState(0);
   const [originalImgHeight, setOriginalImgHeight] = useState(0);
   const [originalImgScale, setOriginalImgScale] = useState(1);
@@ -192,8 +194,8 @@ function App() {
         originalImgSrc && useOriginal ?
         <Image
           image={getImageObj(originalImgSrc)}
-          x={0 + originalImgX}
-          y={0 + originalImgY}
+          x={originalImgBaseX + originalImgX}
+          y={originalImgBaseY + originalImgY}
           width={originalImgWidth * originalImgScale}
           height={originalImgHeight * originalImgScale}
         /> :
@@ -354,6 +356,11 @@ function App() {
                 fileReader.onload = () => {
                   img.src = String(fileReader.result);
                   img.onload = () => {
+                    // ベース座標
+                    // 0, 0 は 63, 111
+                    // 1125 * 696
+                    setOriginalImgBaseX(63 + (1125 / 2) - (img.naturalWidth / 2));
+                    setOriginalImgBaseY(111 + (696 / 2) - (img.naturalHeight / 2));
                     setOriginalImgWidth(img.naturalWidth);
                     setOriginalImgHeight(img.naturalHeight);
                   };
