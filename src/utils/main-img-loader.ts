@@ -2,6 +2,7 @@ import flare02 from '../images/talents/shiranui-flare--02.png';
 import flare02ibukashige from '../images/talents/shiranui-flare--02ibukashige.png';
 import flare02smile from '../images/talents/shiranui-flare--02smile.png';
 import haachamag from '../images/talents/haato--gangimari.png';
+import lamyk from '../images/talents/lamy--keibetsu.png';
 import mio2s from '../images/talents/okami-mio--02sad.png';
 import watames from '../images/talents/tsunomaki-watame--smile.png';
 import watamek from '../images/talents/tsunomaki-watame--kossori.png';
@@ -16,7 +17,8 @@ export const talents: [string, string][] = [
   ['flare - 不知火フレア（正月・笑顔）', flare02smile],
   ['flare - 不知火フレア（正月・いぶかしげ）', flare02ibukashige],
   ['haachama - 赤井はあと（ガンギマリ）', haachamag],
-  ['mio - 大神ミオ（2019新衣装かなしい）', mio2s],
+  ['lamy - 雪花ラミィ（3D・軽蔑）', lamyk],
+  ['mio - 大神ミオ（2019新衣装・かなしい）', mio2s],
   ['watame - 角巻わため（笑顔）', watames],
   ['watame - 角巻わため（ガンギマリ）', watameg],
   ['watame - 角巻わため（こっそり）', watamek],
