@@ -11,8 +11,8 @@ import flare02smile from '../images/talents/shiranui-flare--02smile.png';
 
 export const talents: [string, string][] = [
   ['flare - 不知火フレア（正月）', flare02],
-  ['flare - 不知火フレア（正月・いぶかしげ）', flare02ibukashige],
   ['flare - 不知火フレア（正月・笑顔）', flare02smile],
+  ['flare - 不知火フレア（正月・いぶかしげ）', flare02ibukashige],
   ['watame - 角巻わため（笑顔）', watames],
   ['watame - 角巻わため（ガンギマリ）', watameg],
   ['watame - 角巻わため（こっそり）', watamek],

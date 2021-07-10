@@ -442,7 +442,7 @@ function App() {
           <p>
             <Select label="メイン画像" options={[
               ['選択してください', dummyImg],
-              ['画像なし', '__NO_IMAGE__'],
+              ['noimage - 画像なし', '__NO_IMAGE__'],
               ...talents,
             ]} onChange={(e) => setMainImgSrc(e.target.value)} value={mainImgSrc} />
           </p>
