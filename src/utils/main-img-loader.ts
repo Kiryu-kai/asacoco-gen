@@ -4,6 +4,7 @@ import flare02smile from '../images/talents/shiranui-flare--02smile.png';
 import haachamag from '../images/talents/haato--gangimari.png';
 import lamy3dk from '../images/talents/lamy--3dkeibetsu.png';
 import lamy3dt from '../images/talents/lamy--3dtehepero.png';
+import lamy3dn from '../images/talents/lamy--3dnohohon.png';
 import mio2s from '../images/talents/okami-mio--02sad.png';
 import watames from '../images/talents/tsunomaki-watame--smile.png';
 import watamek from '../images/talents/tsunomaki-watame--kossori.png';
@@ -20,6 +21,7 @@ export const talents: [string, string][] = [
   ['haachama - 赤井はあと（ガンギマリ）', haachamag],
   ['lamy - 雪花ラミィ（3D・軽蔑）', lamy3dk],
   ['lamy - 雪花ラミィ（3D・てへぺろ）', lamy3dt],
+  ['lamy - 雪花ラミィ（3D・のほほん）', lamy3dn],
   ['mio - 大神ミオ（2019新衣装・かなしい）', mio2s],
   ['watame - 角巻わため（笑顔）', watames],
   ['watame - 角巻わため（ガンギマリ）', watameg],
