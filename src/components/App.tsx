@@ -614,7 +614,7 @@ function App() {
               onChange={() => setAgree(!agree)}
               className={styles.agree__input}
             />
-            <span className={styles.agree__label}><a href="#guidelines">お願いと免責事項</a>を読み、所属タレントの心情に配慮することに同意します。</span>
+            <span className={styles.agree__label}><a href="#guidelines">お願いと免責事項</a>に同意し、所属タレントやあなたの作品を見た方への心情に配慮すること誓います。</span>
           </label>
         </p>
 
