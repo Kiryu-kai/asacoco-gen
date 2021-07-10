@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Layer, Text, Image, Rect, Stage, Group} from 'react-konva';
 import {Input} from './form-controls/Input';
 import {Textarea} from './form-controls/Textarea';
@@ -398,6 +398,16 @@ function App() {
     },
   };
 
+  useEffect(() => {
+    // TODO: 何か編集があったらにしたい
+    window.addEventListener('beforeunload', (e) => {
+      if (!confirm('あなたの作品は保存されません。この画面を離れてよろしいですか？')) {
+        e.preventDefault();
+        e.returnValue = '';
+      }
+    });
+  });
+
   return (
     <>
       <div className={styles.container}>
@@ -500,11 +510,11 @@ function App() {
           </p>
 
           <p className={styles.ui__child} hidden={!useOriginal}>
-            <Input label="X座標" type="number" onChange={(e) => setOriginalImgX(Number(e.target.value))} value={originalImgX} />
+            <Input label="X座標" type="range" onChange={(e) => setOriginalImgX(Number(e.target.value))} value={originalImgX} />
           </p>
 
           <p className={styles.ui__child} hidden={!useOriginal}>
-            <Input label="Y座標" type="number" onChange={(e) => setOriginalImgY(Number(e.target.value))} value={originalImgY} />
+            <Input label="Y座標" type="range" onChange={(e) => setOriginalImgY(Number(e.target.value))} value={originalImgY} />
           </p>
 
           <p>
