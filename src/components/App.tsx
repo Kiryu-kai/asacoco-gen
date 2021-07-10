@@ -6,6 +6,7 @@ import {Select} from './form-controls/Select';
 import cursorImg from '../images/cursor.png';
 import dummyImg from '../images/dummy.png';
 import liveImg from '../images/live.png';
+// import baseImg from '../images/debug.jpg';
 import baseImg from '../images/base.png';
 import base2Img from '../images/base--2.png';
 import base3Img from '../images/base--3.png';
@@ -72,6 +73,7 @@ function App() {
   const [isStreamable, setStreamable] = useState(true);
   const [useOriginal, setUseOriginal] = useState(false);
   const [ribbon, setRibbon] = useState('');
+  const [nameText, setNameText] = useState('');
   const [text, setText] = useState('好きなテロップ');
   const [time, setTime] = useState('00:00');
   const [useNow, setUseNow] = useState(true);
@@ -89,7 +91,7 @@ function App() {
   西成じじい：草
 
   `.trim().replace(/^\s+/gm, ''));
-  const [comentSize, setComentSize] = useState(90);
+  const [comentSize, setComentSize] = useState(93);
   const [comentColor, setComentColor] = useState('#ffffff');
   const [comentEdgeColor, setComentEdgeColor] = useState('#000000');
   const [kaichoImgSrc, setKaichoImgSrc] = useState<string>(kaicho01);
@@ -209,7 +211,7 @@ function App() {
         <></>
       );
     },
-    blindfold() {
+    Blindfold() {
       return <Rect
         x={504 + blindfoldX}
         y={296 + blindfoldY}
@@ -217,6 +219,96 @@ function App() {
         width={200 + blindfoldW}
         height={30 + blindfoldH}
       />;
+    },
+    Name() {
+      const [_title, ..._name] = nameText.trim().split('\n');
+      const name = (_name.length ? _name.join('') : _title).replace(/(（|\().*$/, '');
+      const title = _name.length ? _title : '';
+      const nameAttr = {
+        text: [...name].join('\n'),
+        y: name.length < 8 ? 240 : 180,
+        x: 1005,
+        fontSize: 69,
+        align: 'center',
+        wrap: 'word',
+        lineHeight: 1,
+        verticalAlign: 'top',
+        scaleY: (() => {
+          switch (name.length) {
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+            case 6:
+            case 7:
+            case 8:
+              return 0.9;
+
+            case 9:
+              return 0.8;
+
+            case 10:
+              return 0.7;
+
+            case 11:
+              return 0.6;
+
+            default:
+              return 0.5;
+          }
+        })(),
+      };
+      const titleAttr = {
+        text: [...title.replace(/「/g, '￢').replace(/」/g, '∟')].join('\n'),
+        y: 162,
+        x: 1098,
+        fontSize: 48,
+        align: 'center',
+        wrap: 'word',
+        lineHeight: 1,
+        verticalAlign: 'top',
+        height: 670,
+        scaleY: 0.9,
+      };
+
+
+      return (
+        <Group>
+          {
+            title ?
+            (
+              <>
+                <Text
+                  {...titleAttr}
+                  lineJoin="round"
+                  stroke="#000"
+                  strokeWidth={14}
+                />
+                <Text
+                  {...titleAttr}
+                  fill="#fff"
+                  stroke="#fff"
+                  strokeWidth={3}
+                />
+              </>
+            ) :
+            <></>
+          }
+          <Text
+            {...nameAttr}
+            lineJoin="round"
+            stroke="#000"
+            strokeWidth={18}
+          />
+          <Text
+            {...nameAttr}
+            fill="#fff"
+            stroke="#fff"
+            strokeWidth={3}
+          />
+        </Group>
+      );
     },
     Ribbon() {
       if (ribbon) {
@@ -274,15 +366,16 @@ function App() {
     Telop() {
       const attrs = {
         text: text.trim(),
-        y: 122,
-        x: 70,
+        y: 120,
+        x: 84,
         fontSize: comentSize,
         align: 'center',
         wrap: 'word',
         lineHeight: 1.2,
         verticalAlign: 'bottom',
-        width: 1100,
+        width: 1200,
         height: 690,
+        scaleX: 0.9,
       };
 
       return (
@@ -291,7 +384,7 @@ function App() {
             {...attrs}
             lineJoin="round"
             stroke={comentEdgeColor}
-            strokeWidth={13}
+            strokeWidth={17}
           />
           <Text
             {...attrs}
@@ -317,8 +410,9 @@ function App() {
                 isMasked ? <parts.Mask /> : <></>
               }
               {
-                useBlindfold ? <parts.blindfold /> : <></>
+                useBlindfold ? <parts.Blindfold /> : <></>
               }
+              <parts.Name />
               <parts.Comment />
               <parts.Time />
               <parts.Kaicho />
@@ -477,11 +571,20 @@ function App() {
           </p>
 
           <p>
+            <Textarea
+              label="肩書き・名前"
+              placeholder={'「畜生ひつじ」こと\n角巻わため氏'}
+              onChange={(e) => setNameText(e.target.value)}
+              value={nameText}
+            />
+          </p>
+
+          <p>
             <Textarea label="テロップ" onChange={(e) => setText(e.target.value)} value={text} />
           </p>
 
           <p>
-            <Input label="文字サイズ" type="range" min="60" max="120" step="10" onChange={(e) => setComentSize(Number(e.target.value))} value={comentSize} />
+            <Input label="文字サイズ" type="range" min="63" max="123" step="10" onChange={(e) => setComentSize(Number(e.target.value))} value={comentSize} />
           </p>
 
           <p>
