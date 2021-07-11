@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/asacoco-gen/static/css/main.520fd0f0.chunk.css",
-    "main.js": "/asacoco-gen/static/js/main.e75e4d10.chunk.js",
-    "main.js.map": "/asacoco-gen/static/js/main.e75e4d10.chunk.js.map",
+    "main.js": "/asacoco-gen/static/js/main.d2a412cc.chunk.js",
+    "main.js.map": "/asacoco-gen/static/js/main.d2a412cc.chunk.js.map",
     "runtime-main.js": "/asacoco-gen/static/js/runtime-main.0a400e4e.js",
     "runtime-main.js.map": "/asacoco-gen/static/js/runtime-main.0a400e4e.js.map",
     "static/js/2.5e9c05cf.chunk.js": "/asacoco-gen/static/js/2.5e9c05cf.chunk.js",
@@ -53,6 +53,6 @@
     "static/js/runtime-main.0a400e4e.js",
     "static/js/2.5e9c05cf.chunk.js",
     "static/css/main.520fd0f0.chunk.css",
-    "static/js/main.e75e4d10.chunk.js"
+    "static/js/main.d2a412cc.chunk.js"
   ]
 }
