@@ -25,6 +25,8 @@ import banStreamImg from '../images/ban-stream.png';
 import kaicho01 from '../images/kaicho/01.png';
 import styles from './App.module.scss';
 
+// TODO: コンポーネントごとにファイルわけないと、そろそろさすがにやばいにぇ…
+
 const getImageObj = (img: string) => {
   const obj = new globalThis.Image();
 
@@ -104,7 +106,9 @@ function App() {
   const [originalImgWidth, setOriginalImgWidth] = useState(0);
   const [originalImgHeight, setOriginalImgHeight] = useState(0);
   const [originalImgScale, setOriginalImgScale] = useState(1);
+  const [originalImgYminmax, setOriginalImgYminmax] = useState<[number, number]>([-1, 1]);
   const [originalImgY, setOriginalImgY] = useState(0);
+  const [originalImgXminmax, setOriginalImgXminmax] = useState<[number, number]>([-1, 1]);
   const [originalImgX, setOriginalImgX] = useState(0);
   const [emit, setEmit] = useState('');
   const [agree, setAgree] = useState(false);
@@ -468,51 +472,124 @@ function App() {
           </p>
 
           <p className={styles.ui__child} hidden={!useOriginal}>
-            <Input label="ファイル選択" type="file" onChange={(e) => {
-              if (e.target.files) {
-                const fileReader = new FileReader();
-                const img = new globalThis.Image();
-                const [blob] = e.target.files;
+            <Input
+              label="ファイル選択"
+              type="file"
+              accept="image/png,image/jpeg,image/svg+xml,image/webp"
+              onChange={(e) => {
+                if (e.target.files) {
+                  const fileReader = new FileReader();
+                  const img = new globalThis.Image();
+                  const [blob] = e.target.files;
 
-                fileReader.onload = () => {
-                  img.src = String(fileReader.result);
-                  img.onload = () => {
-                    // ベース座標
-                    // 0, 0 は 63, 111
-                    // 1125 * 696
-                    const baseX = originalImgStartX + (1125 / 2) - (img.naturalWidth * originalImgScale / 2);
-                    const baseY = originalImgStartY + (696 / 2) - (img.naturalHeight * originalImgScale / 2);
+                  if (
+                    1024 * 1024 * 2 < blob.size &&
+                    !confirm('ゲボデカサイズは動作が不安定になることがあります。本当に読み込みますか？（2MB超えてんで…)')
+                  ) {
+                    return;
+                  }
 
-                    setOriginalImgBaseX(baseX);
-                    setOriginalImgBaseY(baseY);
-                    setOriginalImgWidth(img.naturalWidth);
-                    setOriginalImgHeight(img.naturalHeight);
+                  fileReader.onload = () => {
+                    img.src = String(fileReader.result);
+                    img.onload = () => {
+                      // ベース座標
+                      // 0, 0 は 63, 111
+                      // 1125 * 696
+                      const width = img.naturalWidth * originalImgScale / 2;
+                      const height = img.naturalHeight * originalImgScale / 2;
+                      const baseX = originalImgStartX + (1125 / 2) - width;
+                      const baseY = originalImgStartY + (696 / 2) - height;
+
+                      const xMin = -1 * (1125 / 2) + width;
+                      const xMax = (1125 / 2) - width;
+                      const yMin = -1 * (696 / 2) + height;
+                      const yMax = (696 / 2) - height;
+
+                      setOriginalImgXminmax([
+                        0 < xMin ? xMax : xMin,
+                        xMax < 0 ? xMin : xMax,
+                      ]);
+
+                      setOriginalImgYminmax([
+                        0 < yMin ? yMax : yMin,
+                        yMax < 0 ? yMin : yMax,
+                      ]);
+
+                      setOriginalImgBaseX(baseX);
+                      setOriginalImgBaseY(baseY);
+                      setOriginalImgWidth(img.naturalWidth);
+                      setOriginalImgHeight(img.naturalHeight);
+                    };
+                    setOriginalImgSrc(String(fileReader.result));
                   };
-                  setOriginalImgSrc(String(fileReader.result));
-                };
-                fileReader.readAsDataURL(blob);
-              }
-            }} />
+                  fileReader.readAsDataURL(blob);
+                }
+              }}
+            />
           </p>
 
           <p className={styles.ui__child} hidden={!useOriginal}>
-            <Input label={`スケール（x${String(originalImgScale).padEnd(3, '.0')}）`} type="range" min="0.1" max="2" step="0.01" onChange={(e) => {
-              const scalse = Number(e.target.value);
-              const baseX = originalImgStartX + (1125 / 2) - (originalImgWidth * scalse / 2);
-              const baseY = originalImgStartY + (696 / 2) - (originalImgHeight * scalse / 2);
+            <Input
+              label={`スケール（x${String(originalImgScale).padEnd(3, '.0')}）`}
+              type="range"
+              min="0.1"
+              max="2"
+              step="0.01"
+              onChange={(e) => {
+                const scalse = Number(e.target.value);
 
-              setOriginalImgScale(scalse);
-              setOriginalImgBaseX(baseX);
-              setOriginalImgBaseY(baseY);
-            }} value={originalImgScale} />
+                setOriginalImgScale(scalse);
+
+                const width = originalImgWidth * scalse / 2;
+                const height = originalImgHeight * scalse / 2;
+                const baseX = originalImgStartX + (1125 / 2) - width;
+                const baseY = originalImgStartY + (696 / 2) - height;
+
+                const xMin = -1 * (1125 / 2) + width;
+                const xMax = (1125 / 2) - width;
+                const yMin = -1 * (696 / 2) + height;
+                const yMax = (696 / 2) - height;
+
+                setOriginalImgXminmax([
+                  0 < xMin ? xMax : xMin,
+                  xMax < 0 ? xMin : xMax,
+                ]);
+
+                setOriginalImgYminmax([
+                  0 < yMin ? yMax : yMin,
+                  yMax < 0 ? yMin : yMax,
+                ]);
+
+                setOriginalImgBaseX(baseX);
+                setOriginalImgBaseY(baseY);
+              }}
+              value={originalImgScale}
+              disabled={!originalImgSrc}
+            />
           </p>
 
           <p className={styles.ui__child} hidden={!useOriginal}>
-            <Input label="X座標" type="range" min={-100} max={100} onChange={(e) => setOriginalImgX(Number(e.target.value))} value={originalImgX} />
+            <Input
+              label="X座標"
+              type="range"
+              min={originalImgXminmax[0]}
+              max={originalImgXminmax[1]}
+              onChange={(e) => setOriginalImgX(Number(e.target.value))}
+              value={originalImgX}
+              disabled={!originalImgSrc}
+            />
           </p>
 
           <p className={styles.ui__child} hidden={!useOriginal}>
-            <Input label="Y座標" type="range" min={-100} max={100} onChange={(e) => setOriginalImgY(Number(e.target.value))} value={originalImgY} />
+            <Input
+              label="Y座標"
+              type="range"
+              min={originalImgYminmax[0]}
+              max={originalImgYminmax[1]}
+              onChange={(e) => setOriginalImgY(Number(e.target.value))}
+              value={originalImgY}
+              disabled={!originalImgSrc}
+            />
           </p>
 
           <p>
