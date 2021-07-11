@@ -528,8 +528,8 @@ function App() {
                   const [blob] = e.target.files;
 
                   if (
-                    1024 * 1024 * 2 < blob.size &&
-                    !confirm('ゲボデカサイズは動作が不安定になることがあります。本当に読み込みますか？（2MB超えてんで…)')
+                    1024 * 1024 * 10 < blob.size &&
+                    !confirm('ゲボデカサイズは動作が不安定になることがあります。本当に読み込みますか？（10MB超えてんで…)')
                   ) {
                     return;
                   }
