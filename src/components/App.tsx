@@ -401,10 +401,8 @@ function App() {
   useEffect(() => {
     // TODO: 何か編集があったらにしたい
     window.addEventListener('beforeunload', (e) => {
-      if (!confirm('あなたの作品は保存されません。この画面を離れてよろしいですか？')) {
-        e.preventDefault();
-        e.returnValue = '';
-      }
+      e.preventDefault();
+      e.returnValue = '';
     });
   });
 
