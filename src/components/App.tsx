@@ -277,7 +277,6 @@ function App() {
         scaleY: 0.9,
       };
 
-
       return (
         <Group>
           {
@@ -402,6 +401,48 @@ function App() {
     },
   };
 
+  /**
+   * 手持ちの画像を調整するための
+   * @param _options - useStateで管理されている値のうち、setされてない値を受け取る
+   */
+  const originalImgUpdate = (_options: {
+    scale?: number,
+    naturalWidth?: number,
+    naturalHeight?: number,
+  }) => {
+    const options = {
+      scale: originalImgScale,
+      naturalWidth: originalImgWidth,
+      naturalHeight: originalImgHeight,
+      ..._options,
+    };
+    const {scale, naturalWidth, naturalHeight} = options;
+    // ベース座標
+    // 0, 0 は 63, 111
+    // 1125 * 696
+    const width = naturalWidth * scale / 2;
+    const height = naturalHeight * scale / 2;
+    const baseX = originalImgStartX + (1125 / 2) - width;
+    const baseY = originalImgStartY + (696 / 2) - height;
+    const xMin = -1 * (1125 / 2) + width;
+    const xMax = (1125 / 2) - width;
+    const yMin = -1 * (696 / 2) + height;
+    const yMax = (696 / 2) - height;
+
+    setOriginalImgXminmax([
+      0 < xMin ? xMax : xMin,
+      xMax < 0 ? xMin : xMax,
+    ]);
+
+    setOriginalImgYminmax([
+      0 < yMin ? yMax : yMin,
+      yMax < 0 ? yMin : yMax,
+    ]);
+
+    setOriginalImgBaseX(baseX);
+    setOriginalImgBaseY(baseY);
+  };
+
   useEffect(() => {
     // TODO: 何か編集があったらにしたい
     window.addEventListener('beforeunload', (e) => {
@@ -492,33 +533,15 @@ function App() {
                   fileReader.onload = () => {
                     img.src = String(fileReader.result);
                     img.onload = () => {
-                      // ベース座標
-                      // 0, 0 は 63, 111
-                      // 1125 * 696
-                      const width = img.naturalWidth * originalImgScale / 2;
-                      const height = img.naturalHeight * originalImgScale / 2;
-                      const baseX = originalImgStartX + (1125 / 2) - width;
-                      const baseY = originalImgStartY + (696 / 2) - height;
+                      const {naturalWidth, naturalHeight} = img;
 
-                      const xMin = -1 * (1125 / 2) + width;
-                      const xMax = (1125 / 2) - width;
-                      const yMin = -1 * (696 / 2) + height;
-                      const yMax = (696 / 2) - height;
-
-                      setOriginalImgXminmax([
-                        0 < xMin ? xMax : xMin,
-                        xMax < 0 ? xMin : xMax,
-                      ]);
-
-                      setOriginalImgYminmax([
-                        0 < yMin ? yMax : yMin,
-                        yMax < 0 ? yMin : yMax,
-                      ]);
-
-                      setOriginalImgBaseX(baseX);
-                      setOriginalImgBaseY(baseY);
                       setOriginalImgWidth(img.naturalWidth);
                       setOriginalImgHeight(img.naturalHeight);
+
+                      originalImgUpdate({
+                        naturalWidth,
+                        naturalHeight,
+                      });
                     };
                     setOriginalImgSrc(String(fileReader.result));
                   };
@@ -536,32 +559,12 @@ function App() {
               max="2"
               step="0.01"
               onChange={(e) => {
-                const scalse = Number(e.target.value);
+                const scale = Number(e.target.value);
 
-                setOriginalImgScale(scalse);
-
-                const width = originalImgWidth * scalse / 2;
-                const height = originalImgHeight * scalse / 2;
-                const baseX = originalImgStartX + (1125 / 2) - width;
-                const baseY = originalImgStartY + (696 / 2) - height;
-
-                const xMin = -1 * (1125 / 2) + width;
-                const xMax = (1125 / 2) - width;
-                const yMin = -1 * (696 / 2) + height;
-                const yMax = (696 / 2) - height;
-
-                setOriginalImgXminmax([
-                  0 < xMin ? xMax : xMin,
-                  xMax < 0 ? xMin : xMax,
-                ]);
-
-                setOriginalImgYminmax([
-                  0 < yMin ? yMax : yMin,
-                  yMax < 0 ? yMin : yMax,
-                ]);
-
-                setOriginalImgBaseX(baseX);
-                setOriginalImgBaseY(baseY);
+                setOriginalImgScale(scale);
+                originalImgUpdate({
+                  scale,
+                });
               }}
               value={originalImgScale}
               disabled={!originalImgSrc}
