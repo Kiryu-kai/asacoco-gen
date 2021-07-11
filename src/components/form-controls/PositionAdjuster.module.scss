@@ -1,0 +1,156 @@
+.lyt {
+  display: flex;
+  justify-content: space-around;
+
+  --bg: #fff;
+  --border: #ccc;
+  --bar: #555;
+
+  [data-color="1"] & {
+
+    --bg: #15212b;
+    --border: #38444d;
+    --bar: #ccc;
+  }
+
+  [data-color="2"] & {
+
+    --bg: #000;
+    --border: #2f3336;
+    --bar: #ccc;
+  }
+}
+
+.item {
+  position: relative;
+}
+
+.btn {
+  width: 40px;
+  height: 40px;
+  font-size: 10px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+
+  &:not([data-type=""]) {
+    color: transparent;
+  }
+
+  &::before,
+  .txt::before,
+  .txt::after {
+    position: absolute;
+    display: block;
+    margin: auto;
+    content: "";
+    background: var(--bar);
+  }
+
+  [data-direction="x"] & {
+    &::before,
+    .txt::before,
+    .txt::after {
+      top: 0;
+      bottom: 0;
+    }
+
+    &::before {
+      width: 2px;
+      height: 30px;
+    }
+
+    .txt::before,
+    .txt::after {
+      height: 8px;
+    }
+
+    .txt::before {
+      top: -10px;
+      width: 18px;
+    }
+
+    .txt::after {
+      top: 10px;
+      width: 24px;
+    }
+
+    &[data-type="左"] {
+      &::before,
+      .txt::before,
+      .txt::after {
+        left: 6px;
+      }
+    }
+
+    &[data-type="中心"] {
+      &::before,
+      .txt::before,
+      .txt::after {
+        right: 0;
+        left: 0;
+      }
+    }
+
+    &[data-type="右"] {
+      &::before,
+      .txt::before,
+      .txt::after {
+        right: 6px;
+      }
+    }
+  }
+
+  [data-direction="y"] & {
+    &::before,
+    .txt::before,
+    .txt::after {
+      right: 0;
+      left: 0;
+    }
+
+    &::before {
+      width: 30px;
+      height: 2px;
+    }
+
+    .txt::before,
+    .txt::after {
+      width: 8px;
+    }
+
+    .txt::before {
+      left: -10px;
+      height: 24px;
+    }
+
+    .txt::after {
+      left: 10px;
+      height: 18px;
+    }
+
+    &[data-type="上"] {
+      &::before,
+      .txt::before,
+      .txt::after {
+        top: 6px;
+      }
+    }
+
+    &[data-type="中心"] {
+      &::before,
+      .txt::before,
+      .txt::after {
+        top: 0;
+        bottom: 0;
+      }
+    }
+
+    &[data-type="下"] {
+      &::before,
+      .txt::before,
+      .txt::after {
+        bottom: 6px;
+      }
+    }
+  }
+}

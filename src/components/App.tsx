@@ -24,6 +24,7 @@ import {talents} from '../utils/main-img-loader';
 import banStreamImg from '../images/ban-stream.png';
 import kaicho01 from '../images/kaicho/01.png';
 import styles from './App.module.scss';
+import {PositionAdjuster} from './form-controls/PositionAdjuster';
 
 // TODO: コンポーネントごとにファイルわけないと、そろそろさすがにやばいにぇ…
 
@@ -401,6 +402,9 @@ function App() {
     },
   };
 
+  // TODO: ピッタリよりも半分刺さるくらいまで移動できるように調整するかも
+  //       その場合は、PositionAdjusterのために
+  //       minmax系の管理方法を分離しないといけない
   /**
    * 手持ちの画像を調整するための
    * @param _options - useStateで管理されている値のうち、setされてない値を受け取る
@@ -584,6 +588,34 @@ function App() {
           </p>
 
           <p className={styles.ui__child} hidden={!useOriginal}>
+            <PositionAdjuster
+              label="X軸整列"
+              direction="x"
+              btns={[
+                {
+                  label: '左',
+                  onClick() {
+                    setOriginalImgX(originalImgXminmax[0]);
+                  },
+                },
+                {
+                  label: '中心',
+                  onClick() {
+                    setOriginalImgX(0);
+                  },
+                },
+                {
+                  label: '右',
+                  onClick() {
+                    setOriginalImgX(originalImgXminmax[1]);
+                  },
+                },
+              ]}
+              disabled={!originalImgSrc}
+            />
+          </p>
+
+          <p className={styles.ui__child} hidden={!useOriginal}>
             <Input
               label="Y座標"
               type="range"
@@ -591,6 +623,34 @@ function App() {
               max={originalImgYminmax[1]}
               onChange={(e) => setOriginalImgY(Number(e.target.value))}
               value={originalImgY}
+              disabled={!originalImgSrc}
+            />
+          </p>
+
+          <p className={styles.ui__child} hidden={!useOriginal}>
+            <PositionAdjuster
+              label="Y軸整列"
+              direction="y"
+              btns={[
+                {
+                  label: '上',
+                  onClick() {
+                    setOriginalImgY(originalImgYminmax[0]);
+                  },
+                },
+                {
+                  label: '中心',
+                  onClick() {
+                    setOriginalImgY(0);
+                  },
+                },
+                {
+                  label: '下',
+                  onClick() {
+                    setOriginalImgY(originalImgYminmax[1]);
+                  },
+                },
+              ]}
               disabled={!originalImgSrc}
             />
           </p>
