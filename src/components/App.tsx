@@ -510,11 +510,11 @@ function App() {
           </p>
 
           <p className={styles.ui__child} hidden={!useOriginal}>
-            <Input label="X座標" type="range" onChange={(e) => setOriginalImgX(Number(e.target.value))} value={originalImgX} />
+            <Input label="X座標" type="range" min={-100} max={100} onChange={(e) => setOriginalImgX(Number(e.target.value))} value={originalImgX} />
           </p>
 
           <p className={styles.ui__child} hidden={!useOriginal}>
-            <Input label="Y座標" type="range" onChange={(e) => setOriginalImgY(Number(e.target.value))} value={originalImgY} />
+            <Input label="Y座標" type="range" min={-100} max={100} onChange={(e) => setOriginalImgY(Number(e.target.value))} value={originalImgY} />
           </p>
 
           <p>
