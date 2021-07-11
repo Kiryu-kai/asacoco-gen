@@ -18,7 +18,7 @@ export function Footer() {
   });
 
   return (
-    <footer className={styles.wrap}>
+    <footer className={styles.wrap} data-is-expanded={isExpanded}>
       <p className={styles.copyright}>
         <small>©︎ 2019 Coco Kiryu - <button type="button" className={styles.btn} onClick={onclick} aria-expanded={isExpanded}>Materials</button> - <a href="https://github.com/Kiryu-kai/asacoco-gen">Repository</a> - <a href="/">Home</a></small>
       </p>

@@ -14,6 +14,10 @@
   [data-color="2"] & {
     background-color: rgba(0, 0, 0, .8);
   }
+
+  &[data-is-expanded="true"] {
+    z-index: 1;
+  }
 }
 
 .material {
