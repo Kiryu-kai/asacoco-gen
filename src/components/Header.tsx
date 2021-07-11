@@ -30,7 +30,7 @@ export const Header = () => {
       <p style={{
         padding: '0 20px',
         textAlign: 'center',
-      }}>調査中：スマホだと画像が保存できない不具合が確認されています（スクショなら大丈夫）</p>
+      }}>調査中：AndroidおよびiOSのGoogle Chromeで画像が保存できない不具合が確認されています（Safariやスクショなら大丈夫）</p>
     </header>
   );
 };
