@@ -634,7 +634,11 @@ function App() {
             <h2 className={styles.download__h2}>ダウンロード</h2>
             <p className={styles.download__note}>画像を右クリック、またはホールドで保存してください。</p>
             <p className={styles.download__imgWrap}>
-              <img src={emit} alt="作った画像" className={styles.download__img} />
+              <Stage width={1600} height={900} className={styles.stage}>
+                <Layer>
+                  <Image image={getImageObj(emit)} x={0} y={0} width={1600} height={900} draggable={true} />
+                </Layer>
+              </Stage>
             </p>
           </div> :
           <></>
