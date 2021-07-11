@@ -636,7 +636,7 @@ function App() {
             <p className={styles.download__imgWrap}>
               <Stage width={1600} height={900} className={styles.stage}>
                 <Layer>
-                  <Image image={getImageObj(emit)} x={0} y={0} width={1600} height={900} draggable={true} />
+                  <Image image={getImageObj(emit)} x={0} y={0} width={1600} height={900} />
                 </Layer>
               </Stage>
             </p>
