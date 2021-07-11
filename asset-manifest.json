@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/asacoco-gen/static/css/main.81efd383.chunk.css",
-    "main.js": "/asacoco-gen/static/js/main.c099f1ff.chunk.js",
-    "main.js.map": "/asacoco-gen/static/js/main.c099f1ff.chunk.js.map",
+    "main.css": "/asacoco-gen/static/css/main.553be997.chunk.css",
+    "main.js": "/asacoco-gen/static/js/main.e443face.chunk.js",
+    "main.js.map": "/asacoco-gen/static/js/main.e443face.chunk.js.map",
     "runtime-main.js": "/asacoco-gen/static/js/runtime-main.90c76743.js",
     "runtime-main.js.map": "/asacoco-gen/static/js/runtime-main.90c76743.js.map",
     "static/js/2.eff8df60.chunk.js": "/asacoco-gen/static/js/2.eff8df60.chunk.js",
@@ -10,7 +10,7 @@
     "static/js/3.3fae7291.chunk.js": "/asacoco-gen/static/js/3.3fae7291.chunk.js",
     "static/js/3.3fae7291.chunk.js.map": "/asacoco-gen/static/js/3.3fae7291.chunk.js.map",
     "index.html": "/asacoco-gen/index.html",
-    "static/css/main.81efd383.chunk.css.map": "/asacoco-gen/static/css/main.81efd383.chunk.css.map",
+    "static/css/main.553be997.chunk.css.map": "/asacoco-gen/static/css/main.553be997.chunk.css.map",
     "static/js/2.eff8df60.chunk.js.LICENSE.txt": "/asacoco-gen/static/js/2.eff8df60.chunk.js.LICENSE.txt",
     "static/media/01.31d5a1e7.png": "/asacoco-gen/static/media/01.31d5a1e7.png",
     "static/media/ban-stream.f368f872.png": "/asacoco-gen/static/media/ban-stream.f368f872.png",
@@ -52,7 +52,7 @@
   "entrypoints": [
     "static/js/runtime-main.90c76743.js",
     "static/js/2.eff8df60.chunk.js",
-    "static/css/main.81efd383.chunk.css",
-    "static/js/main.c099f1ff.chunk.js"
+    "static/css/main.553be997.chunk.css",
+    "static/js/main.e443face.chunk.js"
   ]
 }
