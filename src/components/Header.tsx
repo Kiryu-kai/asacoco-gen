@@ -26,6 +26,11 @@ export const Header = () => {
           <button className={styles.btn} onClick={() => document.body.dataset.color ='2'}>ブラック</button>
         </p>
       </div>
+
+      <p style={{
+        padding: '0 20px',
+        textAlign: 'center',
+      }}>調査中：スマホだと画像が保存できない不具合が確認されています（スクショなら大丈夫）</p>
     </header>
   );
 };
