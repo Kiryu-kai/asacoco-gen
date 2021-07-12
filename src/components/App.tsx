@@ -550,6 +550,8 @@ function App() {
                     const size = Math.floor((blob.size / denominator[unit]) * 100) / 100;
 
                     if (!confirm(`${limit}MB超えてんで！\nゲボデカサイズは動作が不安定になることがあります。本当に読み込みますか？（${size}${unit})`)) {
+                      e.target.value = '';
+
                       return;
                     }
                   }
