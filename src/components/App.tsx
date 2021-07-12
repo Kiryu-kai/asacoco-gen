@@ -526,12 +526,32 @@ function App() {
                   const fileReader = new FileReader();
                   const img = new globalThis.Image();
                   const [blob] = e.target.files;
+                  const limit = 8;
 
-                  if (
-                    1024 * 1024 * 10 < blob.size &&
-                    !confirm('ゲボデカサイズは動作が不安定になることがあります。本当に読み込みますか？（10MB超えてんで…)')
-                  ) {
-                    return;
+                  if (1024 * 1024 * limit < blob.size) {
+                    const denominator = {
+                      MB: Math.pow(1024, 2),
+                      GB: Math.pow(1024, 3),
+                      TB: Math.pow(1024, 4),
+                    };
+                    const unit: 'MB' | 'GB' | 'TB' = (() => {
+                      const {TB, GB} = denominator;
+
+                      if (TB <= blob.size) {
+                        return 'TB';
+                      }
+
+                      if (GB <= blob.size) {
+                        return 'GB';
+                      }
+
+                      return 'MB';
+                    })();
+                    const size = Math.floor((blob.size / denominator[unit]) * 100) / 100;
+
+                    if (!confirm(`${limit}MB超えてんで！\nゲボデカサイズは動作が不安定になることがあります。本当に読み込みますか？（${size}${unit})`)) {
+                      return;
+                    }
                   }
 
                   fileReader.onload = () => {
@@ -557,7 +577,12 @@ function App() {
 
           <p className={styles.ui__child} hidden={!useOriginal}>
             <Input
-              label={`スケール（x${String(originalImgScale).padEnd(3, '.0')}）`}
+              label={(
+                <span>
+                  スケール<br />
+                  （x{String(originalImgScale).padEnd(3, '.0')}）
+                </span>
+              )}
               type="range"
               min="0.1"
               max="2"
