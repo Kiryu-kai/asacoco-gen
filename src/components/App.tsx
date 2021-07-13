@@ -17,7 +17,7 @@ import ribbonImg from '../images/ribbon.png';
 import ribbonKusoZakoImg from '../images/ribbon--kusozako.png';
 import ribbonKusoDasaImg from '../images/ribbon--kusodasa.png';
 import ribbonGeboKawaImg from '../images/ribbon--gebokawa.png';
-import ribbonGeboKawa2Img from '../images/ribbon--gebokawa.png';
+import ribbonGeboKawa2Img from '../images/ribbon--gebokawa2.png';
 import ribbonGachikoiImg from '../images/ribbon--gachikoi.png';
 import ribbonGachikoi2Img from '../images/ribbon--gachikoi2.png';
 import ribbonOmedeteiImg from '../images/ribbon--omedetei.png';
@@ -330,7 +330,7 @@ function App() {
             return [ribbonKusoDasaImg, ''];
           }
 
-          if (/^(げぼかわ|ゲボカワ|ｹﾞﾎﾞｶﾜ)$/.test(value)) {
+          if (/^(ゲボカワ|ｹﾞﾎﾞｶﾜ)$/.test(value)) {
             return [ribbonGeboKawaImg, ''];
           }
 
@@ -729,7 +729,9 @@ function App() {
                   'クソザコ',
                   'クソダサ',
                   'ゲボカワ',
+                  'げぼかわ',
                   'ガチコイ',
+                  'ガチこい',
                   'でたわね',
                   'おめでてい',
                 ].map((value) => <option value={value} key={value} />)
