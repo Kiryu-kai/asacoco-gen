@@ -125,7 +125,8 @@ function App() {
     Comment() {
       const attrs = {
         text: comment.trim(),
-        y: version === '2' ? 137 : 103, // ver3.0だと少し下
+        // y: version === '2' ? 137 : 103, // ver3.0だと少し下
+        y: 103,
         x: 1220,
         fontSize: 24,
         align: 'left',
