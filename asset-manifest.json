@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/asacoco-gen/static/css/main.553be997.chunk.css",
-    "main.js": "/asacoco-gen/static/js/main.fbab1356.chunk.js",
-    "main.js.map": "/asacoco-gen/static/js/main.fbab1356.chunk.js.map",
+    "main.js": "/asacoco-gen/static/js/main.f83b5a8f.chunk.js",
+    "main.js.map": "/asacoco-gen/static/js/main.f83b5a8f.chunk.js.map",
     "runtime-main.js": "/asacoco-gen/static/js/runtime-main.90c76743.js",
     "runtime-main.js.map": "/asacoco-gen/static/js/runtime-main.90c76743.js.map",
     "static/js/2.eff8df60.chunk.js": "/asacoco-gen/static/js/2.eff8df60.chunk.js",
@@ -12,7 +12,6 @@
     "index.html": "/asacoco-gen/index.html",
     "static/css/main.553be997.chunk.css.map": "/asacoco-gen/static/css/main.553be997.chunk.css.map",
     "static/js/2.eff8df60.chunk.js.LICENSE.txt": "/asacoco-gen/static/js/2.eff8df60.chunk.js.LICENSE.txt",
-    "static/media/01.31d5a1e7.png": "/asacoco-gen/static/media/01.31d5a1e7.png",
     "static/media/ban-stream.f368f872.png": "/asacoco-gen/static/media/ban-stream.f368f872.png",
     "static/media/base--2.cef7f781.png": "/asacoco-gen/static/media/base--2.cef7f781.png",
     "static/media/base--3.343434f8.png": "/asacoco-gen/static/media/base--3.343434f8.png",
@@ -21,6 +20,9 @@
     "static/media/coco--c2.49279e0e.png": "/asacoco-gen/static/media/coco--c2.49279e0e.png",
     "static/media/cursor.ed6076b2.png": "/asacoco-gen/static/media/cursor.ed6076b2.png",
     "static/media/dummy.d7abfbe6.png": "/asacoco-gen/static/media/dummy.d7abfbe6.png",
+    "static/media/gangimari--right.c0b80ffb.png": "/asacoco-gen/static/media/gangimari--right.c0b80ffb.png",
+    "static/media/gangimari--right2.fb429cdf.png": "/asacoco-gen/static/media/gangimari--right2.fb429cdf.png",
+    "static/media/gangimari.31d5a1e7.png": "/asacoco-gen/static/media/gangimari.31d5a1e7.png",
     "static/media/haato--gangimari.15e2218f.png": "/asacoco-gen/static/media/haato--gangimari.15e2218f.png",
     "static/media/lamy--3dkeibetsu.8879906d.png": "/asacoco-gen/static/media/lamy--3dkeibetsu.8879906d.png",
     "static/media/lamy--3dnohohon.1fa8dffb.png": "/asacoco-gen/static/media/lamy--3dnohohon.1fa8dffb.png",
@@ -28,7 +30,7 @@
     "static/media/lamy--3dposetere.80e4afc4.png": "/asacoco-gen/static/media/lamy--3dposetere.80e4afc4.png",
     "static/media/lamy--3dsad.6a7385e2.png": "/asacoco-gen/static/media/lamy--3dsad.6a7385e2.png",
     "static/media/lamy--3dtehepero.d722b670.png": "/asacoco-gen/static/media/lamy--3dtehepero.d722b670.png",
-    "static/media/live.c0ea7f30.png": "/asacoco-gen/static/media/live.c0ea7f30.png",
+    "static/media/live.03f4dcdf.png": "/asacoco-gen/static/media/live.03f4dcdf.png",
     "static/media/mask--2.a63750e5.png": "/asacoco-gen/static/media/mask--2.a63750e5.png",
     "static/media/mask--3.1f2f9b8e.png": "/asacoco-gen/static/media/mask--3.1f2f9b8e.png",
     "static/media/mask.3c58db06.png": "/asacoco-gen/static/media/mask.3c58db06.png",
@@ -36,7 +38,7 @@
     "static/media/ribbon--detawane.8cc7f0dd.png": "/asacoco-gen/static/media/ribbon--detawane.8cc7f0dd.png",
     "static/media/ribbon--gachikoi.bbcc8971.png": "/asacoco-gen/static/media/ribbon--gachikoi.bbcc8971.png",
     "static/media/ribbon--gachikoi2.59b21a69.png": "/asacoco-gen/static/media/ribbon--gachikoi2.59b21a69.png",
-    "static/media/ribbon--gebokawa.59a9b931.png": "/asacoco-gen/static/media/ribbon--gebokawa.59a9b931.png",
+    "static/media/ribbon--gebokawa.04f0b45d.png": "/asacoco-gen/static/media/ribbon--gebokawa.04f0b45d.png",
     "static/media/ribbon--kusodasa.eb9a8490.png": "/asacoco-gen/static/media/ribbon--kusodasa.eb9a8490.png",
     "static/media/ribbon--kusozako.710cdf57.png": "/asacoco-gen/static/media/ribbon--kusozako.710cdf57.png",
     "static/media/ribbon--omedetei.310be08b.png": "/asacoco-gen/static/media/ribbon--omedetei.310be08b.png",
@@ -44,6 +46,7 @@
     "static/media/shiranui-flare--02.98b5701b.png": "/asacoco-gen/static/media/shiranui-flare--02.98b5701b.png",
     "static/media/shiranui-flare--02ibukashige.e2f8a4e7.png": "/asacoco-gen/static/media/shiranui-flare--02ibukashige.e2f8a4e7.png",
     "static/media/shiranui-flare--02smile.11d34dc7.png": "/asacoco-gen/static/media/shiranui-flare--02smile.11d34dc7.png",
+    "static/media/smile.81bca68b.png": "/asacoco-gen/static/media/smile.81bca68b.png",
     "static/media/tsunomaki-watame--03doya.aae75b14.png": "/asacoco-gen/static/media/tsunomaki-watame--03doya.aae75b14.png",
     "static/media/tsunomaki-watame--3dgangimari.501be00a.png": "/asacoco-gen/static/media/tsunomaki-watame--3dgangimari.501be00a.png",
     "static/media/tsunomaki-watame--3dsunglass.bdf9fcb2.png": "/asacoco-gen/static/media/tsunomaki-watame--3dsunglass.bdf9fcb2.png",
@@ -56,6 +59,6 @@
     "static/js/runtime-main.90c76743.js",
     "static/js/2.eff8df60.chunk.js",
     "static/css/main.553be997.chunk.css",
-    "static/js/main.fbab1356.chunk.js"
+    "static/js/main.f83b5a8f.chunk.js"
   ]
 }
