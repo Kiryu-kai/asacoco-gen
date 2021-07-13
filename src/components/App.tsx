@@ -17,7 +17,9 @@ import ribbonImg from '../images/ribbon.png';
 import ribbonKusoZakoImg from '../images/ribbon--kusozako.png';
 import ribbonKusoDasaImg from '../images/ribbon--kusodasa.png';
 import ribbonGeboKawaImg from '../images/ribbon--gebokawa.png';
+import ribbonGeboKawa2Img from '../images/ribbon--gebokawa.png';
 import ribbonGachikoiImg from '../images/ribbon--gachikoi.png';
+import ribbonGachikoi2Img from '../images/ribbon--gachikoi2.png';
 import ribbonOmedeteiImg from '../images/ribbon--omedetei.png';
 import ribbonDetawaneImg from '../images/ribbon--detawane.png';
 import {talents} from '../utils/main-img-loader';
@@ -331,8 +333,16 @@ function App() {
             return [ribbonGeboKawaImg, ''];
           }
 
+          if ('げぼかわ' === value) {
+            return [ribbonGeboKawa2Img, ''];
+          }
+
           if (/^(がちこい|ガチコイ|ｶﾞﾁｺｲ)$/.test(value)) {
             return [ribbonGachikoiImg, ''];
+          }
+
+          if ('ガチこい' === value) {
+            return [ribbonGachikoi2Img, ''];
           }
 
           if ('でたわね' === value) {
