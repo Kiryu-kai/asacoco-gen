@@ -96,6 +96,7 @@ function App() {
   西成じじい：草
 
   `.trim().replace(/^\s+/gm, ''));
+  const [commentClip, setCommentClip] = useState(0);
   const [comentSize, setComentSize] = useState(93);
   const [comentColor, setComentColor] = useState('#ffffff');
   const [comentEdgeColor, setComentEdgeColor] = useState('#000000');
@@ -134,7 +135,7 @@ function App() {
         lineHeight: 1.5,
         verticalAlign: 'top',
         width: 380,
-        height: 500,
+        height: 500 + commentClip,
       };
 
       return (
@@ -145,7 +146,7 @@ function App() {
           clipY={attrs.y + 9}
           clipX={0}
           clipWidth={1600}
-          clipHeight={400}
+          clipHeight={400 + commentClip}
         >
           <Text
             {...attrs}
@@ -762,6 +763,18 @@ function App() {
 
           <p className={styles.ui__child} hidden={!isStreamable}>
             <Textarea label="コメント" rows={10} onChange={(e) => setComment(e.target.value)} value={comment} />
+          </p>
+
+          <p className={styles.ui__child} hidden={!isStreamable}>
+            <Input
+              label="コメントクリップ"
+              type="range"
+              min={-80}
+              step={10}
+              max={220}
+              onChange={(e) => setCommentClip(Number(e.target.value))}
+              value={commentClip}
+            />
           </p>
 
           <p>
