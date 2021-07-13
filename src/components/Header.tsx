@@ -28,9 +28,18 @@ export const Header = () => {
       </div>
 
       <p style={{
+        display: 'flex',
+        justifyContent: 'center',
         padding: '0 20px',
-        textAlign: 'center',
-      }}>調査中：AndroidおよびiOSのGoogle Chromeで画像が保存できない不具合が確認されています（Safariやスクショなら大丈夫）</p>
+        fontSize: 14,
+      }}>
+        <span style={{
+          whiteSpace: 'nowrap',
+        }}>お知らせ：</span>
+        <span>
+          AndroidおよびiOSのGoogle Chromeで画像が保存できない不具合が確認されています（Safariやスクショなら大丈夫）。<br/><a href="https://github.com/Kiryu-kai/asacoco-gen/projects/1" target="_blank" rel="noreferrer">今後の開発予定と作業中のタスクはこちらから</a>！
+        </span>
+      </p>
     </header>
   );
 };
