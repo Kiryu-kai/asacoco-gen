@@ -6,7 +6,7 @@ import {Select} from './form-controls/Select';
 import cursorImg from '../images/cursor.png';
 import dummyImg from '../images/dummy.png';
 import liveImg from '../images/live.png';
-// import baseImg from '../images/debug.jpg';
+// import baseImg from '../images/debug.png';
 import baseImg from '../images/base.png';
 import base2Img from '../images/base--2.png';
 import base3Img from '../images/base--3.png';
@@ -23,8 +23,8 @@ import ribbonGachikoi2Img from '../images/ribbon--gachikoi2.png';
 import ribbonOmedeteiImg from '../images/ribbon--omedetei.png';
 import ribbonDetawaneImg from '../images/ribbon--detawane.png';
 import {talents} from '../utils/main-img-loader';
+import {kaicho} from '../utils/kaicho-img-loader';
 import banStreamImg from '../images/ban-stream.png';
-import kaicho01 from '../images/kaicho/01.png';
 import styles from './App.module.scss';
 import {PositionAdjuster} from './form-controls/PositionAdjuster';
 
@@ -99,7 +99,7 @@ function App() {
   const [comentSize, setComentSize] = useState(93);
   const [comentColor, setComentColor] = useState('#ffffff');
   const [comentEdgeColor, setComentEdgeColor] = useState('#000000');
-  const [kaichoImgSrc, setKaichoImgSrc] = useState<string>(kaicho01);
+  const [kaichoImgSrc, setKaichoImgSrc] = useState<string>(kaicho[0][1]);
   const [mainImgSrc, setMainImgSrc] = useState<string>(dummyImg);
   const [originalImgSrc, setOriginalImgSrc] = useState('');
   const [originalImgStartX, setOriginalImgStartX] = useState(mainAreaPos.x); // TODO: なんでStateにしたんだっけにぇ…
@@ -125,7 +125,7 @@ function App() {
     Comment() {
       const attrs = {
         text: comment.trim(),
-        y: 103,
+        y: version === '2' ? 137 : 103, // ver3.0だと少し下
         x: 1220,
         fontSize: 24,
         align: 'left',
@@ -141,7 +141,7 @@ function App() {
         <Group
           x={0}
           y={0}
-          clipY={112}
+          clipY={attrs.y + 9}
           clipX={0}
           clipWidth={1600}
           clipHeight={400}
@@ -166,9 +166,9 @@ function App() {
       const text = time.trim();
       const attrs = {
         text,
-        y: 34,
-        x: 1372,
-        fontSize: 76,
+        y: 16,
+        x: 1358,
+        fontSize: 100,
         fontFamily: '"Times New Roman", "YuMincho", "Hiragino Mincho ProN", "Yu Mincho", "MS PMincho", serif',
         align: 'left',
         verticalAlign: 'top',
@@ -509,9 +509,7 @@ function App() {
           </p>
 
           <p>
-            <Select label="会長" options={[
-              ['01 - ガンギマリ正面', kaichoImgSrc],
-            ]} onChange={(e) => setKaichoImgSrc(e.target.value)} value={kaichoImgSrc} />
+            <Select label="会長" options={kaicho} onChange={(e) => setKaichoImgSrc(e.target.value)} value={kaichoImgSrc} />
           </p>
 
           <p>
