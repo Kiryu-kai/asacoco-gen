@@ -227,7 +227,7 @@ function App() {
       />;
     },
     Name() {
-      const [_title, ..._name] = nameText.trim().split('\n');
+      const [_title, ..._name] = nameText.replace(/ー/g, '｜').trim().split('\n');
       const name = (_name.length ? _name.join('') : _title).replace(/(（|\().*$/, '');
       const title = _name.length ? _title : '';
       const nameAttr = {
