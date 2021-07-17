@@ -67,6 +67,9 @@ const mainAreaPos = {
   x: 63,
   y: 111,
 };
+const commentParser = (comment: (string | number)[][]) => {
+  return comment.map(([name, text]) => `${name}${text ? `：${text}` : ''}`).join('\n').trim();
+};
 const watchNow = (() => {
   let key = -1;
 
@@ -98,24 +101,24 @@ function App() {
   const [text, setText] = useState('好きなテロップ');
   const [time, setTime] = useState('00:00');
   const [useNow, setUseNow] = useState(true);
-  const [comment, setComment] = useState(shuffle(`
-  チュングス：草
-  紫龍組構成員：NEEEEEEEEE
-  西成じじい：草
-  KAIGAINIKI：lol
-  桐生会構成員：メンバーシップまだですか
-  西成じじい：草
-  人外ニキ：YABE
-  ガチ変勢：草
-  ガンギマリあさココ常用者：あつ
-  一般通過野うさぎ：やばいぺこ
-  西成じじい：草
-  腕組み後方彼氏面：キマってんねー
-  鉄砲玉：かちこみ草
-  ガテ恋：それは草
-  大葉ネキ：POI
-  えりぃとねこ：FAQ
-  `.trim().replace(/^\s+/gm, '').split('\n')).join('\n'));
+  const [comment, setComment] = useState<(string|number)[][]>(shuffle([
+    ['チュングス', '草'],
+    ['紫龍組構成員', 'NEEEEEEEEE'],
+    ['西成じじい', '草'],
+    ['KAIGAINIKI', 'lol'],
+    ['桐生会構成員', 'メンバーシップまだですか'],
+    ['社畜ニキ', 'くさァｗ'],
+    ['人外ニキ', 'YABE'],
+    ['ガチ変勢', '草'],
+    ['ガンギマリあさココ常用者', 'あっ'],
+    ['一般通過野うさぎ', 'やばいぺこ'],
+    ['西成じじい', '草'],
+    ['腕組み後方彼氏面', 'キマってんねー'],
+    ['鉄砲玉', 'かちこみ草'],
+    ['ガテ恋', 'それは草'],
+    ['大葉ネキ', 'POI'],
+    ['えりぃとねこ', 'FAQ'],
+  ]));
   const [commentClip, setCommentClip] = useState(0);
   const [comentSize, setComentSize] = useState(93);
   const [comentColor, setComentColor] = useState('#ffffff');
@@ -145,7 +148,7 @@ function App() {
     },
     Comment() {
       const attrs = {
-        text: comment.trim(),
+        text: commentParser(comment),
         // y: version === '2' ? 137 : 103, // ver3.0だと少し下
         y: 103,
         x: 1220,
@@ -778,7 +781,7 @@ function App() {
           </p>
 
           <p className={styles.ui__child} hidden={streamMode === 'restricted'}>
-            <Textarea label="コメント" rows={10} onChange={(e) => setComment(e.target.value)} value={comment} />
+            <Textarea label="コメント" rows={10} onChange={(e) => setComment(e.target.value.split('\n').map((row) => [row]))} value={commentParser(comment)} />
           </p>
 
           <p className={styles.ui__child} hidden={streamMode === 'restricted'}>
