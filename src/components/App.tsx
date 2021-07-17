@@ -70,6 +70,31 @@ const mainAreaPos = {
 const commentParser = (comment: (string | number)[][]) => {
   return comment.map(([name, text]) => `${name}${text ? `：${text}` : ''}`).join('\n').trim();
 };
+/** ランダムでメンバーシップに */
+const defaultComments = [
+  ['チュングス', '草'],
+  ['紫龍組構成員', 'NEEEEEEEEE'],
+  ['西成じじい', '草'],
+  ['KAIGAINIKI', 'lol'],
+  ['桐生会構成員', 'メンバーシップまだですか'],
+  ['社畜ニキ', 'くさァｗ'],
+  ['人外ニキ', 'YABE'],
+  ['ガチ変勢', '草'],
+  ['ガンギマリあさココ常用者', 'あっ'],
+  ['一般通過野うさぎ', 'やばいぺこ'],
+  ['西成じじい', '草'],
+  ['腕組み後方彼氏面', 'キマってんねー'],
+  ['鉄砲玉', 'かちこみ草'],
+  ['ガテ恋', 'それは草'],
+  ['大葉ネキ', 'POI'],
+  ['えりぃとねこ', 'FAQ'],
+].map((row) => {
+  const isMember = Math.random() < .8 ? '!' : '';
+
+  row[0] = `${isMember}${row[0]}`;
+
+  return row;
+});
 const watchNow = (() => {
   let key = -1;
 
@@ -101,24 +126,7 @@ function App() {
   const [text, setText] = useState('好きなテロップ');
   const [time, setTime] = useState('00:00');
   const [useNow, setUseNow] = useState(true);
-  const [comment, setComment] = useState<[string, string, ...(string|number)[]][]>(shuffle([
-    ['チュングス', '草'],
-    ['紫龍組構成員', 'NEEEEEEEEE'],
-    ['西成じじい', '草'],
-    ['KAIGAINIKI', 'lol'],
-    ['!桐生会構成員', 'メンバーシップまだですか'],
-    ['社畜ニキ', 'くさァｗ'],
-    ['人外ニキ', 'YABE'],
-    ['!ガチ変勢', '草'],
-    ['ガンギマリあさココ常用者', 'あっ'],
-    ['一般通過野うさぎ', 'やばいぺこ'],
-    ['西成じじい', '草'],
-    ['腕組み後方彼氏面', 'キマってんねー'],
-    ['鉄砲玉', 'かちこみ草'],
-    ['ガテ恋', 'それは草'],
-    ['大葉ネキ', 'POI'],
-    ['えりぃとねこ', 'FAQ'],
-  ]));
+  const [comment, setComment] = useState<[string, string, ...(string|number)[]][]>(shuffle(defaultComments));
   const [commentClip, setCommentClip] = useState(0);
   const [comentSize, setComentSize] = useState(93);
   const [comentColor, setComentColor] = useState('#ffffff');
@@ -170,8 +178,8 @@ function App() {
         >
           {
             comment.map(([_name, msg, price], i) => {
-              const isMember = _name.startsWith('!');
-              const name = _name.replace(/^\!/, '');
+              const isMember = /^[\!！]/.test(_name);
+              const name = _name.replace(/^[\!！]/, '');
               const text = `${name}：${msg}`;
               const length = [...text].map((s) => {
                 return /[a-z0-9]/i.test(s) ? .55 : 1;
@@ -818,17 +826,19 @@ function App() {
 
           <p className={styles.ui__child} hidden={streamMode === 'restricted'}>
             <Textarea label="コメント" rows={10} onChange={(e) => {
-              const data = e.target.value.split('\n').map((row) => {
+              const value = e.target.value.split('\n');
+              const data = value.map((row) => {
                 const [name, ...msg] = row.split('：');
 
-                return [name, ...msg];
+                return [name, msg.join('：')];
               }) as [string, string, ...(string | number)[]][];
 
               setComment(data);
             }} value={commentParser(comment)} />
           </p>
 
-          <div className={styles.ui__child} hidden={streamMode === 'restricted'}>
+          <div className={styles.ui__child} hidden={true}>
+            {/* 個別調整機能は一旦非公開 */}
             <ul>
               {
                 comment.map(([name, value, price], idx) => {
