@@ -18,18 +18,7 @@ import mask3Img from '../images/mask--3.png';
 import maskpekoImg from '../images/mask--peko.png';
 import maskAntiImg from '../images/mask--anti.png';
 import ribbonImg from '../images/ribbon.png';
-import ribbonNewImg from '../images/ribbon--new.png';
-import ribbonKusoZakoImg from '../images/ribbon--kusozako.png';
-import ribbonKusoDasaImg from '../images/ribbon--kusodasa.png';
-import ribbonGeboKawaImg from '../images/ribbon--gebokawa.png';
-import ribbonGeboKawa2Img from '../images/ribbon--gebokawa2.png';
-import ribbonGachikoiImg from '../images/ribbon--gachikoi.png';
-import ribbonGachikoi2Img from '../images/ribbon--gachikoi2.png';
-import ribbonOmedeteiImg from '../images/ribbon--omedetei.png';
-import ribbonDetawaneImg from '../images/ribbon--detawane.png';
-import ribbonDekapaiImg from '../images/ribbon--dekapai.png';
-import ribbonArkImg from '../images/ribbon--ark.png';
-import ribbonAntiNewImg from '../images/ribbon--anti-new.png';
+import {ribbons} from '../utils/ribbon-img-loader';
 import {talents} from '../utils/main-img-loader';
 import {kaicho} from '../utils/kaicho-img-loader';
 import banStreamImg from '../images/ban-stream.png';
@@ -367,52 +356,16 @@ function App() {
       if (ribbon) {
         const value = ribbon.trim();
         const [img, text] = (() => {
-          if (/^new$/i.test(value)) {
-            return [ribbonNewImg, ''];
-          }
+          const [_, src] = ribbons.find(([name, _, callback]) => {
+            if (callback) {
+              return callback(value);
+            }
 
-          if (/^(クソザコ|くそざこ|ｸｿｻﾞｺ)$/.test(value)) {
-            return [ribbonKusoZakoImg, ''];
-          }
+            return name === value;
+          }) || [];
 
-          if (/^(クソダサ|くそださ|ｸｿﾀﾞｻ)$/.test(value)) {
-            return [ribbonKusoDasaImg, ''];
-          }
-
-          if (/^(ゲボカワ|ｹﾞﾎﾞｶﾜ)$/.test(value)) {
-            return [ribbonGeboKawaImg, ''];
-          }
-
-          if ('げぼかわ' === value) {
-            return [ribbonGeboKawa2Img, ''];
-          }
-
-          if (/^(がちこい|ガチコイ|ｶﾞﾁｺｲ)$/.test(value)) {
-            return [ribbonGachikoiImg, ''];
-          }
-
-          if ('ガチこい' === value) {
-            return [ribbonGachikoi2Img, ''];
-          }
-
-          if ('でたわね' === value) {
-            return [ribbonDetawaneImg, ''];
-          }
-
-          if ('おめでてい' === value) {
-            return [ribbonOmedeteiImg, ''];
-          }
-
-          if ('でかパイ' === value) {
-            return [ribbonDekapaiImg, ''];
-          }
-
-          if (/^ark$/i.test(value)) {
-            return [ribbonArkImg, ''];
-          }
-
-          if (/^newアンチ$/i.test(value)) {
-            return [ribbonAntiNewImg, ''];
+          if (src) {
+            return [src, ''];
           }
 
           return [ribbonImg, value];
@@ -782,18 +735,7 @@ function App() {
             <datalist id="リボン">
               {
                 [
-                  'NEW',
-                  'クソザコ',
-                  'クソダサ',
-                  'ゲボカワ',
-                  'げぼかわ',
-                  'ガチコイ',
-                  'ガチこい',
-                  'でたわね',
-                  'おめでてい',
-                  'でかパイ', // https://www.youtube.com/watch?v=fAoNvVCRQ60
-                  'ARK', // https://www.youtube.com/watch?v=fAoNvVCRQ60
-                  'NEWアンチ', // https://www.youtube.com/watch?v=fAoNvVCRQ60
+                  ...ribbons.map(([label]) => label),
                 ].map((value) => <option value={value} key={value} />)
               }
             </datalist>
