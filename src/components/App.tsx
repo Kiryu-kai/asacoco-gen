@@ -11,11 +11,14 @@ import baseImg from '../images/base.png';
 import base2Img from '../images/base--2.png';
 import base3Img from '../images/base--3.png';
 import basepekoImg from '../images/base--peko.png';
+import baseAntiImg from '../images/base--anti.png';
 import maskImg from '../images/mask.png';
 import mask2Img from '../images/mask--2.png';
 import mask3Img from '../images/mask--3.png';
 import maskpekoImg from '../images/mask--peko.png';
+import maskAntiImg from '../images/mask--anti.png';
 import ribbonImg from '../images/ribbon.png';
+import ribbonNewImg from '../images/ribbon--new.png';
 import ribbonKusoZakoImg from '../images/ribbon--kusozako.png';
 import ribbonKusoDasaImg from '../images/ribbon--kusodasa.png';
 import ribbonGeboKawaImg from '../images/ribbon--gebokawa.png';
@@ -24,6 +27,9 @@ import ribbonGachikoiImg from '../images/ribbon--gachikoi.png';
 import ribbonGachikoi2Img from '../images/ribbon--gachikoi2.png';
 import ribbonOmedeteiImg from '../images/ribbon--omedetei.png';
 import ribbonDetawaneImg from '../images/ribbon--detawane.png';
+import ribbonDekapaiImg from '../images/ribbon--dekapai.png';
+import ribbonArkImg from '../images/ribbon--ark.png';
+import ribbonAntiNewImg from '../images/ribbon--anti-new.png';
 import {talents} from '../utils/main-img-loader';
 import {kaicho} from '../utils/kaicho-img-loader';
 import banStreamImg from '../images/ban-stream.png';
@@ -50,18 +56,21 @@ const baseImgSrc = {
   '1': base2Img,
   '2': base3Img,
   peko: basepekoImg,
+  anti: baseAntiImg,
 };
 const maskImgSrc = {
   '0': maskImg,
   '1': mask2Img,
   '2': mask3Img,
   peko: maskpekoImg,
+  anti: maskAntiImg,
 };
 const versionList: [string, keyof typeof baseImgSrc][] = [
   ['1.0', '0'],
   ['2.0', '1'],
   ['3.0', '2'],
   ['PekoNews!', 'peko'],
+  ['あさアンチLIVE', 'anti'],
   // ['1.0', base3Img],
 ];
 const mainAreaPos = {
@@ -358,6 +367,10 @@ function App() {
       if (ribbon) {
         const value = ribbon.trim();
         const [img, text] = (() => {
+          if (/^new$/i.test(value)) {
+            return [ribbonNewImg, ''];
+          }
+
           if (/^(クソザコ|くそざこ|ｸｿｻﾞｺ)$/.test(value)) {
             return [ribbonKusoZakoImg, ''];
           }
@@ -388,6 +401,18 @@ function App() {
 
           if ('おめでてい' === value) {
             return [ribbonOmedeteiImg, ''];
+          }
+
+          if ('でかパイ' === value) {
+            return [ribbonDekapaiImg, ''];
+          }
+
+          if (/^ark$/i.test(value)) {
+            return [ribbonArkImg, ''];
+          }
+
+          if (/^newアンチ$/i.test(value)) {
+            return [ribbonAntiNewImg, ''];
           }
 
           return [ribbonImg, value];
@@ -757,6 +782,7 @@ function App() {
             <datalist id="リボン">
               {
                 [
+                  'NEW',
                   'クソザコ',
                   'クソダサ',
                   'ゲボカワ',
@@ -765,6 +791,9 @@ function App() {
                   'ガチこい',
                   'でたわね',
                   'おめでてい',
+                  'でかパイ', // https://www.youtube.com/watch?v=fAoNvVCRQ60
+                  'ARK', // https://www.youtube.com/watch?v=fAoNvVCRQ60
+                  'NEWアンチ', // https://www.youtube.com/watch?v=fAoNvVCRQ60
                 ].map((value) => <option value={value} key={value} />)
               }
             </datalist>

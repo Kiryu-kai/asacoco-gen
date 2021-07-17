@@ -1,5 +1,7 @@
 import cocoYushikisha from '../images/talents/coco--c.png';
 import cocoYushikisha2 from '../images/talents/coco--c2.png';
+import cocoA from '../images/talents/coco--a.png';
+import cocoA2 from '../images/talents/coco--a2.png';
 import flare02 from '../images/talents/shiranui-flare--02.png';
 import flare02ibukashige from '../images/talents/shiranui-flare--02ibukashige.png';
 import flare02smile from '../images/talents/shiranui-flare--02smile.png';
@@ -22,6 +24,8 @@ import watame3dg from '../images/talents/tsunomaki-watame--3dgangimari.png';
 export const talents: [string, string][] = [
   ['coco? - 有識者C氏', cocoYushikisha],
   ['coco? - 有識者C氏（肩書きなし）', cocoYushikisha2],
+  ['coco? - 桐生Aコ氏', cocoA],
+  ['coco? - 桐生Aコ氏（肩書きなし）', cocoA2],
   ['flare - 不知火フレア（正月）', flare02],
   ['flare - 不知火フレア（正月・笑顔）', flare02smile],
   ['flare - 不知火フレア（正月・いぶかしげ）', flare02ibukashige],
