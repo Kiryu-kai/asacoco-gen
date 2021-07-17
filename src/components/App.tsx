@@ -27,6 +27,7 @@ import ribbonDetawaneImg from '../images/ribbon--detawane.png';
 import {talents} from '../utils/main-img-loader';
 import {kaicho} from '../utils/kaicho-img-loader';
 import banStreamImg from '../images/ban-stream.png';
+import emergencyImg from '../images/emergency.png';
 import styles from './App.module.scss';
 import {PositionAdjuster} from './form-controls/PositionAdjuster';
 
@@ -38,6 +39,11 @@ const getImageObj = (img: string) => {
   obj.src = img;
 
   return obj;
+};
+const streamModeList = {
+  default: '通常',
+  emergency: '緊急速報',
+  restricted: '生放送権限剥奪',
 };
 const baseImgSrc = {
   '0': baseImg,
@@ -86,7 +92,7 @@ function App() {
   const [blindfoldY, setBlindfoldY] = useState(0);
   const [blindfoldW, setBlindfoldW] = useState(0);
   const [blindfoldH, setBlindfoldH] = useState(0);
-  const [isStreamable, setStreamable] = useState(true);
+  const [streamMode, setStreamMode] = useState<keyof typeof streamModeList>('default');
   const [useOriginal, setUseOriginal] = useState(false);
   const [ribbon, setRibbon] = useState('');
   const [nameText, setNameText] = useState('');
@@ -148,9 +154,7 @@ function App() {
         width: 380,
         height: 500 + commentClip,
       };
-
-      return (
-        isStreamable ?
+      const commentElement = (
         <Group
           x={0}
           y={0}
@@ -171,9 +175,26 @@ function App() {
             stroke="#fff"
             strokeWidth={1}
           />
-        </Group> :
-        <Image image={getImageObj(banStreamImg)} x={0} y={0} width={1600} height={900} />
+        </Group>
       );
+
+      switch (streamMode) {
+        case 'restricted':
+          return (
+            <Image image={getImageObj(banStreamImg)} x={0} y={0} width={1600} height={900} />
+          );
+
+        case 'emergency':
+          return (
+            <>
+              {commentElement}
+              <Image image={getImageObj(emergencyImg)} x={0} y={0} width={1600} height={900} />
+            </>
+          );
+
+        default:
+          return commentElement;
+      }
     },
     Time() {
       const text = time.trim();
@@ -190,7 +211,10 @@ function App() {
       };
 
       return (
-        isStreamable && text ?
+        (
+          streamMode === 'default' &&
+          text
+        ) ?
         <Group>
           <Image image={getImageObj(liveImg)} x={0} y={0} width={1600} height={900} />
           <Text
@@ -746,11 +770,21 @@ function App() {
             </datalist>
           </p>
 
-          <p>
-            <Input label="生放送権限" type="checkbox" onChange={() => setStreamable(!isStreamable)} checked={isStreamable} />
-          </p>
+          {
+            Object.entries(streamModeList).map(([key, value]) => (
+              <p key={key}>
+                <Input
+                  label={value}
+                  type="radio"
+                  name="streamMode"
+                  onChange={() => setStreamMode(key as keyof typeof streamModeList)}
+                  checked={streamMode === key}
+                />
+              </p>
+            ))
+          }
 
-          <p className={styles.ui__child} hidden={!isStreamable}>
+          <p className={styles.ui__child} hidden={streamMode !== 'default'}>
             <Input label="現在時刻" type="checkbox" onChange={(() => {
               const run = (isStart: boolean) => watchNow(isStart, (val: string) => setTime(val));
 
@@ -763,15 +797,15 @@ function App() {
             })()} checked={useNow} />
           </p>
 
-          <p className={styles.ui__child} hidden={!isStreamable}>
+          <p className={styles.ui__child} hidden={streamMode !== 'default'}>
             <Input label="時間" type="time" onChange={(e) => setTime(e.target.value)} value={time} disabled={useNow} />
           </p>
 
-          <p className={styles.ui__child} hidden={!isStreamable}>
+          <p className={styles.ui__child} hidden={streamMode === 'restricted'}>
             <Textarea label="コメント" rows={10} onChange={(e) => setComment(e.target.value)} value={comment} />
           </p>
 
-          <p className={styles.ui__child} hidden={!isStreamable}>
+          <p className={styles.ui__child} hidden={streamMode === 'restricted'}>
             <Input
               label="コメントクリップ"
               type="range"
