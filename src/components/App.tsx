@@ -70,6 +70,31 @@ const mainAreaPos = {
 const commentParser = (comment: (string | number)[][]) => {
   return comment.map(([name, text]) => `${name}${text ? `：${text}` : ''}`).join('\n').trim();
 };
+/** ランダムでメンバーシップに */
+const defaultComments = [
+  ['チュングス', '草'],
+  ['紫龍組構成員', 'NEEEEEEEEE'],
+  ['西成じじい', '草'],
+  ['KAIGAINIKI', 'lol'],
+  ['桐生会構成員', 'メンバーシップまだですか'],
+  ['社畜ニキ', 'くさァｗ'],
+  ['人外ニキ', 'YABE'],
+  ['ガチ変勢', '草'],
+  ['ガンギマリあさココ常用者', 'あっ'],
+  ['一般通過野うさぎ', 'やばいぺこ'],
+  ['西成じじい', '草'],
+  ['腕組み後方彼氏面', 'キマってんねー'],
+  ['鉄砲玉', 'かちこみ草'],
+  ['ガテ恋', 'それは草'],
+  ['大葉ネキ', 'POI'],
+  ['えりぃとねこ', 'FAQ'],
+].map((row) => {
+  const isMember = Math.random() < .8 ? '!' : '';
+
+  row[0] = `${isMember}${row[0]}`;
+
+  return row;
+});
 const watchNow = (() => {
   let key = -1;
 
@@ -101,24 +126,7 @@ function App() {
   const [text, setText] = useState('好きなテロップ');
   const [time, setTime] = useState('00:00');
   const [useNow, setUseNow] = useState(true);
-  const [comment, setComment] = useState<(string|number)[][]>(shuffle([
-    ['チュングス', '草'],
-    ['紫龍組構成員', 'NEEEEEEEEE'],
-    ['西成じじい', '草'],
-    ['KAIGAINIKI', 'lol'],
-    ['桐生会構成員', 'メンバーシップまだですか'],
-    ['社畜ニキ', 'くさァｗ'],
-    ['人外ニキ', 'YABE'],
-    ['ガチ変勢', '草'],
-    ['ガンギマリあさココ常用者', 'あっ'],
-    ['一般通過野うさぎ', 'やばいぺこ'],
-    ['西成じじい', '草'],
-    ['腕組み後方彼氏面', 'キマってんねー'],
-    ['鉄砲玉', 'かちこみ草'],
-    ['ガテ恋', 'それは草'],
-    ['大葉ネキ', 'POI'],
-    ['えりぃとねこ', 'FAQ'],
-  ]));
+  const [comment, setComment] = useState<[string, string, ...(string|number)[]][]>(shuffle(defaultComments));
   const [commentClip, setCommentClip] = useState(0);
   const [comentSize, setComentSize] = useState(93);
   const [comentColor, setComentColor] = useState('#ffffff');
@@ -147,16 +155,15 @@ function App() {
       return <Image image={getImageObj(maskImgSrc[version])} x={0} y={0} width={1600} height={900} />;
     },
     Comment() {
+      let y = 103;
       const attrs = {
-        text: commentParser(comment),
         // y: version === '2' ? 137 : 103, // ver3.0だと少し下
-        y: 103,
         x: 1220,
         fontSize: 24,
         align: 'left',
-        wrap: 'word',
         lineHeight: 1.5,
         verticalAlign: 'top',
+        wrap: 'char',
         width: 380,
         height: 500 + commentClip,
       };
@@ -164,23 +171,60 @@ function App() {
         <Group
           x={0}
           y={0}
-          clipY={attrs.y + 9}
+          clipY={y + 9}
           clipX={0}
           clipWidth={1600}
           clipHeight={400 + commentClip}
         >
-          <Text
-            {...attrs}
-            strokeWidth={6}
-            stroke="#000"
-            lineJoin="round"
-          />
-          <Text
-            {...attrs}
-            fill="#fff"
-            stroke="#fff"
-            strokeWidth={1}
-          />
+          {
+            comment.map(([_name, msg, price], i) => {
+              const isMember = /^[\!！]/.test(_name);
+              const name = _name.replace(/^[\!！]/, '');
+              const text = `${name}：${msg}`;
+              const length = [...text].map((s) => {
+                return /[a-z0-9]/i.test(s) ? .55 : 1;
+              }).reduce((p, c) => p + c, 0);
+
+              y += attrs.fontSize * attrs.lineHeight;
+
+              const node = (
+                <>
+                  <Text
+                    y={y}
+                    {...attrs}
+                    text={text}
+                    strokeWidth={6}
+                    stroke="#000"
+                    lineJoin="round"
+                  />
+                  <Text
+                    y={y}
+                    {...attrs}
+                    text={text}
+                    fill="#fff"
+                    stroke="#fff"
+                    strokeWidth={1}
+                  />
+                  {
+                    isMember ?
+                    <Text
+                      y={y}
+                      {...attrs}
+                      text={name}
+                      fill="#2ba640"
+                      stroke="#2ba640"
+                      strokeWidth={1}
+                    /> :
+                    null
+                  }
+                </>
+              );
+
+              y += (Math.floor(length / 15.75) * (attrs.fontSize * attrs.lineHeight));
+
+              return node;
+            })
+          }
         </Group>
       );
 
@@ -781,8 +825,49 @@ function App() {
           </p>
 
           <p className={styles.ui__child} hidden={streamMode === 'restricted'}>
-            <Textarea label="コメント" rows={10} onChange={(e) => setComment(e.target.value.split('\n').map((row) => [row]))} value={commentParser(comment)} />
+            <Textarea
+              label="コメント"
+              rows={10}
+              onChange={(e) => {
+                const value = e.target.value.split('\n');
+                const data = value.map((row) => {
+                  const [name, ...msg] = row.split('：');
+
+                  return [name, msg.join('：')];
+                }) as [string, string, ...(string | number)[]][];
+
+                setComment(data);
+              }}
+              value={commentParser(comment)}
+              note="名前を「!」で始めるとメンバーシップ"
+            />
           </p>
+
+          <div className={styles.ui__child} hidden={true}>
+            {/* 個別調整機能は一旦非公開 */}
+            <ul>
+              {
+                comment.map(([name, value, price], idx) => {
+                  return (
+                    <li key={idx}>
+                      <input value={name} onChange={(e) => {
+                        comment[idx][0] = e.target.value;
+                        setComment([...comment]);
+                      }} />
+                      <input value={value} onChange={(e) => {
+                        comment[idx][1] = e.target.value;
+                        setComment([...comment]);
+                      }} />
+                      <input value={price} onChange={(e) => {
+                        comment[idx][2] = e.target.value;
+                        setComment([...comment]);
+                      }} />
+                    </li>
+                  );
+                })
+              }
+            </ul>
+          </div>
 
           <p className={styles.ui__child} hidden={streamMode === 'restricted'}>
             <Input
