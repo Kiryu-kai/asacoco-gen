@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/asacoco-gen/static/css/main.553be997.chunk.css",
-    "main.js": "/asacoco-gen/static/js/main.3dd1bb86.chunk.js",
-    "main.js.map": "/asacoco-gen/static/js/main.3dd1bb86.chunk.js.map",
+    "main.js": "/asacoco-gen/static/js/main.e2802052.chunk.js",
+    "main.js.map": "/asacoco-gen/static/js/main.e2802052.chunk.js.map",
     "runtime-main.js": "/asacoco-gen/static/js/runtime-main.90c76743.js",
     "runtime-main.js.map": "/asacoco-gen/static/js/runtime-main.90c76743.js.map",
     "static/js/2.eff8df60.chunk.js": "/asacoco-gen/static/js/2.eff8df60.chunk.js",
@@ -21,6 +21,7 @@
     "static/media/coco--c2.49279e0e.png": "/asacoco-gen/static/media/coco--c2.49279e0e.png",
     "static/media/cursor.ed6076b2.png": "/asacoco-gen/static/media/cursor.ed6076b2.png",
     "static/media/dummy.d7abfbe6.png": "/asacoco-gen/static/media/dummy.d7abfbe6.png",
+    "static/media/emergency.35c66fab.png": "/asacoco-gen/static/media/emergency.35c66fab.png",
     "static/media/gangimari--right.c0b80ffb.png": "/asacoco-gen/static/media/gangimari--right.c0b80ffb.png",
     "static/media/gangimari--right2.fb429cdf.png": "/asacoco-gen/static/media/gangimari--right2.fb429cdf.png",
     "static/media/gangimari.31d5a1e7.png": "/asacoco-gen/static/media/gangimari.31d5a1e7.png",
@@ -64,6 +65,6 @@
     "static/js/runtime-main.90c76743.js",
     "static/js/2.eff8df60.chunk.js",
     "static/css/main.553be997.chunk.css",
-    "static/js/main.3dd1bb86.chunk.js"
+    "static/js/main.e2802052.chunk.js"
   ]
 }
