@@ -109,7 +109,11 @@ function App() {
   ガンギマリあさココ常用者：あつ
   一般通過野うさぎ：やばいぺこ
   西成じじい：草
-
+  腕組み後方彼氏面：キマってんねー
+  鉄砲玉：かちこみ草
+  ガテ恋：ここもう見えてない
+  大葉ネキ：POI
+  えりぃとねこ：FAQ
   `.trim().replace(/^\s+/gm, ''));
   const [commentClip, setCommentClip] = useState(0);
   const [comentSize, setComentSize] = useState(93);
