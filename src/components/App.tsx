@@ -10,9 +10,11 @@ import liveImg from '../images/live.png';
 import baseImg from '../images/base.png';
 import base2Img from '../images/base--2.png';
 import base3Img from '../images/base--3.png';
+import basepekoImg from '../images/base--peko.png';
 import maskImg from '../images/mask.png';
 import mask2Img from '../images/mask--2.png';
 import mask3Img from '../images/mask--3.png';
+import maskpekoImg from '../images/mask--peko.png';
 import ribbonImg from '../images/ribbon.png';
 import ribbonKusoZakoImg from '../images/ribbon--kusozako.png';
 import ribbonKusoDasaImg from '../images/ribbon--kusodasa.png';
@@ -37,15 +39,24 @@ const getImageObj = (img: string) => {
 
   return obj;
 };
-const baseImgSrc = [
-  baseImg,
-  base2Img,
-  base3Img,
-];
-const maskImgSrc = [
-  maskImg,
-  mask2Img,
-  mask3Img,
+const baseImgSrc = {
+  '0': baseImg,
+  '1': base2Img,
+  '2': base3Img,
+  peko: basepekoImg,
+};
+const maskImgSrc = {
+  '0': maskImg,
+  '1': mask2Img,
+  '2': mask3Img,
+  peko: maskpekoImg,
+};
+const versionList: [string, keyof typeof baseImgSrc][] = [
+  ['1.0', '0'],
+  ['2.0', '1'],
+  ['3.0', '2'],
+  ['PekoNews!', 'peko'],
+  // ['1.0', base3Img],
 ];
 const mainAreaPos = {
   x: 63,
@@ -68,7 +79,7 @@ const watchNow = (() => {
 })();
 
 function App() {
-  const [version, setVersion] = useState('0');
+  const [version, setVersion] = useState<keyof typeof baseImgSrc>('0');
   const [isMasked, setMask] = useState(true);
   const [useBlindfold, setUseBlindfold] = useState(false);
   const [blindfoldX, setBlindfoldX] = useState(0);
@@ -118,10 +129,10 @@ function App() {
   const [agree, setAgree] = useState(false);
   const parts = {
     Base() {
-      return <Image image={getImageObj(baseImgSrc[Number(version)])} x={0} y={0} width={1600} height={900} />;
+      return <Image image={getImageObj(baseImgSrc[version])} x={0} y={0} width={1600} height={900} />;
     },
     Mask() {
-      return <Image image={getImageObj(maskImgSrc[Number(version)])} x={0} y={0} width={1600} height={900} />;
+      return <Image image={getImageObj(maskImgSrc[version])} x={0} y={0} width={1600} height={900} />;
     },
     Comment() {
       const attrs = {
@@ -502,12 +513,7 @@ function App() {
 
         <div className={styles.ui}>
           <p>
-            <Select label="Ver" options={[
-              ['1.0', '0'],
-              ['2.0', '1'],
-              ['3.0', '2'],
-              // ['1.0', base3Img],
-            ]} onChange={(e) => setVersion(e.target.value)} value={version} />
+            <Select label="Ver" options={versionList} onChange={(e) => setVersion(e.target.value as keyof typeof baseImgSrc)} value={version} />
           </p>
 
           <p>
