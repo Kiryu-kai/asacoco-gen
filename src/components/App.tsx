@@ -825,16 +825,22 @@ function App() {
           </p>
 
           <p className={styles.ui__child} hidden={streamMode === 'restricted'}>
-            <Textarea label="コメント" rows={10} onChange={(e) => {
-              const value = e.target.value.split('\n');
-              const data = value.map((row) => {
-                const [name, ...msg] = row.split('：');
+            <Textarea
+              label="コメント"
+              rows={10}
+              onChange={(e) => {
+                const value = e.target.value.split('\n');
+                const data = value.map((row) => {
+                  const [name, ...msg] = row.split('：');
 
-                return [name, msg.join('：')];
-              }) as [string, string, ...(string | number)[]][];
+                  return [name, msg.join('：')];
+                }) as [string, string, ...(string | number)[]][];
 
-              setComment(data);
-            }} value={commentParser(comment)} />
+                setComment(data);
+              }}
+              value={commentParser(comment)}
+              note="名前を「!」で始めるとメンバーシップ"
+            />
           </p>
 
           <div className={styles.ui__child} hidden={true}>
