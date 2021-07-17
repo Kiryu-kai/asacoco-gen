@@ -18,6 +18,10 @@ rules:
   no-unused-vars: 'off'
   react/prop-types: 'off'
   require-jsdoc: 'off'
+  quote-props:
+    - error
+    - as-needed
+    - numbers: true
     # - error
     # - require:
     #     FunctionDeclaration: true
