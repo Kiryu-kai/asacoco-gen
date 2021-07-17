@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import {shuffle} from 'lodash';
 import {Layer, Text, Image, Rect, Stage, Group} from 'react-konva';
 import {Input} from './form-controls/Input';
 import {Textarea} from './form-controls/Textarea';
@@ -97,7 +98,7 @@ function App() {
   const [text, setText] = useState('好きなテロップ');
   const [time, setTime] = useState('00:00');
   const [useNow, setUseNow] = useState(true);
-  const [comment, setComment] = useState(`
+  const [comment, setComment] = useState(shuffle(`
   チュングス：草
   紫龍組構成員：NEEEEEEEEE
   西成じじい：草
@@ -114,7 +115,7 @@ function App() {
   ガテ恋：ここもう見えてない
   大葉ネキ：POI
   えりぃとねこ：FAQ
-  `.trim().replace(/^\s+/gm, ''));
+  `.trim().replace(/^\s+/gm, '').split('\n')).join('\n'));
   const [commentClip, setCommentClip] = useState(0);
   const [comentSize, setComentSize] = useState(93);
   const [comentColor, setComentColor] = useState('#ffffff');
