@@ -70,6 +70,7 @@ const mainAreaPos = {
 const commentParser = (comment: (string | number)[][]) => {
   return comment.map(([name, text]) => `${name}${text ? `：${text}` : ''}`).join('\n').trim();
 };
+type CommentData = [string, string, ...(string|number)[]][];
 /** ランダムでメンバーシップに */
 const defaultComments = [
   ['チュングス', '草'],
@@ -94,7 +95,7 @@ const defaultComments = [
   row[0] = `${isMember}${row[0]}`;
 
   return row;
-});
+}) as CommentData;
 const watchNow = (() => {
   let key = -1;
 
@@ -126,7 +127,7 @@ function App() {
   const [text, setText] = useState('好きなテロップ');
   const [time, setTime] = useState('00:00');
   const [useNow, setUseNow] = useState(true);
-  const [comment, setComment] = useState<[string, string, ...(string|number)[]][]>(shuffle(defaultComments));
+  const [comment, setComment] = useState<CommentData>(shuffle(defaultComments));
   const [commentClip, setCommentClip] = useState(0);
   const [comentSize, setComentSize] = useState(93);
   const [comentColor, setComentColor] = useState('#ffffff');
@@ -834,7 +835,7 @@ function App() {
                   const [name, ...msg] = row.split('：');
 
                   return [name, msg.join('：')];
-                }) as [string, string, ...(string | number)[]][];
+                }) as CommentData;
 
                 setComment(data);
               }}
