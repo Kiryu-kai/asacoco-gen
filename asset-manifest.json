@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/asacoco-gen/static/css/main.553be997.chunk.css",
-    "main.js": "/asacoco-gen/static/js/main.0704c3ed.chunk.js",
-    "main.js.map": "/asacoco-gen/static/js/main.0704c3ed.chunk.js.map",
+    "main.js": "/asacoco-gen/static/js/main.afd42d34.chunk.js",
+    "main.js.map": "/asacoco-gen/static/js/main.afd42d34.chunk.js.map",
     "runtime-main.js": "/asacoco-gen/static/js/runtime-main.90c76743.js",
     "runtime-main.js.map": "/asacoco-gen/static/js/runtime-main.90c76743.js.map",
     "static/js/2.eff8df60.chunk.js": "/asacoco-gen/static/js/2.eff8df60.chunk.js",
@@ -15,8 +15,11 @@
     "static/media/ban-stream.f368f872.png": "/asacoco-gen/static/media/ban-stream.f368f872.png",
     "static/media/base--2.cef7f781.png": "/asacoco-gen/static/media/base--2.cef7f781.png",
     "static/media/base--3.343434f8.png": "/asacoco-gen/static/media/base--3.343434f8.png",
+    "static/media/base--anti.cdc0e84f.png": "/asacoco-gen/static/media/base--anti.cdc0e84f.png",
     "static/media/base--peko.98422930.png": "/asacoco-gen/static/media/base--peko.98422930.png",
     "static/media/base.99c694b2.png": "/asacoco-gen/static/media/base.99c694b2.png",
+    "static/media/coco--a.2eb9c606.png": "/asacoco-gen/static/media/coco--a.2eb9c606.png",
+    "static/media/coco--a2.812338ae.png": "/asacoco-gen/static/media/coco--a2.812338ae.png",
     "static/media/coco--c.f9fc9a79.png": "/asacoco-gen/static/media/coco--c.f9fc9a79.png",
     "static/media/coco--c2.49279e0e.png": "/asacoco-gen/static/media/coco--c2.49279e0e.png",
     "static/media/cursor.ed6076b2.png": "/asacoco-gen/static/media/cursor.ed6076b2.png",
@@ -35,11 +38,15 @@
     "static/media/live.07a4000d.png": "/asacoco-gen/static/media/live.07a4000d.png",
     "static/media/mask--2.a63750e5.png": "/asacoco-gen/static/media/mask--2.a63750e5.png",
     "static/media/mask--3.1f2f9b8e.png": "/asacoco-gen/static/media/mask--3.1f2f9b8e.png",
+    "static/media/mask--anti.81e29119.png": "/asacoco-gen/static/media/mask--anti.81e29119.png",
     "static/media/mask--peko.8b8ff9c0.png": "/asacoco-gen/static/media/mask--peko.8b8ff9c0.png",
     "static/media/mask.3c58db06.png": "/asacoco-gen/static/media/mask.3c58db06.png",
     "static/media/okami-mio--02sad.c12d31c0.png": "/asacoco-gen/static/media/okami-mio--02sad.c12d31c0.png",
     "static/media/pekora--closeeyes.bd1aa86c.png": "/asacoco-gen/static/media/pekora--closeeyes.bd1aa86c.png",
     "static/media/pekora.7abe94c7.png": "/asacoco-gen/static/media/pekora.7abe94c7.png",
+    "static/media/ribbon--anti-new.64d8e3f1.png": "/asacoco-gen/static/media/ribbon--anti-new.64d8e3f1.png",
+    "static/media/ribbon--ark.7b87e551.png": "/asacoco-gen/static/media/ribbon--ark.7b87e551.png",
+    "static/media/ribbon--dekapai.59efe5e9.png": "/asacoco-gen/static/media/ribbon--dekapai.59efe5e9.png",
     "static/media/ribbon--detawane.8cc7f0dd.png": "/asacoco-gen/static/media/ribbon--detawane.8cc7f0dd.png",
     "static/media/ribbon--gachikoi.bbcc8971.png": "/asacoco-gen/static/media/ribbon--gachikoi.bbcc8971.png",
     "static/media/ribbon--gachikoi2.59b21a69.png": "/asacoco-gen/static/media/ribbon--gachikoi2.59b21a69.png",
@@ -47,6 +54,7 @@
     "static/media/ribbon--gebokawa2.04f0b45d.png": "/asacoco-gen/static/media/ribbon--gebokawa2.04f0b45d.png",
     "static/media/ribbon--kusodasa.eb9a8490.png": "/asacoco-gen/static/media/ribbon--kusodasa.eb9a8490.png",
     "static/media/ribbon--kusozako.710cdf57.png": "/asacoco-gen/static/media/ribbon--kusozako.710cdf57.png",
+    "static/media/ribbon--new.0a779bfa.png": "/asacoco-gen/static/media/ribbon--new.0a779bfa.png",
     "static/media/ribbon--omedetei.310be08b.png": "/asacoco-gen/static/media/ribbon--omedetei.310be08b.png",
     "static/media/ribbon.8c34f0f7.png": "/asacoco-gen/static/media/ribbon.8c34f0f7.png",
     "static/media/shiranui-flare--02.98b5701b.png": "/asacoco-gen/static/media/shiranui-flare--02.98b5701b.png",
@@ -68,6 +76,6 @@
     "static/js/runtime-main.90c76743.js",
     "static/js/2.eff8df60.chunk.js",
     "static/css/main.553be997.chunk.css",
-    "static/js/main.0704c3ed.chunk.js"
+    "static/js/main.afd42d34.chunk.js"
   ]
 }
