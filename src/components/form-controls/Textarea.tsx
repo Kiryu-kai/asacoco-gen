@@ -3,7 +3,7 @@ import styles from './Common.module.scss';
 
 type Component = React.FC<React.TextareaHTMLAttributes<HTMLTextAreaElement> & {
   label: string
-  note?: string
+  note?: string | string[]
 }>
 
 export const Textarea: Component = ({label, note, ...props}) => {
@@ -15,7 +15,11 @@ export const Textarea: Component = ({label, note, ...props}) => {
       <span className={styles.wrap}>
         {
           note ?
-          <span className={styles.note}>{note}</span> :
+          typeof note === 'string' ?
+            <span className={styles.note}>{note}</span> :
+            note.map((s) => {
+              return <span className={styles.note} key={s}>{s}</span>;
+            }) :
           null
         }
         <textarea {...props} className={styles.textarea} />

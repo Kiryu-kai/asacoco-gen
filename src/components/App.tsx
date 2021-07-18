@@ -332,9 +332,34 @@ function App() {
       />;
     },
     Name() {
-      const [_title, ..._name] = nameText.replace(/ー/g, '｜').trim().split('\n');
-      const name = (_name.length ? _name.join('') : _title).replace(/(（|\().*$/, '');
-      const title = _name.length ? _title : '';
+      const [name, age, title] = (() => {
+        const [_title, ..._str] = nameText.replace(/ー/g, '｜').trim().split('\n');
+        const _name = _str.join('');
+        const parseName = (str: string) => {
+          const ageIndexZen = str.lastIndexOf('（');
+          const ageIndexHan = str.lastIndexOf('(');
+
+          if (
+            ageIndexZen === -1 &&
+            ageIndexHan === -1
+          ) {
+            return [str, ''];
+          }
+
+          const ageIndex = ageIndexZen < ageIndexHan ? ageIndexHan : ageIndexZen;
+
+          return [str.slice(0, ageIndex), `（${str.slice(ageIndex).replace(/[^0-9０-９]/g, '').replace(/[０-９]/g, (s) => {
+            return String.fromCharCode(s.charCodeAt(0) - 0xFEE0);
+          })}）`];
+        };
+
+        if (!_name) {
+          return [...parseName(_title), ''];
+        }
+
+        return [...parseName(_name), _title];
+      })();
+
       const nameAttr = {
         text: [...name].join('\n'),
         y: name.length < 8 ? 240 : 180,
@@ -369,6 +394,18 @@ function App() {
               return 0.5;
           }
         })(),
+      };
+      const ageAttr = {
+        text: age,
+        y: nameAttr.y + ((name.length * 69 * nameAttr.scaleY) + 20),
+        x: 844,
+        fontSize: 69,
+        align: 'center',
+        wrap: 'word',
+        lineHeight: 1,
+        verticalAlign: 'top',
+        width: 69 * 7,
+        scaleX: .8,
       };
       const titleAttr = {
         text: [...title.replace(/「/g, '￢').replace(/」/g, '∟')].join('\n'),
@@ -413,6 +450,18 @@ function App() {
           />
           <Text
             {...nameAttr}
+            fill="#fff"
+            stroke="#fff"
+            strokeWidth={3}
+          />
+          <Text
+            {...ageAttr}
+            lineJoin="round"
+            stroke="#000"
+            strokeWidth={18}
+          />
+          <Text
+            {...ageAttr}
             fill="#fff"
             stroke="#fff"
             strokeWidth={3}
@@ -917,6 +966,10 @@ function App() {
             <Textarea
               label="肩書き・名前"
               placeholder={'「畜生ひつじ」こと\n角巻わため氏'}
+              note={[
+                '肩書きと名前は改行で区切ってください',
+                '年齢は最後にかっこ書きで記述してください',
+              ]}
               onChange={(e) => setNameText(e.target.value)}
               value={nameText}
             />

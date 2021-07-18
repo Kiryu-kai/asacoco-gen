@@ -14,6 +14,10 @@
   display: block;
   padding: 0 0 8px;
   font-size: 12px;
+
+  + .note {
+    margin-top: -8px;
+  }
 }
 
 .input,
