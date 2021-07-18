@@ -204,7 +204,7 @@ function App() {
                   return .21;
                 }
 
-                return /^[\x20-\x7e]*$/.test(s) ? .6 : 1;
+                return /^[\x20-\x7e]*$/.test(s) ? .5 : 1;
               }).reduce((p, c) => p + c, 0);
 
               y += attrs.fontSize * attrs.lineHeight;
