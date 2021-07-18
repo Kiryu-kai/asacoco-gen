@@ -198,8 +198,13 @@ function App() {
               const name = _name.replace(/^[\!！]/, '');
               const str = `${name.replace('[___EMPTY___]', '')}：${msg.replace('[___EMPTY___]', '')}`;
               const text = str === '：' ? '' : str;
+              // TODO: 行の管理をやめて、テキストフィールドに入力された行をそのまま描画した方が現実的かも
               const length = [...text].map((s) => {
-                return /[a-z0-9]/i.test(s) ? .55 : 1;
+                if (/[!?'/]/.test(s)) {
+                  return .21;
+                }
+
+                return /^[\x20-\x7e]*$/.test(s) ? .6 : 1;
               }).reduce((p, c) => p + c, 0);
 
               y += attrs.fontSize * attrs.lineHeight;
@@ -237,7 +242,7 @@ function App() {
                 </Group>
               );
 
-              y += (Math.floor(length / 15.75) * (attrs.fontSize * attrs.lineHeight));
+              y += (Math.floor(length / 16.25) * (attrs.fontSize * attrs.lineHeight));
 
               return node;
             })
