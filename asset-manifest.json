@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/asacoco-gen/static/css/main.51ba90e7.chunk.css",
-    "main.js": "/asacoco-gen/static/js/main.f4918795.chunk.js",
-    "main.js.map": "/asacoco-gen/static/js/main.f4918795.chunk.js.map",
+    "main.js": "/asacoco-gen/static/js/main.aa14c2b6.chunk.js",
+    "main.js.map": "/asacoco-gen/static/js/main.aa14c2b6.chunk.js.map",
     "runtime-main.js": "/asacoco-gen/static/js/runtime-main.b0ddbdd6.js",
     "runtime-main.js.map": "/asacoco-gen/static/js/runtime-main.b0ddbdd6.js.map",
     "static/js/2.4fac152f.chunk.js": "/asacoco-gen/static/js/2.4fac152f.chunk.js",
@@ -55,6 +55,7 @@
     "static/media/ribbon--gebokawa2.04f0b45d.png": "/asacoco-gen/static/media/ribbon--gebokawa2.04f0b45d.png",
     "static/media/ribbon--kusodasa.eb9a8490.png": "/asacoco-gen/static/media/ribbon--kusodasa.eb9a8490.png",
     "static/media/ribbon--kusozako.710cdf57.png": "/asacoco-gen/static/media/ribbon--kusozako.710cdf57.png",
+    "static/media/ribbon--lgtm.df290755.png": "/asacoco-gen/static/media/ribbon--lgtm.df290755.png",
     "static/media/ribbon--new.0a779bfa.png": "/asacoco-gen/static/media/ribbon--new.0a779bfa.png",
     "static/media/ribbon--omedetei.310be08b.png": "/asacoco-gen/static/media/ribbon--omedetei.310be08b.png",
     "static/media/ribbon.8c34f0f7.png": "/asacoco-gen/static/media/ribbon.8c34f0f7.png",
@@ -77,6 +78,6 @@
     "static/js/runtime-main.b0ddbdd6.js",
     "static/js/2.4fac152f.chunk.js",
     "static/css/main.51ba90e7.chunk.css",
-    "static/js/main.f4918795.chunk.js"
+    "static/js/main.aa14c2b6.chunk.js"
   ]
 }
