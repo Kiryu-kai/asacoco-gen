@@ -68,7 +68,21 @@ const mainAreaPos = {
   y: 111,
 };
 const commentParser = (comment: (string | number)[][]) => {
-  return comment.map(([name, text]) => `${name}${text ? `：${text}` : ''}`).join('\n').trim();
+  return comment.map(([name, text]) => {
+    if (name === '[___EMPTY___]') {
+      return `：${text}`;
+    }
+
+    if (text === '[___EMPTY___]') {
+      return `${name}：`;
+    }
+
+    if (name && text) {
+      return `${name}：${text}`;
+    }
+
+    return name;
+  }).join('\n').trim();
 };
 type CommentData = [string, string, ...(string|number)[]][];
 /** ランダムでメンバーシップに */
@@ -181,7 +195,8 @@ function App() {
             comment.map(([_name, msg, price], i) => {
               const isMember = /^[\!！]/.test(_name);
               const name = _name.replace(/^[\!！]/, '');
-              const text = `${name}：${msg}`;
+              const str = `${name.replace('[___EMPTY___]', '')}：${msg.replace('[___EMPTY___]', '')}`;
+              const text = str === '：' ? '' : str;
               const length = [...text].map((s) => {
                 return /[a-z0-9]/i.test(s) ? .55 : 1;
               }).reduce((p, c) => p + c, 0);
@@ -830,14 +845,39 @@ function App() {
               label="コメント"
               rows={10}
               onChange={(e) => {
-                const value = e.target.value.split('\n');
+                const {target} = e;
+                const {selectionStart} = target;
+                const value = target.value.split('\n');
                 const data = value.map((row) => {
-                  const [name, ...msg] = row.split('：');
+                  const chars = row.split(/：|:/); // TODO: findIndexのほうが健全かも
+                  const [name, ..._msg] = chars;
+                  const msg = _msg.join('：');
 
-                  return [name, msg.join('：')];
+                  if (2 <= chars.length) {
+                    if (!msg) {
+                      return [name, '[___EMPTY___]'];
+                    }
+
+                    if (!name) {
+                      return ['[___EMPTY___]', msg];
+                    }
+                  }
+
+                  return [name, msg];
                 }) as CommentData;
 
                 setComment(data);
+
+                /**
+                 * !暫定対応
+                 * 行末に「：」が存在しているとvalueの書き換えが起こる
+                 * するとキャレット位置がテキストフィールドの最後に来てしまう。
+                 * それを解決するために、最終入力時のキャレット位置をキャッシュして元の位置に戻す。
+                 * Reactのrender処理のあとに実行したいので、処理をスレッドから浮かせる
+                 */
+                setTimeout(() => {
+                  target.setSelectionRange(selectionStart, selectionStart);
+                }, 0);
               }}
               value={commentParser(comment)}
               note="名前を「!」で始めるとメンバーシップ"
