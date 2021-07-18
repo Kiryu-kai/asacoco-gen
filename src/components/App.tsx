@@ -19,6 +19,7 @@ import mask3Img from '../images/mask--3.png';
 import maskpekoImg from '../images/mask--peko.png';
 import maskAntiImg from '../images/mask--anti.png';
 import ribbonImg from '../images/ribbon.png';
+import ribbonLGTMImgSrc from '../images/ribbon--lgtm.png';
 import {ribbons} from '../utils/ribbon-img-loader';
 import {talents} from '../utils/main-img-loader';
 import {kaicho} from '../utils/kaicho-img-loader';
@@ -473,6 +474,11 @@ function App() {
       if (ribbon) {
         const value = ribbon.trim();
         const [img, text] = (() => {
+          // 隠しコマンドLGTM
+          if (/lgtm/i.test(value)) {
+            return [ribbonLGTMImgSrc, ''];
+          }
+
           const [_, src] = ribbons.find(([name, _, callback]) => {
             if (callback) {
               return callback(value);
