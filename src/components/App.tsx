@@ -398,14 +398,14 @@ function App() {
       const ageAttr = {
         text: age,
         y: nameAttr.y + ((name.length * 69 * nameAttr.scaleY) + 20),
-        x: 844,
+        x: age.length < 4 ? 820 : age.length < 5 ? 893 : 921,
         fontSize: 69,
         align: 'center',
         wrap: 'word',
         lineHeight: 1,
         verticalAlign: 'top',
         width: 69 * 7,
-        scaleX: .8,
+        scaleX: age.length < 4 ? .9 : age.length < 5 ? .6 : .48,
       };
       const titleAttr = {
         text: [...title.replace(/「/g, '￢').replace(/」/g, '∟')].join('\n'),
