@@ -849,7 +849,9 @@ function App() {
                 const {selectionStart} = target;
                 const value = target.value.split('\n');
                 const data = value.map((row) => {
-                  const chars = row.split(/：|:/); // TODO: findIndexのほうが健全かも
+                  // TODO: findIndexとsliceにする
+                  // TODO: コロンの全半角を許容（キャレットが飛ぶので置換処理は onBlur の中でやること）
+                  const chars = row.split('：');
                   const [name, ..._msg] = chars;
                   const msg = _msg.join('：');
 
@@ -867,17 +869,6 @@ function App() {
                 }) as CommentData;
 
                 setComment(data);
-
-                /**
-                 * !暫定対応
-                 * 行末に「：」が存在しているとvalueの書き換えが起こる
-                 * するとキャレット位置がテキストフィールドの最後に来てしまう。
-                 * それを解決するために、最終入力時のキャレット位置をキャッシュして元の位置に戻す。
-                 * Reactのrender処理のあとに実行したいので、処理をスレッドから浮かせる
-                 */
-                setTimeout(() => {
-                  target.setSelectionRange(selectionStart, selectionStart);
-                }, 0);
               }}
               value={commentParser(comment)}
               note="名前を「!」で始めるとメンバーシップ"
