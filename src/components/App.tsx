@@ -83,7 +83,7 @@ const commentParser = (comment: (string | number)[][]) => {
     }
 
     return name;
-  }).join('\n').trim();
+  }).join('\n');
 };
 type CommentData = [string, string, ...(string|number)[]][];
 /** ランダムでメンバーシップに */
@@ -171,7 +171,7 @@ function App() {
       return <Image image={getImageObj(maskImgSrc[version])} x={0} y={0} width={1600} height={900} />;
     },
     Comment() {
-      let y = 103;
+      let y = 101;
       const attrs = {
         // y: version === '2' ? 137 : 103, // ver3.0だと少し下
         x: 1220,
@@ -205,7 +205,7 @@ function App() {
               y += attrs.fontSize * attrs.lineHeight;
 
               const node = (
-                <>
+                <Group y={-40}>
                   <Text
                     y={y}
                     {...attrs}
@@ -234,7 +234,7 @@ function App() {
                     /> :
                     null
                   }
-                </>
+                </Group>
               );
 
               y += (Math.floor(length / 15.75) * (attrs.fontSize * attrs.lineHeight));
@@ -901,7 +901,6 @@ function App() {
               rows={10}
               onChange={(e) => {
                 const {target} = e;
-                const {selectionStart} = target;
                 const value = target.value.split('\n');
                 const data = value.map((row) => {
                   // TODO: findIndexとsliceにする
