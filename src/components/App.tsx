@@ -143,9 +143,9 @@ function App() {
   const [useNow, setUseNow] = useState(true);
   const [comment, setComment] = useState<CommentData>(shuffle(defaultComments));
   const [commentClip, setCommentClip] = useState(0);
-  const [comentSize, setComentSize] = useState(93);
-  const [comentColor, setComentColor] = useState('#ffffff');
-  const [comentEdgeColor, setComentEdgeColor] = useState('#000000');
+  const [commentSize, setcommentSize] = useState(93);
+  const [commentColor, setcommentColor] = useState('#ffffff');
+  const [commentEdgeColor, setcommentEdgeColor] = useState('#000000');
   const [kaichoImgSrc, setKaichoImgSrc] = useState<string>(kaicho[0][1]);
   const [mainImgSrc, setMainImgSrc] = useState<string>(dummyImg);
   const [originalImgSrc, setOriginalImgSrc] = useState('');
@@ -466,7 +466,7 @@ function App() {
         text: text.trim(),
         y: 120,
         x: 84,
-        fontSize: comentSize,
+        fontSize: commentSize,
         align: 'center',
         wrap: 'word',
         lineHeight: 1.2,
@@ -481,13 +481,13 @@ function App() {
           <Text
             {...attrs}
             lineJoin="round"
-            stroke={comentEdgeColor}
+            stroke={commentEdgeColor}
             strokeWidth={17}
           />
           <Text
             {...attrs}
-            fill={comentColor}
-            stroke={comentColor}
+            fill={commentColor}
+            stroke={commentColor}
             strokeWidth={3}
           />
         </Group>
@@ -936,15 +936,15 @@ function App() {
           </p>
 
           <p>
-            <Input label="文字サイズ" type="range" min="63" max="123" step="10" onChange={(e) => setComentSize(Number(e.target.value))} value={comentSize} />
+            <Input label="文字サイズ" type="range" min="63" max="123" step="10" onChange={(e) => setcommentSize(Number(e.target.value))} value={commentSize} />
           </p>
 
           <p>
-            <Input label="文字色" type="color" onChange={(e) => setComentColor(e.target.value)} value={comentColor} />
+            <Input label="文字色" type="color" onChange={(e) => setcommentColor(e.target.value)} value={commentColor} />
           </p>
 
           <p>
-            <Input label="縁色" type="color" onChange={(e) => setComentEdgeColor(e.target.value)} value={comentEdgeColor} />
+            <Input label="縁色" type="color" onChange={(e) => setcommentEdgeColor(e.target.value)} value={commentEdgeColor} />
           </p>
         </div>
       </div>
