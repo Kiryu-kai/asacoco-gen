@@ -210,7 +210,7 @@ function App() {
               y += attrs.fontSize * attrs.lineHeight;
 
               const node = (
-                <Group y={-40}>
+                <Group y={-40} key={i}>
                   <Text
                     y={y}
                     {...attrs}
