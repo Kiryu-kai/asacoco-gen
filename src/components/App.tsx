@@ -1020,9 +1020,13 @@ function App() {
           emit ?
           <div hidden={!agree}>
             <h2 className={styles.download__h2}>ダウンロード</h2>
-            <p className={styles.download__note}>画像を右クリック、またはホールドで保存してください。</p>
             <p className={styles.download__imgWrap}>
               <img src={emit} alt="作った画像" className={styles.download__img} />
+            </p>
+            <p className={styles.download__link}>
+              <a href={emit} download={`asacoco-${performance.now()}.png`}>
+                Download
+              </a>
             </p>
           </div> :
           <></>
