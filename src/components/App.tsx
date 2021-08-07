@@ -1028,6 +1028,9 @@ function App() {
                 Download
               </a>
             </p>
+            <p className={styles.download__note}>
+              ※ クリックしてから少し時間がかかります
+            </p>
           </div> :
           <></>
         }
