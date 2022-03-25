@@ -37,22 +37,22 @@ export function Footer() {
 
           <ul className={styles.material__ul}>
             <li className={styles.material__li}>
-              <a href="https://www.youtube.com/channel/UCS9uQI-jC3DE0L4IpXyvr6w">Coco Ch. 桐生ココ - YouTube</a>
+              <a href="https://www.youtube.com/channel/UCS9uQI-jC3DE0L4IpXyvr6w" rel="noopener noreferrer" target="_blank">Coco Ch. 桐生ココ - YouTube</a>
             </li>
             <li className={styles.material__li}>
-              <a href="https://youtu.be/fcDwI4OYlRw">Pekora Ch. 兎田ぺこら - YouTube</a>
+              <a href="https://youtu.be/fcDwI4OYlRw" rel="noopener noreferrer" target="_blank">Pekora Ch. 兎田ぺこら - YouTube</a>
             </li>
             <li className={styles.material__li}>
-              <a href="https://twitter.com/kiryucoco/status/1218277670040956928">桐生ココ🐉 (@kiryucoco) - Twitter</a>
+              <a href="https://twitter.com/kiryucoco/status/1218277670040956928" rel="noopener noreferrer" target="_blank">桐生ココ🐉 (@kiryucoco) - Twitter</a>
             </li>
             <li className={styles.material__li}>
-              <a href="https://twitter.com/kiryucoco/status/1246839005649330176">桐生ココ🐉 (@kiryucoco) - Twitter</a>
+              <a href="https://twitter.com/kiryucoco/status/1246839005649330176" rel="noopener noreferrer" target="_blank">桐生ココ🐉 (@kiryucoco) - Twitter</a>
             </li>
             <li className={styles.material__li}>
-              <a href="https://cover-corp.com/">Talent Images - COVER Corp.</a>
+              <a href="https://cover-corp.com/" rel="noopener noreferrer" target="_blank">Talent Images - COVER Corp.</a>
             </li>
             <li className={styles.material__li}>
-              <a href="http://nicofont.pupu.jp/nicoca.html">ニコカ - まるもじフォント（ニコモジ）配布所</a>
+              <a href="http://nicofont.pupu.jp/nicoca.html" rel="noopener noreferrer" target="_blank">ニコカ - まるもじフォント（ニコモジ）配布所</a>
             </li>
           </ul>
         </div>
