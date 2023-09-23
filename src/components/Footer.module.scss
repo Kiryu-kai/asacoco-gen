@@ -5,14 +5,14 @@
   bottom: 0;
   padding: 10px 20px;
   text-align: right;
-  background: rgba(255, 255, 255, .8);
+  background: rgba(255, 255, 255, 0.8);
 
   [data-color="1"] & {
-    background-color: rgba(21, 33, 43, .8);
+    background-color: rgba(21, 33, 43, 0.8);
   }
 
   [data-color="2"] & {
-    background-color: rgba(0, 0, 0, .8);
+    background-color: rgba(0, 0, 0, 0.8);
   }
 
   &[data-is-expanded="true"] {
@@ -22,10 +22,7 @@
 
 .material {
   position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  inset: 0;
   z-index: 1;
   display: flex;
   align-items: center;
@@ -33,15 +30,18 @@
   padding: 0 20px 40px;
   font-size: 14px;
   text-align: left;
-  background: rgba(0, 0, 0, .9);
-  transition: .2s opacity ease-out, .2s visibility ease-out;
+  background: rgba(0, 0, 0, 0.9);
+
+  /* https://github.com/prettier/prettier/issues/15070 */
+  /* prettier-ignore */
+  transition: 0.2s opacity ease-out, 0.2s visibility ease-out;
 
   &__inner {
     width: 100%;
     max-width: 400px;
     padding: 20px 20px 24px;
     color: #333;
-    background: rgba(255, 255, 255, .8);
+    background: rgba(255, 255, 255, 0.8);
   }
 
   &__hdg {
