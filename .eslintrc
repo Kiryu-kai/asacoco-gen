@@ -3,19 +3,33 @@
     "browser": true,
     "es2021": true
   },
-  "extends": ["plugin:react/recommended", "google"],
+  "extends": ["plugin:react/recommended", "google", "prettier"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
-    },
-    "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": ["react", "@typescript-eslint"],
+  "plugins": ["react", "@typescript-eslint", "no-relative-import-paths", "eslint-plugin-import"],
+  "settings": {
+    "import/resolver": [
+      "error",
+      {
+        "typescript": {
+          "project": "./tsconfig.json"
+        }
+      }
+    ]
+  },
   "rules": {
     "max-len": "off",
-    "no-unused-vars": "off",
+    "no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "^_+$",
+        "varsIgnorePattern": "^_+$",
+        "caughtErrorsIgnorePattern": "^_+$",
+        "destructuredArrayIgnorePattern": "^_+$"
+      }
+    ],
     "react/prop-types": "off",
     "require-jsdoc": "off",
     "quote-props": [
@@ -32,6 +46,16 @@
         "requireParamType": false,
         "requireReturnType": false
       }
-    ]
+    ],
+    "no-relative-import-paths/no-relative-import-paths": [
+      "error",
+      {
+        "prefix": "@",
+        "rootDir": "src",
+        "allowSameFolder": true
+      }
+    ],
+    "quotes": ["error", "single"],
+    "object-curly-spacing": ["error", "always"]
   }
 }

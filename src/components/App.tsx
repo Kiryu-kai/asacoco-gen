@@ -1,32 +1,32 @@
-import React, {useState, useEffect} from 'react';
-import {shuffle} from 'lodash';
-import {Layer, Text, Image, Rect, Stage, Group} from 'react-konva';
-import {Input} from './form-controls/Input';
-import {Textarea} from './form-controls/Textarea';
-import {Select} from './form-controls/Select';
-import cursorImg from '../images/cursor.png';
-import dummyImg from '../images/dummy.png';
-import liveImg from '../images/live.png';
+import React, { useState, useEffect } from 'react';
+import { shuffle } from 'lodash';
+import { Layer, Text, Image, Rect, Stage, Group } from 'react-konva';
+import { Input } from './form-controls/Input';
+import { Textarea } from './form-controls/Textarea';
+import { Select } from './form-controls/Select';
+import cursorImg from '@/images/cursor.png';
+import dummyImg from '@/images/dummy.png';
+import liveImg from '@/images/live.png';
 // import baseImg from '../images/debug.png';
-import baseImg from '../images/base.png';
-import base2Img from '../images/base--2.png';
-import base3Img from '../images/base--3.png';
-import basepekoImg from '../images/base--peko.png';
-import baseAntiImg from '../images/base--anti.png';
-import maskImg from '../images/mask.png';
-import mask2Img from '../images/mask--2.png';
-import mask3Img from '../images/mask--3.png';
-import maskpekoImg from '../images/mask--peko.png';
-import maskAntiImg from '../images/mask--anti.png';
-import ribbonImg from '../images/ribbon.png';
-import ribbonLGTMImgSrc from '../images/ribbon--lgtm.png';
-import {ribbons} from '../utils/ribbon-img-loader';
-import {talents} from '../utils/main-img-loader';
-import {kaicho} from '../utils/kaicho-img-loader';
-import banStreamImg from '../images/ban-stream.png';
-import emergencyImg from '../images/emergency.png';
+import baseImg from '@/images/base.png';
+import base2Img from '@/images/base--2.png';
+import base3Img from '@/images/base--3.png';
+import basepekoImg from '@/images/base--peko.png';
+import baseAntiImg from '@/images/base--anti.png';
+import maskImg from '@/images/mask.png';
+import mask2Img from '@/images/mask--2.png';
+import mask3Img from '@/images/mask--3.png';
+import maskpekoImg from '@/images/mask--peko.png';
+import maskAntiImg from '@/images/mask--anti.png';
+import ribbonImg from '@/images/ribbon.png';
+import ribbonLGTMImgSrc from '@/images/ribbon--lgtm.png';
+import { ribbons } from '@/utils/ribbon-img-loader';
+import { talents } from '@/utils/main-img-loader';
+import { kaicho } from '@/utils/kaicho-img-loader';
+import banStreamImg from '@/images/ban-stream.png';
+import emergencyImg from '@/images/emergency.png';
 import styles from './App.module.scss';
-import {PositionAdjuster} from './form-controls/PositionAdjuster';
+import { PositionAdjuster } from './form-controls/PositionAdjuster';
 
 // TODO: コンポーネントごとにファイルわけないと、そろそろさすがにやばいにぇ…
 
@@ -69,23 +69,25 @@ const mainAreaPos = {
   y: 111,
 };
 const commentParser = (comment: (string | number)[][]) => {
-  return comment.map(([name, text]) => {
-    if (name === '[___EMPTY___]') {
-      return `：${text}`;
-    }
+  return comment
+    .map(([name, text]) => {
+      if (name === '[___EMPTY___]') {
+        return `：${text}`;
+      }
 
-    if (text === '[___EMPTY___]') {
-      return `${name}：`;
-    }
+      if (text === '[___EMPTY___]') {
+        return `${name}：`;
+      }
 
-    if (name && text) {
-      return `${name}：${text}`;
-    }
+      if (name && text) {
+        return `${name}：${text}`;
+      }
 
-    return name;
-  }).join('\n');
+      return name;
+    })
+    .join('\n');
 };
-type CommentData = [string, string, ...(string|number)[]][];
+type CommentData = [string, string, ...(string | number)[]][];
 /** ランダムでメンバーシップに */
 const defaultComments = [
   ['チュングス', '草'],
@@ -105,7 +107,7 @@ const defaultComments = [
   ['大葉ネキ', 'POI'],
   ['えりぃとねこ', 'FAQ'],
 ].map((row) => {
-  const isMember = Math.random() < .8 ? '!' : '';
+  const isMember = Math.random() < 0.8 ? '!' : '';
 
   row[0] = `${isMember}${row[0]}`;
 
@@ -114,14 +116,19 @@ const defaultComments = [
 const watchNow = (() => {
   let key = -1;
 
-  return (isStart: boolean, callback: (x: string) => void) => {
+  return (isStart: boolean, callback: (_: string) => void) => {
     clearInterval(key);
 
     if (isStart) {
       key = window.setInterval(() => {
         const date = new Date();
 
-        callback(`${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}`);
+        callback(
+          `${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(
+            2,
+            '0',
+          )}`,
+        );
       }, 1000);
     }
   };
@@ -150,8 +157,8 @@ function App() {
   const [kaichoImgSrc, setKaichoImgSrc] = useState<string>(kaicho[0][1]);
   const [mainImgSrc, setMainImgSrc] = useState<string>(dummyImg);
   const [originalImgSrc, setOriginalImgSrc] = useState('');
-  const [originalImgStartX, setOriginalImgStartX] = useState(mainAreaPos.x); // TODO: なんでStateにしたんだっけにぇ…
-  const [originalImgStartY, setOriginalImgStartY] = useState(mainAreaPos.y); // TODO: わすれちゃったにぇ…
+  const [originalImgStartX] = useState(mainAreaPos.x); // TODO: なんでStateにしたんだっけにぇ…
+  const [originalImgStartY] = useState(mainAreaPos.y); // TODO: わすれちゃったにぇ…
   const [originalImgBaseY, setOriginalImgBaseY] = useState(0);
   const [originalImgBaseX, setOriginalImgBaseX] = useState(0);
   const [originalImgWidth, setOriginalImgWidth] = useState(0);
@@ -165,10 +172,14 @@ function App() {
   const [agree, setAgree] = useState(false);
   const parts = {
     Base() {
-      return <Image image={getImageObj(baseImgSrc[version])} x={0} y={0} width={1600} height={900} />;
+      return (
+        <Image image={getImageObj(baseImgSrc[version])} x={0} y={0} width={1600} height={900} />
+      );
     },
     Mask() {
-      return <Image image={getImageObj(maskImgSrc[version])} x={0} y={0} width={1600} height={900} />;
+      return (
+        <Image image={getImageObj(maskImgSrc[version])} x={0} y={0} width={1600} height={900} />
+      );
     },
     Comment() {
       let y = 101;
@@ -184,77 +195,52 @@ function App() {
         height: 500 + commentClip,
       };
       const commentElement = (
-        <Group
-          x={0}
-          y={0}
-          clipY={y + 9}
-          clipX={0}
-          clipWidth={1600}
-          clipHeight={400 + commentClip}
-        >
-          {
-            comment.map(([_name, msg, price], i) => {
-              const isMember = /^[\!！]/.test(_name);
-              const name = _name.replace(/^[\!！]/, '');
-              const str = `${name.replace('[___EMPTY___]', '')}：${msg.replace('[___EMPTY___]', '')}`;
-              const text = str === '：' ? '' : str;
-              // TODO: 行の管理をやめて、テキストフィールドに入力された行をそのまま描画した方が現実的かも
-              const length = [...text].map((s) => {
+        <Group x={0} y={0} clipY={y + 9} clipX={0} clipWidth={1600} clipHeight={400 + commentClip}>
+          {comment.map(([_name, msg], i) => {
+            const isMember = /^[\!！]/.test(_name);
+            const name = _name.replace(/^[\!！]/, '');
+            const str = `${name.replace('[___EMPTY___]', '')}：${msg.replace('[___EMPTY___]', '')}`;
+            const text = str === '：' ? '' : str;
+            // TODO: 行の管理をやめて、テキストフィールドに入力された行をそのまま描画した方が現実的かも
+            const length = [...text]
+              .map((s) => {
                 if (/[!?'/]/.test(s)) {
-                  return .21;
+                  return 0.21;
                 }
 
-                return /^[\x20-\x7e]*$/.test(s) ? .5 : 1;
-              }).reduce((p, c) => p + c, 0);
+                return /^[\x20-\x7e]*$/.test(s) ? 0.5 : 1;
+              })
+              .reduce((p, c) => p + c, 0);
 
-              y += attrs.fontSize * attrs.lineHeight;
+            y += attrs.fontSize * attrs.lineHeight;
 
-              const node = (
-                <Group y={-40} key={i}>
+            const node = (
+              <Group y={-40} key={i}>
+                <Text y={y} {...attrs} text={text} strokeWidth={6} stroke="#000" lineJoin="round" />
+                <Text y={y} {...attrs} text={text} fill="#fff" stroke="#fff" strokeWidth={1} />
+                {isMember ? (
                   <Text
                     y={y}
                     {...attrs}
-                    text={text}
-                    strokeWidth={6}
-                    stroke="#000"
-                    lineJoin="round"
-                  />
-                  <Text
-                    y={y}
-                    {...attrs}
-                    text={text}
-                    fill="#fff"
-                    stroke="#fff"
+                    text={name}
+                    fill="#2ba640"
+                    stroke="#2ba640"
                     strokeWidth={1}
                   />
-                  {
-                    isMember ?
-                    <Text
-                      y={y}
-                      {...attrs}
-                      text={name}
-                      fill="#2ba640"
-                      stroke="#2ba640"
-                      strokeWidth={1}
-                    /> :
-                    null
-                  }
-                </Group>
-              );
+                ) : null}
+              </Group>
+            );
 
-              y += (Math.floor(length / 16.25) * (attrs.fontSize * attrs.lineHeight));
+            y += Math.floor(length / 16.25) * (attrs.fontSize * attrs.lineHeight);
 
-              return node;
-            })
-          }
+            return node;
+          })}
         </Group>
       );
 
       switch (streamMode) {
         case 'restricted':
-          return (
-            <Image image={getImageObj(banStreamImg)} x={0} y={0} width={1600} height={900} />
-          );
+          return <Image image={getImageObj(banStreamImg)} x={0} y={0} width={1600} height={900} />;
 
         case 'emergency':
           return (
@@ -275,33 +261,21 @@ function App() {
         y: 16,
         x: 1358,
         fontSize: 100,
-        fontFamily: '"Times New Roman", "YuMincho", "Hiragino Mincho ProN", "Yu Mincho", "MS PMincho", serif',
+        fontFamily:
+          '"Times New Roman", "YuMincho", "Hiragino Mincho ProN", "Yu Mincho", "MS PMincho", serif',
         align: 'left',
         verticalAlign: 'top',
         width: 380,
         height: 500,
       };
 
-      return (
-        (
-          streamMode === 'default' &&
-          text
-        ) ?
+      return streamMode === 'default' && text ? (
         <Group>
           <Image image={getImageObj(liveImg)} x={0} y={0} width={1600} height={900} />
-          <Text
-            {...attrs}
-            strokeWidth={6}
-            stroke="#000"
-            lineJoin="round"
-          />
-          <Text
-            {...attrs}
-            fill="#fff"
-            stroke="#fff"
-            strokeWidth={1}
-          />
-        </Group> :
+          <Text {...attrs} strokeWidth={6} stroke="#000" lineJoin="round" />
+          <Text {...attrs} fill="#fff" stroke="#fff" strokeWidth={1} />
+        </Group>
+      ) : (
         <></>
       );
     },
@@ -309,33 +283,35 @@ function App() {
       return <Image image={getImageObj(kaichoImgSrc)} x={0} y={0} width={1600} height={900} />;
     },
     Main() {
-      return (
-        mainImgSrc !== '__NO_IMAGE__' ?
-        <Image image={getImageObj(mainImgSrc)} x={0} y={0} width={1600} height={900} /> :
+      return mainImgSrc !== '__NO_IMAGE__' ? (
+        <Image image={getImageObj(mainImgSrc)} x={0} y={0} width={1600} height={900} />
+      ) : (
         <></>
       );
     },
     Original() {
-      return (
-        originalImgSrc && useOriginal ?
+      return originalImgSrc && useOriginal ? (
         <Image
           image={getImageObj(originalImgSrc)}
           x={originalImgBaseX + originalImgX}
           y={originalImgBaseY + originalImgY}
           width={originalImgWidth * originalImgScale}
           height={originalImgHeight * originalImgScale}
-        /> :
+        />
+      ) : (
         <></>
       );
     },
     Blindfold() {
-      return <Rect
-        x={504 + blindfoldX}
-        y={296 + blindfoldY}
-        fill="#000"
-        width={200 + blindfoldW}
-        height={30 + blindfoldH}
-      />;
+      return (
+        <Rect
+          x={504 + blindfoldX}
+          y={296 + blindfoldY}
+          fill="#000"
+          width={200 + blindfoldW}
+          height={30 + blindfoldH}
+        />
+      );
     },
     Name() {
       const [name, age, title] = (() => {
@@ -345,18 +321,21 @@ function App() {
           const ageIndexZen = str.lastIndexOf('（');
           const ageIndexHan = str.lastIndexOf('(');
 
-          if (
-            ageIndexZen === -1 &&
-            ageIndexHan === -1
-          ) {
+          if (ageIndexZen === -1 && ageIndexHan === -1) {
             return [str, ''];
           }
 
           const ageIndex = ageIndexZen < ageIndexHan ? ageIndexHan : ageIndexZen;
 
-          return [str.slice(0, ageIndex), `（${str.slice(ageIndex).replace(/[^0-9０-９]/g, '').replace(/[０-９]/g, (s) => {
-            return String.fromCharCode(s.charCodeAt(0) - 0xFEE0);
-          })}）`];
+          return [
+            str.slice(0, ageIndex),
+            `（${str
+              .slice(ageIndex)
+              .replace(/[^0-9０-９]/g, '')
+              .replace(/[０-９]/g, (s) => {
+                return String.fromCharCode(s.charCodeAt(0) - 0xfee0);
+              })}）`,
+          ];
         };
 
         if (!_name) {
@@ -403,7 +382,7 @@ function App() {
       };
       const ageAttr = {
         text: age,
-        y: nameAttr.y + ((name.length * 69 * nameAttr.scaleY) + 20),
+        y: nameAttr.y + (name.length * 69 * nameAttr.scaleY + 20),
         x: age.length < 4 ? 820 : age.length < 5 ? 893 : 921,
         fontSize: 69,
         align: 'center',
@@ -411,7 +390,7 @@ function App() {
         lineHeight: 1,
         verticalAlign: 'top',
         width: 69 * 7,
-        scaleX: age.length < 4 ? .9 : age.length < 5 ? .6 : .48,
+        scaleX: age.length < 4 ? 0.9 : age.length < 5 ? 0.6 : 0.48,
       };
       const titleAttr = {
         text: [...title.replace(/「/g, '￢').replace(/」/g, '∟')].join('\n'),
@@ -428,50 +407,18 @@ function App() {
 
       return (
         <Group>
-          {
-            title ?
-            (
-              <>
-                <Text
-                  {...titleAttr}
-                  lineJoin="round"
-                  stroke="#000"
-                  strokeWidth={14}
-                />
-                <Text
-                  {...titleAttr}
-                  fill="#fff"
-                  stroke="#fff"
-                  strokeWidth={3}
-                />
-              </>
-            ) :
+          {title ? (
+            <>
+              <Text {...titleAttr} lineJoin="round" stroke="#000" strokeWidth={14} />
+              <Text {...titleAttr} fill="#fff" stroke="#fff" strokeWidth={3} />
+            </>
+          ) : (
             <></>
-          }
-          <Text
-            {...nameAttr}
-            lineJoin="round"
-            stroke="#000"
-            strokeWidth={18}
-          />
-          <Text
-            {...nameAttr}
-            fill="#fff"
-            stroke="#fff"
-            strokeWidth={3}
-          />
-          <Text
-            {...ageAttr}
-            lineJoin="round"
-            stroke="#000"
-            strokeWidth={18}
-          />
-          <Text
-            {...ageAttr}
-            fill="#fff"
-            stroke="#fff"
-            strokeWidth={3}
-          />
+          )}
+          <Text {...nameAttr} lineJoin="round" stroke="#000" strokeWidth={18} />
+          <Text {...nameAttr} fill="#fff" stroke="#fff" strokeWidth={3} />
+          <Text {...ageAttr} lineJoin="round" stroke="#000" strokeWidth={18} />
+          <Text {...ageAttr} fill="#fff" stroke="#fff" strokeWidth={3} />
         </Group>
       );
     },
@@ -484,13 +431,14 @@ function App() {
             return [ribbonLGTMImgSrc, ''];
           }
 
-          const [_, src] = ribbons.find(([name, _, callback]) => {
-            if (callback) {
-              return callback(value);
-            }
+          const [_, src] =
+            ribbons.find(([name, _, callback]) => {
+              if (callback) {
+                return callback(value);
+              }
 
-            return name === value;
-          }) || [];
+              return name === value;
+            }) || [];
 
           if (src) {
             return [src, ''];
@@ -538,18 +486,8 @@ function App() {
 
       return (
         <Group>
-          <Text
-            {...attrs}
-            lineJoin="round"
-            stroke={commentEdgeColor}
-            strokeWidth={17}
-          />
-          <Text
-            {...attrs}
-            fill={commentColor}
-            stroke={commentColor}
-            strokeWidth={3}
-          />
+          <Text {...attrs} lineJoin="round" stroke={commentEdgeColor} strokeWidth={17} />
+          <Text {...attrs} fill={commentColor} stroke={commentColor} strokeWidth={3} />
         </Group>
       );
     },
@@ -563,9 +501,9 @@ function App() {
    * @param _options - useStateで管理されている値のうち、setされてない値を受け取る
    */
   const originalImgUpdate = (_options: {
-    scale?: number,
-    naturalWidth?: number,
-    naturalHeight?: number,
+    scale?: number;
+    naturalWidth?: number;
+    naturalHeight?: number;
   }) => {
     const options = {
       scale: originalImgScale,
@@ -573,28 +511,22 @@ function App() {
       naturalHeight: originalImgHeight,
       ..._options,
     };
-    const {scale, naturalWidth, naturalHeight} = options;
+    const { scale, naturalWidth, naturalHeight } = options;
     // ベース座標
     // 0, 0 は 63, 111
     // 1125 * 696
-    const width = naturalWidth * scale / 2;
-    const height = naturalHeight * scale / 2;
-    const baseX = originalImgStartX + (1125 / 2) - width;
-    const baseY = originalImgStartY + (696 / 2) - height;
+    const width = (naturalWidth * scale) / 2;
+    const height = (naturalHeight * scale) / 2;
+    const baseX = originalImgStartX + 1125 / 2 - width;
+    const baseY = originalImgStartY + 696 / 2 - height;
     const xMin = -1 * (1125 / 2) + width;
-    const xMax = (1125 / 2) - width;
+    const xMax = 1125 / 2 - width;
     const yMin = -1 * (696 / 2) + height;
-    const yMax = (696 / 2) - height;
+    const yMax = 696 / 2 - height;
 
-    setOriginalImgXminmax([
-      0 < xMin ? xMax : xMin,
-      xMax < 0 ? xMin : xMax,
-    ]);
+    setOriginalImgXminmax([0 < xMin ? xMax : xMin, xMax < 0 ? xMin : xMax]);
 
-    setOriginalImgYminmax([
-      0 < yMin ? yMax : yMin,
-      yMax < 0 ? yMin : yMax,
-    ]);
+    setOriginalImgYminmax([0 < yMin ? yMax : yMin, yMax < 0 ? yMin : yMax]);
 
     setOriginalImgBaseX(baseX);
     setOriginalImgBaseY(baseY);
@@ -624,42 +556,65 @@ function App() {
               <parts.Base />
               <parts.Main />
               <parts.Original />
-              {
-                isMasked ? <parts.Mask /> : <></>
-              }
-              {
-                useBlindfold ? <parts.Blindfold /> : <></>
-              }
+              {isMasked ? <parts.Mask /> : <></>}
+              {useBlindfold ? <parts.Blindfold /> : <></>}
               <parts.Name />
               <parts.Comment />
               <parts.Time />
               <parts.Kaicho />
               <parts.Ribbon />
               <parts.Telop />
-              <Image image={getImageObj(cursorImg)} x={0} y={0} width={1600} height={900} draggable={true} />
+              <Image
+                image={getImageObj(cursorImg)}
+                x={0}
+                y={0}
+                width={1600}
+                height={900}
+                draggable={true}
+              />
             </Layer>
           </Stage>
         </div>
 
         <div className={styles.ui}>
           <p>
-            <Select label="Ver" options={versionList} onChange={(e) => setVersion(e.target.value as keyof typeof baseImgSrc)} value={version} />
+            <Select
+              label="Ver"
+              options={versionList}
+              onChange={(e) => setVersion(e.target.value as keyof typeof baseImgSrc)}
+              value={version}
+            />
           </p>
 
           <p>
-            <Select label="会長" options={kaicho} onChange={(e) => setKaichoImgSrc(e.target.value)} value={kaichoImgSrc} />
+            <Select
+              label="会長"
+              options={kaicho}
+              onChange={(e) => setKaichoImgSrc(e.target.value)}
+              value={kaichoImgSrc}
+            />
           </p>
 
           <p>
-            <Select label="メイン画像" options={[
-              ['選択してください', dummyImg],
-              ['noimage - 画像なし', '__NO_IMAGE__'],
-              ...talents,
-            ]} onChange={(e) => setMainImgSrc(e.target.value)} value={mainImgSrc} />
+            <Select
+              label="メイン画像"
+              options={[
+                ['選択してください', dummyImg],
+                ['noimage - 画像なし', '__NO_IMAGE__'],
+                ...talents,
+              ]}
+              onChange={(e) => setMainImgSrc(e.target.value)}
+              value={mainImgSrc}
+            />
           </p>
 
           <p>
-            <Input label="手持ちの画像" type="checkbox" onChange={() => setUseOriginal(!useOriginal)} checked={useOriginal} />
+            <Input
+              label="手持ちの画像"
+              type="checkbox"
+              onChange={() => setUseOriginal(!useOriginal)}
+              checked={useOriginal}
+            />
           </p>
 
           <p className={styles.ui__child} hidden={!useOriginal}>
@@ -681,7 +636,7 @@ function App() {
                       TB: Math.pow(1024, 4),
                     };
                     const unit: 'MB' | 'GB' | 'TB' = (() => {
-                      const {TB, GB} = denominator;
+                      const { TB, GB } = denominator;
 
                       if (TB <= blob.size) {
                         return 'TB';
@@ -695,7 +650,11 @@ function App() {
                     })();
                     const size = Math.floor((blob.size / denominator[unit]) * 100) / 100;
 
-                    if (!confirm(`${limit}MB超えてんで！\nゲボデカサイズは動作が不安定になることがあります。本当に読み込みますか？（${size}${unit})`)) {
+                    if (
+                      !confirm(
+                        `${limit}MB超えてんで！\nゲボデカサイズは動作が不安定になることがあります。本当に読み込みますか？（${size}${unit})`,
+                      )
+                    ) {
                       e.target.value = '';
 
                       return;
@@ -705,7 +664,7 @@ function App() {
                   fileReader.onload = () => {
                     img.src = String(fileReader.result);
                     img.onload = () => {
-                      const {naturalWidth, naturalHeight} = img;
+                      const { naturalWidth, naturalHeight } = img;
 
                       setOriginalImgWidth(img.naturalWidth);
                       setOriginalImgHeight(img.naturalHeight);
@@ -725,12 +684,13 @@ function App() {
 
           <p className={styles.ui__child} hidden={!useOriginal}>
             <Input
-              label={(
+              label={
                 <span>
-                  スケール<br />
+                  スケール
+                  <br />
                   （x{String(originalImgScale).padEnd(3, '.0')}）
                 </span>
-              )}
+              }
               type="range"
               min="0.1"
               max="2"
@@ -829,27 +789,65 @@ function App() {
           </p>
 
           <p>
-            <Input label="範囲マスク" type="checkbox" onChange={() => setMask(!isMasked)} checked={isMasked} />
+            <Input
+              label="範囲マスク"
+              type="checkbox"
+              onChange={() => setMask(!isMasked)}
+              checked={isMasked}
+            />
           </p>
 
           <p>
-            <Input label="目隠し" type="checkbox" onChange={() => setUseBlindfold(!useBlindfold)} checked={useBlindfold} />
+            <Input
+              label="目隠し"
+              type="checkbox"
+              onChange={() => setUseBlindfold(!useBlindfold)}
+              checked={useBlindfold}
+            />
           </p>
 
           <p className={styles.ui__child} hidden={!useBlindfold}>
-            <Input label="X座標" type="range" min={-440} max={300} onChange={(e) => setBlindfoldX(Number(e.target.value))} value={blindfoldX} />
+            <Input
+              label="X座標"
+              type="range"
+              min={-440}
+              max={300}
+              onChange={(e) => setBlindfoldX(Number(e.target.value))}
+              value={blindfoldX}
+            />
           </p>
 
           <p className={styles.ui__child} hidden={!useBlindfold}>
-            <Input label="Y座標" type="range" min={-100} max={300} onChange={(e) => setBlindfoldY(Number(e.target.value))} value={blindfoldY} />
+            <Input
+              label="Y座標"
+              type="range"
+              min={-100}
+              max={300}
+              onChange={(e) => setBlindfoldY(Number(e.target.value))}
+              value={blindfoldY}
+            />
           </p>
 
           <p className={styles.ui__child} hidden={!useBlindfold}>
-            <Input label="幅" type="range" min={-50} max={200} onChange={(e) => setBlindfoldW(Number(e.target.value))} value={blindfoldW} />
+            <Input
+              label="幅"
+              type="range"
+              min={-50}
+              max={200}
+              onChange={(e) => setBlindfoldW(Number(e.target.value))}
+              value={blindfoldW}
+            />
           </p>
 
           <p className={styles.ui__child} hidden={!useBlindfold}>
-            <Input label="高さ" type="range" min={-10} max={200} onChange={(e) => setBlindfoldH(Number(e.target.value))} value={blindfoldH} />
+            <Input
+              label="高さ"
+              type="range"
+              min={-10}
+              max={200}
+              onChange={(e) => setBlindfoldH(Number(e.target.value))}
+              value={blindfoldH}
+            />
           </p>
 
           <p>
@@ -861,43 +859,50 @@ function App() {
               list="リボン"
             />
             <datalist id="リボン">
-              {
-                [
-                  ...ribbons.map(([label]) => label),
-                ].map((value) => <option value={value} key={value} />)
-              }
+              {[...ribbons.map(([label]) => label)].map((value) => (
+                <option value={value} key={value} />
+              ))}
             </datalist>
           </p>
 
-          {
-            Object.entries(streamModeList).map(([key, value]) => (
-              <p key={key}>
-                <Input
-                  label={value}
-                  type="radio"
-                  name="streamMode"
-                  onChange={() => setStreamMode(key as keyof typeof streamModeList)}
-                  checked={streamMode === key}
-                />
-              </p>
-            ))
-          }
+          {Object.entries(streamModeList).map(([key, value]) => (
+            <p key={key}>
+              <Input
+                label={value}
+                type="radio"
+                name="streamMode"
+                onChange={() => setStreamMode(key as keyof typeof streamModeList)}
+                checked={streamMode === key}
+              />
+            </p>
+          ))}
 
           <p className={styles.ui__child} hidden={streamMode !== 'default'}>
-            <Input label="現在時刻" type="checkbox" onChange={(() => {
-              const run = (isStart: boolean) => watchNow(isStart, (val: string) => setTime(val));
+            <Input
+              label="現在時刻"
+              type="checkbox"
+              onChange={(() => {
+                const run = (isStart: boolean) => watchNow(isStart, (val: string) => setTime(val));
 
-              run(useNow);
+                run(useNow);
 
-              return () => {
-                setUseNow(!useNow);
-                run(!useNow);
-              };
-            })()} checked={useNow} />
+                return () => {
+                  setUseNow(!useNow);
+                  run(!useNow);
+                };
+              })()}
+              checked={useNow}
+            />
           </p>
 
           <p className={styles.ui__child} hidden={streamMode !== 'default'}>
-            <Input label="時間" type="time" onChange={(e) => setTime(e.target.value)} value={time} disabled={useNow} />
+            <Input
+              label="時間"
+              type="time"
+              onChange={(e) => setTime(e.target.value)}
+              value={time}
+              disabled={useNow}
+            />
           </p>
 
           <p className={styles.ui__child} hidden={streamMode === 'restricted'}>
@@ -905,7 +910,7 @@ function App() {
               label="コメント"
               rows={10}
               onChange={(e) => {
-                const {target} = e;
+                const { target } = e;
                 const value = target.value.split('\n');
                 const data = value.map((row) => {
                   // TODO: findIndexとsliceにする
@@ -937,26 +942,33 @@ function App() {
           <div className={styles.ui__child} hidden={true}>
             {/* 個別調整機能は一旦非公開 */}
             <ul>
-              {
-                comment.map(([name, value, price], idx) => {
-                  return (
-                    <li key={idx}>
-                      <input value={name} onChange={(e) => {
+              {comment.map(([name, value, price], idx) => {
+                return (
+                  <li key={idx}>
+                    <input
+                      value={name}
+                      onChange={(e) => {
                         comment[idx][0] = e.target.value;
                         setComment([...comment]);
-                      }} />
-                      <input value={value} onChange={(e) => {
+                      }}
+                    />
+                    <input
+                      value={value}
+                      onChange={(e) => {
                         comment[idx][1] = e.target.value;
                         setComment([...comment]);
-                      }} />
-                      <input value={price} onChange={(e) => {
+                      }}
+                    />
+                    <input
+                      value={price}
+                      onChange={(e) => {
                         comment[idx][2] = e.target.value;
                         setComment([...comment]);
-                      }} />
-                    </li>
-                  );
-                })
-              }
+                      }}
+                    />
+                  </li>
+                );
+              })}
             </ul>
           </div>
 
@@ -990,15 +1002,33 @@ function App() {
           </p>
 
           <p>
-            <Input label="文字サイズ" type="range" min="63" max="123" step="10" onChange={(e) => setcommentSize(Number(e.target.value))} value={commentSize} />
+            <Input
+              label="文字サイズ"
+              type="range"
+              min="63"
+              max="123"
+              step="10"
+              onChange={(e) => setcommentSize(Number(e.target.value))}
+              value={commentSize}
+            />
           </p>
 
           <p>
-            <Input label="文字色" type="color" onChange={(e) => setcommentColor(e.target.value)} value={commentColor} />
+            <Input
+              label="文字色"
+              type="color"
+              onChange={(e) => setcommentColor(e.target.value)}
+              value={commentColor}
+            />
           </p>
 
           <p>
-            <Input label="縁色" type="color" onChange={(e) => setcommentEdgeColor(e.target.value)} value={commentEdgeColor} />
+            <Input
+              label="縁色"
+              type="color"
+              onChange={(e) => setcommentEdgeColor(e.target.value)}
+              value={commentEdgeColor}
+            />
           </p>
         </div>
       </div>
@@ -1012,12 +1042,14 @@ function App() {
               onChange={() => setAgree(!agree)}
               className={styles.agree__input}
             />
-            <span className={styles.agree__label}><a href="#guidelines">お願いと免責事項</a>に同意し、所属タレントやあなたの作品を見た方への心情に配慮すること誓います。</span>
+            <span className={styles.agree__label}>
+              <a href="#guidelines">お願いと免責事項</a>
+              に同意し、所属タレントやあなたの作品を見た方への心情に配慮すること誓います。
+            </span>
           </label>
         </p>
 
-        {
-          emit ?
+        {emit ? (
           <div hidden={!agree}>
             <h2 className={styles.download__h2}>ダウンロード</h2>
             <p className={styles.download__imgWrap}>
@@ -1028,21 +1060,24 @@ function App() {
                 Download
               </a>
             </p>
-            <p className={styles.download__note}>
-              ※ クリックしてから少し時間がかかります
-            </p>
-          </div> :
+            <p className={styles.download__note}>※ クリックしてから少し時間がかかります</p>
+          </div>
+        ) : (
           <></>
-        }
+        )}
 
         <p className={styles.download__btnWrap}>
           <button
             onClick={() => {
-              setEmit(document.querySelector<HTMLCanvasElement>('#canvas-wrapper canvas')!.toDataURL());
+              setEmit(
+                document.querySelector<HTMLCanvasElement>('#canvas-wrapper canvas')!.toDataURL(),
+              );
             }}
             className={styles.download__btn}
             disabled={!agree}
-          >画像として書き出し</button>
+          >
+            画像として書き出し
+          </button>
         </p>
       </div>
     </>

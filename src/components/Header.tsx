@@ -1,6 +1,6 @@
-import React, {useEffect} from 'react';
-import logo from '../images/logo.png';
-import * as styles from './Header.module.scss';
+import React, { useEffect } from 'react';
+import logo from '@/images/logo.png';
+import styles from '@/components/Header.module.scss';
 
 export const Header = () => {
   useEffect(() => {
@@ -17,13 +17,19 @@ export const Header = () => {
 
       <div className={styles.ui}>
         <p className={styles.item}>
-          <button className={styles.btn} onClick={() => document.body.dataset.color ='0'}>デフォルト</button>
+          <button className={styles.btn} onClick={() => (document.body.dataset.color = '0')}>
+            デフォルト
+          </button>
         </p>
         <p className={styles.item}>
-          <button className={styles.btn} onClick={() => document.body.dataset.color ='1'}>ダークブルー</button>
+          <button className={styles.btn} onClick={() => (document.body.dataset.color = '1')}>
+            ダークブルー
+          </button>
         </p>
         <p className={styles.item}>
-          <button className={styles.btn} onClick={() => document.body.dataset.color ='2'}>ブラック</button>
+          <button className={styles.btn} onClick={() => (document.body.dataset.color = '2')}>
+            ブラック
+          </button>
         </p>
       </div>
 
