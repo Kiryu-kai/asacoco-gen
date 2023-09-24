@@ -1,34 +1,17 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './components/App';
-import {Header} from './components/Header';
-import {Footer} from './components/Footer';
-import styles from './index.module.scss';
-import './common.scss';
-import * as serviceWorkerRegistration from './serviceWorkerRegistration';
-import reportWebVitals from './reportWebVitals';
+import ReactDOM from 'react-dom/client';
 
-ReactDOM.render(
-    <React.StrictMode>
-      <Header />
-      <main>
-        <App />
-        <div className={styles.content} id="guidelines">
-          <h2>お願い・免責事項</h2>
+import App from '@/components/App';
 
-          <p>利用に際しては深い愛を以って、<a href="https://www.hololive.tv/terms" target="_blank" rel="noreferrer">カバー株式会社のガイドライン</a>に準拠してください。</p>
+import '@/common.scss';
+import reportWebVitals from '@/reportWebVitals';
+import * as serviceWorkerRegistration from '@/serviceWorkerRegistration';
 
-          <ul>
-            <li>Twitterへ投稿するときは、公式ではないこと・これまでの企画との混同を避けるために、あさココ系のハッシュタグはつけないか「<a href="https://twitter.com/intent/tweet?url=https://kiryu-kai.github.io/asacoco-gen&amp;hashtags=あさココジェネレーター" target="_blank" rel="noreferrer">#あさココジェネレーター</a>」をつけて投稿してください。</li>
-            <li>本ツールを利用して被ったいかなる損害について、一切責任は負えません。自己責任でお願いします。</li>
-            <li>素材提供やアイディア、利用素材の中止申請等は<a href="https://github.com/Kiryu-kai/asacoco-gen/issues" target="_blank" rel="noreferrer">GitHub Issue</a>へお願いいたします。</li>
-            <li>今後の開発予定と作業中のタスクは<a href="https://github.com/Kiryu-kai/asacoco-gen/projects/1" target="_blank" rel="noreferrer">GitHub Projects</a>でご確認いただけます。</li>
-          </ul>
-        </div>
-      </main>
-      <Footer />
-    </React.StrictMode>,
-    document.getElementById('root'),
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
 );
 
 // If you want your app to work offline and load faster, you can change

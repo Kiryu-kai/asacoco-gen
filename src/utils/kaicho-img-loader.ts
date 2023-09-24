@@ -1,13 +1,13 @@
-import gangimari from '../images/kaicho/gangimari.png';
-import gangimariRight from '../images/kaicho/gangimari--right.png';
-import gangimariRight2 from '../images/kaicho/gangimari--right2.png';
-import smile from '../images/kaicho/smile.png';
-import pekora from '../images/kaicho/pekora.png';
-import pekorac from '../images/kaicho/pekora--closeeyes.png';
-import v2 from '../images/kaicho/v2.png';
-import v2er from '../images/kaicho/v2--eyeright.png';
-import v2el from '../images/kaicho/v2--eyeleft.png';
-import anti from '../images/kaicho/anti.png';
+import anti from '@/images/kaicho/anti.png';
+import gangimariRight2 from '@/images/kaicho/gangimari--right2.png';
+import gangimariRight from '@/images/kaicho/gangimari--right.png';
+import gangimari from '@/images/kaicho/gangimari.png';
+import pekorac from '@/images/kaicho/pekora--closeeyes.png';
+import pekora from '@/images/kaicho/pekora.png';
+import smile from '@/images/kaicho/smile.png';
+import v2el from '@/images/kaicho/v2--eyeleft.png';
+import v2er from '@/images/kaicho/v2--eyeright.png';
+import v2 from '@/images/kaicho/v2.png';
 
 export const kaicho: [string, string][] = [
   ['1.0 - ガンギマリ（正面）', gangimari],

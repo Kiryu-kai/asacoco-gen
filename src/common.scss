@@ -1,14 +1,14 @@
-@use "./utils/mixin.scss" as *;
-
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
+/*
 html {
   scroll-behavior: smooth;
 }
+*/
 
 body {
   margin: 0;
@@ -46,7 +46,7 @@ a {
   color: inherit;
 }
 
-@include min-screen() {
+@media screen and (min-width: 1000px) {
   a {
     &:hover,
     &:focus {
