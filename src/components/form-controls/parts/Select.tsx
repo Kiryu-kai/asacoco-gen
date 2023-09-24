@@ -1,15 +1,14 @@
 import React from 'react';
-import styles from '@/components/form-controls/Common.module.scss';
 
-type Component = React.FC<
-  React.SelectHTMLAttributes<HTMLSelectElement> & {
-    label: string;
-    /** [選択項目名, 値][] */
-    options: [string, string][];
-  }
->;
+import styles from '@/components/form-controls/parts/Common.module.scss';
 
-export const Select: Component = ({ label, options, ...props }) => {
+type Props = React.SelectHTMLAttributes<HTMLSelectElement> & {
+  label: string;
+  /** [選択項目名, 値][] */
+  options: [string, string][];
+};
+
+export const Select = ({ label, options, ...props }: Props) => {
   return (
     <label className={styles.host}>
       <span className={styles.label}>{label}</span>

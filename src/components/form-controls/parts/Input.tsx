@@ -1,14 +1,13 @@
 import React from 'react';
-import styles from '@/components/form-controls/Common.module.scss';
 
-type Component = React.FC<
-  React.InputHTMLAttributes<HTMLInputElement> & {
-    /** アクセシビリティネーム */
-    label: string | React.ReactNode;
-  }
->;
+import styles from '@/components/form-controls/parts/Common.module.scss';
 
-export const Input: Component = ({ label, ...props }) => {
+type Props = React.InputHTMLAttributes<HTMLInputElement> & {
+  /** アクセシビリティネーム */
+  label: string | React.ReactNode;
+};
+
+export const Input = ({ label, ...props }: Props) => {
   // ? input + span 構造が使えないのでラッパーに属性を持たせます
   const attr =
     props.type === 'radio' || props.type === 'checkbox'

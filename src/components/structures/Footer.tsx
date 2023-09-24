@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import styles from '@/components/Footer.module.scss';
+import React, { useEffect, useState } from 'react';
+
+import styles from '@/components/structures/Footer.module.scss';
 
 export function Footer() {
   const [isExpanded, setExpanded] = useState(false);
