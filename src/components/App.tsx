@@ -9,12 +9,14 @@ function App() {
     window.matchMedia('(prefers-color-scheme: dark)').matches ? '1' : '0',
   );
 
+  const [timestamp, setTimestamp] = useState('');
   const [emit, setEmit] = useState('');
   const [agree, setAgree] = useState(false);
 
   return (
     <div data-theme={themeId}>
       <Header themeId={themeId} setThemeId={setThemeId} />
+
       <main>
         <Editor />
 
@@ -34,26 +36,10 @@ function App() {
             </label>
           </p>
 
-          {emit ? (
-            <div hidden={!agree}>
-              <h2 className={styles.download__h2}>ダウンロード</h2>
-              <p className={styles.download__imgWrap}>
-                <img src={emit} alt="作った画像" className={styles.download__img} />
-              </p>
-              <p className={styles.download__link}>
-                <a href={emit} download={`asacoco-${performance.now()}.png`}>
-                  Download
-                </a>
-              </p>
-              <p className={styles.download__note}>※ クリックしてから少し時間がかかります</p>
-            </div>
-          ) : (
-            <></>
-          )}
-
           <p className={styles.download__btnWrap}>
             <button
               onClick={() => {
+                setTimestamp(new Date().toLocaleString());
                 setEmit(
                   document.querySelector<HTMLCanvasElement>('#canvas-wrapper canvas')!.toDataURL(),
                 );
@@ -64,6 +50,24 @@ function App() {
               画像として書き出し
             </button>
           </p>
+
+          <div aria-live="polite" aria-atomic="true">
+            {emit && agree && (
+              <>
+                <h2 className={styles.download__h2}>ダウンロード</h2>
+                <p>書き出し時刻：{timestamp}</p>
+                <p className={styles.download__imgWrap}>
+                  <img src={emit} alt="作った画像" className={styles.download__img} />
+                </p>
+                <p className={styles.download__link}>
+                  <a href={emit} download={`asacoco-${performance.now()}.png`}>
+                    Download
+                  </a>
+                </p>
+                <p className={styles.download__note}>※ クリックしてから少し時間がかかります</p>
+              </>
+            )}
+          </div>
         </div>
 
         <div className={styles.content} id="guidelines">
@@ -117,6 +121,7 @@ function App() {
           </ul>
         </div>
       </main>
+
       <Footer />
     </div>
   );
