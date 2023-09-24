@@ -51,6 +51,10 @@ const defaultComments = [
 });
 
 function App() {
+  const [themeId, setThemeId] = useState(
+    window.matchMedia('(prefers-color-scheme: dark)').matches ? '1' : '0',
+  );
+
   const [version, setVersion] = useState<keyof typeof baseImgSrc>('0');
   const [isMasked, setMask] = useState(true);
   const [useBlindfold, setUseBlindfold] = useState(false);
@@ -140,8 +144,8 @@ function App() {
   }, [isEdited]);
 
   return (
-    <>
-      <Header />
+    <div data-theme={themeId}>
+      <Header themeId={themeId} setThemeId={setThemeId} />
       <main>
         <div className={styles.container}>
           <Screen
@@ -648,7 +652,7 @@ function App() {
         </div>
       </main>
       <Footer />
-    </>
+    </div>
   );
 }
 

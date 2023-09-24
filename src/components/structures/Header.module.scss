@@ -4,8 +4,8 @@
   --bgcolor: #fff;
   --borderColor: #ccc;
 
-  [data-color="1"] &,
-  [data-color="2"] & {
+  [data-theme="1"] &,
+  [data-theme="2"] & {
     --bgcolor: transparent;
     --borderColor: #777;
   }
@@ -21,8 +21,8 @@
   display: block;
   max-width: 100%;
 
-  [data-color="1"] &,
-  [data-color="2"] & {
+  [data-theme="1"] &,
+  [data-theme="2"] & {
     filter: invert(100);
   }
 }

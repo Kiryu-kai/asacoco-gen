@@ -1,35 +1,46 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import styles from '@/components/structures/Header.module.scss';
 
-import logo from '@/images/logo.png';
+import LOGO_SRC from '@/images/logo.png';
 
-export const Header = () => {
-  useEffect(() => {
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      document.body.dataset.color = '1';
-    }
-  });
+type Props = {
+  themeId: string;
+  setThemeId: React.Dispatch<React.SetStateAction<string>>;
+};
 
+export const Header = ({ themeId, setThemeId }: Props) => {
   return (
     <header className={styles.header}>
       <h1 className={styles.h1}>
-        <img src={logo} alt="あさココLIVEジェネレータ" className={styles.logo} />
+        <img src={LOGO_SRC} alt="あさココLIVEジェネレータ" className={styles.logo} />
       </h1>
 
       <div className={styles.ui}>
         <p className={styles.item}>
-          <button className={styles.btn} onClick={() => (document.body.dataset.color = '0')}>
+          <button
+            className={styles.btn}
+            onClick={() => setThemeId('0')}
+            aria-pressed={themeId ? 'true' : 'false'}
+          >
             デフォルト
           </button>
         </p>
         <p className={styles.item}>
-          <button className={styles.btn} onClick={() => (document.body.dataset.color = '1')}>
+          <button
+            className={styles.btn}
+            onClick={() => setThemeId('1')}
+            aria-pressed={themeId ? 'true' : 'false'}
+          >
             ダークブルー
           </button>
         </p>
         <p className={styles.item}>
-          <button className={styles.btn} onClick={() => (document.body.dataset.color = '2')}>
+          <button
+            className={styles.btn}
+            onClick={() => setThemeId('2')}
+            aria-pressed={themeId ? 'true' : 'false'}
+          >
             ブラック
           </button>
         </p>

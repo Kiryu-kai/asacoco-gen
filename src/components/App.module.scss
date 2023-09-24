@@ -19,12 +19,12 @@
     background: #f6f9f9;
     border-left: 3px solid #eff3f4;
 
-    [data-color="1"] & {
+    [data-theme="1"] & {
       background-color: #192834;
       border-left-color: #38444d;
     }
 
-    [data-color="2"] & {
+    [data-theme="2"] & {
       background-color: #17191d;
       border-left-color: #2f3336;
     }
