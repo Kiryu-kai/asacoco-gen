@@ -1,7 +1,7 @@
 import React from 'react';
 
 import styles from '@/components/App.module.scss';
-import { Input, Textarea } from '@/components/form-controls/parts';
+import { Input, Textarea } from '@/components/Editor/parts/form-controls/parts';
 
 import { convertToCommentString, formatComment } from '@/utils/comment';
 

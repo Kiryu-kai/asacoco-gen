@@ -1,7 +1,7 @@
 import React from 'react';
 import { Group, Image, Text } from 'react-konva';
 
-import { createImage } from '@/components/Screen/create-image';
+import { createImage } from '@/components/Editor/parts/Screen/create-image';
 
 import liveImg from '@/images/live.png';
 

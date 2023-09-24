@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import styles from '@/components/App.module.scss';
-import { Input } from '@/components/form-controls/parts';
+import { Input } from '@/components/Editor/parts/form-controls/parts';
 
 type Props = {
   timeText: string;
