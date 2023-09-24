@@ -6,13 +6,13 @@
   --border: #ccc;
   --bar: #555;
 
-  [data-color="1"] & {
+  [data-theme="1"] & {
     --bg: #15212b;
     --border: #38444d;
     --bar: #ccc;
   }
 
-  [data-color="2"] & {
+  [data-theme="2"] & {
     --bg: #000;
     --border: #2f3336;
     --bar: #ccc;
