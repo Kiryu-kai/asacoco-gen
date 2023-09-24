@@ -23,3 +23,22 @@
     width: 100%;
   }
 }
+
+.stage {
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 1200px) {
+  .canvas {
+    position: relative;
+    grid-row: 1 / 2;
+    grid-column: 1 / 2;
+  }
+
+  .stage {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+}
