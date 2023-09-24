@@ -1,34 +1,6 @@
-.ui {
-  padding: 40px 20px;
-
-  p {
-    margin: 30px 0;
-
-    &:first-child {
-      margin-top: 0;
-    }
-
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-
-  .ui__child {
-    padding: 18px 10px 26px 20px;
-    margin: 0;
-    background: #f6f9f9;
-    border-left: 3px solid #eff3f4;
-
-    [data-theme="1"] & {
-      background-color: #192834;
-      border-left-color: #38444d;
-    }
-
-    [data-theme="2"] & {
-      background-color: #17191d;
-      border-left-color: #2f3336;
-    }
-  }
+.content {
+  min-height: 100vh;
+  padding: 100px 20px;
 }
 
 .download {
@@ -125,20 +97,5 @@
     &:checked + .agree__label::before {
       opacity: 1;
     }
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  .container {
-    display: grid;
-    grid-template-rows: auto auto;
-    grid-template-columns: auto minmax(20%, 420px);
-  }
-
-  .ui {
-    grid-row: 1 / 2;
-    grid-column: 2 / 3;
-    padding-top: 0;
-    padding-bottom: 0;
   }
 }

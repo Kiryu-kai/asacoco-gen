@@ -3,7 +3,7 @@ import { Group, Image, Text } from 'react-konva';
 
 import { streamModeList } from '@/contants/dataset';
 
-import { createImage } from '@/components/Screen/create-image';
+import { createImage } from '@/components/Editor/parts/Screen/create-image';
 
 import { formatComment } from '@/utils/comment';
 

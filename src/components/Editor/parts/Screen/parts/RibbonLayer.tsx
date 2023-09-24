@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image, Text } from 'react-konva';
 
-import { createImage } from '@/components/Screen/create-image';
+import { createImage } from '@/components/Editor/parts/Screen/create-image';
 
 import { ribbons } from '@/utils/ribbon-img-loader';
 
