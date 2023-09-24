@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/asacoco-gen/static/css/main.69d14558.css",
-    "main.js": "/asacoco-gen/static/js/main.8f390006.js",
+    "main.js": "/asacoco-gen/static/js/main.f4362c26.js",
     "static/js/787.3d585af6.chunk.js": "/asacoco-gen/static/js/787.3d585af6.chunk.js",
     "static/media/lamy--3dtehepero.png": "/asacoco-gen/static/media/lamy--3dtehepero.d722b67000e71d506212.png",
     "static/media/lamy--3dpose.png": "/asacoco-gen/static/media/lamy--3dpose.ab710519e78b8b86fd2b.png",
@@ -24,24 +24,24 @@
     "static/media/base.png": "/asacoco-gen/static/media/base.99c694b20de09766111a.png",
     "static/media/base--3.png": "/asacoco-gen/static/media/base--3.343434f8daaff610a622.png",
     "static/media/base--2.png": "/asacoco-gen/static/media/base--2.cef7f781184ddde1405b.png",
-    "static/media/v2--eyeright.png": "/asacoco-gen/static/media/v2--eyeright.93f0de8915a47c316d41.png",
-    "static/media/v2.png": "/asacoco-gen/static/media/v2.8a49e658c1d9c10ae429.png",
-    "static/media/v2--eyeleft.png": "/asacoco-gen/static/media/v2--eyeleft.39c42af6dea3f0a778b5.png",
     "static/media/pekora--closeeyes.png": "/asacoco-gen/static/media/pekora--closeeyes.bd1aa86cc2c92cbc197c.png",
     "static/media/tsunomaki-watame--kossori.png": "/asacoco-gen/static/media/tsunomaki-watame--kossori.15aa316f7c43623f1151.png",
     "static/media/base--anti.png": "/asacoco-gen/static/media/base--anti.cdc0e84f8fba75fbe9fb.png",
     "static/media/pekora.png": "/asacoco-gen/static/media/pekora.7abe94c7cc11cecf2a99.png",
     "static/media/gangimari.png": "/asacoco-gen/static/media/gangimari.31d5a1e77dd1ee3c3a07.png",
+    "static/media/v2--eyeright.png": "/asacoco-gen/static/media/v2--eyeright.ddab056e43a6cc976d60.png",
     "static/media/base--peko.png": "/asacoco-gen/static/media/base--peko.98422930476446512b4a.png",
-    "static/media/smile.png": "/asacoco-gen/static/media/smile.4597ce83decbe65d7ee0.png",
+    "static/media/v2.png": "/asacoco-gen/static/media/v2.5e5b0828dd8811230457.png",
+    "static/media/v2--eyeleft.png": "/asacoco-gen/static/media/v2--eyeleft.f781f5e2b950b458a866.png",
     "static/media/gangimari--right2.png": "/asacoco-gen/static/media/gangimari--right2.fb429cdfde38432fa535.png",
+    "static/media/smile.png": "/asacoco-gen/static/media/smile.2ffa9f5ff38e288281a5.png",
     "static/media/ribbon--ark.png": "/asacoco-gen/static/media/ribbon--ark.7b87e551f7b4bf738778.png",
     "static/media/mask--3.png": "/asacoco-gen/static/media/mask--3.1f2f9b8e68195be6ed15.png",
     "static/media/mask.png": "/asacoco-gen/static/media/mask.3c58db0658534470048e.png",
-    "static/media/gangimari--right.png": "/asacoco-gen/static/media/gangimari--right.c0b80ffbab2a80405f19.png",
     "static/media/tsunomaki-watame--tirari.png": "/asacoco-gen/static/media/tsunomaki-watame--tirari.a7faf474b5e972b9a591.png",
     "static/media/mask--2.png": "/asacoco-gen/static/media/mask--2.a63750e5baaac414ba04.png",
     "static/media/mask--peko.png": "/asacoco-gen/static/media/mask--peko.8b8ff9c0a0b4aa8ba4ef.png",
+    "static/media/gangimari--right.png": "/asacoco-gen/static/media/gangimari--right.4b71bada2f6749870d9e.png",
     "static/media/mask--anti.png": "/asacoco-gen/static/media/mask--anti.81e291190b6caea9b549.png",
     "static/media/ban-stream.png": "/asacoco-gen/static/media/ban-stream.f368f872d107b5d57518.png",
     "static/media/coco--c.png": "/asacoco-gen/static/media/coco--c.f9fc9a79bd3bb2a04b9e.png",
@@ -67,11 +67,11 @@
     "static/media/ribbon.png": "/asacoco-gen/static/media/ribbon.8c34f0f7f0c62ddb4242.png",
     "index.html": "/asacoco-gen/index.html",
     "main.69d14558.css.map": "/asacoco-gen/static/css/main.69d14558.css.map",
-    "main.8f390006.js.map": "/asacoco-gen/static/js/main.8f390006.js.map",
+    "main.f4362c26.js.map": "/asacoco-gen/static/js/main.f4362c26.js.map",
     "787.3d585af6.chunk.js.map": "/asacoco-gen/static/js/787.3d585af6.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.69d14558.css",
-    "static/js/main.8f390006.js"
+    "static/js/main.f4362c26.js"
   ]
 }
