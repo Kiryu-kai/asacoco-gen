@@ -1,6 +1,7 @@
 import React from 'react';
-import styles from '@/components/form-controls/Common.module.scss';
-import uniqueStyles from '@/components/form-controls/PositionAdjuster.module.scss';
+
+import uniqueStyles from '@/components/form-controls/InputPositionAdjuster.module.scss';
+import styles from '@/components/form-controls/parts/Common.module.scss';
 
 type Component = React.FC<
   React.ButtonHTMLAttributes<HTMLButtonElement> & {
@@ -16,17 +17,17 @@ type Component = React.FC<
 
 let id = 0;
 
-export const PositionAdjuster: Component = ({ label, direction, btns, ...props }) => {
+export const InputPositionAdjuster: Component = ({ label, direction, btns, ...props }) => {
   id++;
 
   return (
     <span
       className={styles.host}
       role="group"
-      aria-labelledby={`PositionAdjuster-${id}`}
+      aria-labelledby={`InputPositionAdjuster-${id}`}
       data-direction={direction}
     >
-      <span className={styles.label} id={`PositionAdjuster-${id}`}>
+      <span className={styles.label} id={`InputPositionAdjuster-${id}`}>
         {label}
       </span>
       <span className={styles.wrap} data-type={props.type}>

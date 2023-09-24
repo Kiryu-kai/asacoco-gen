@@ -22,7 +22,7 @@
   "rules": {
     "max-len": "off",
     "no-unused-vars": [
-      "error",
+      "warn",
       {
         "argsIgnorePattern": "^_+$",
         "varsIgnorePattern": "^_+$",
@@ -51,8 +51,7 @@
       "error",
       {
         "prefix": "@",
-        "rootDir": "src",
-        "allowSameFolder": true
+        "rootDir": "src"
       }
     ],
     "quotes": ["error", "single"],

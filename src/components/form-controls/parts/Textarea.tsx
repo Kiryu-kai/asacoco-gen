@@ -1,14 +1,13 @@
 import React from 'react';
-import styles from '@/components/form-controls/Common.module.scss';
 
-type Component = React.FC<
-  React.TextareaHTMLAttributes<HTMLTextAreaElement> & {
-    label: string;
-    note?: string | string[];
-  }
->;
+import styles from '@/components/form-controls/parts/Common.module.scss';
 
-export const Textarea: Component = ({ label, note, ...props }) => {
+type Props = React.TextareaHTMLAttributes<HTMLTextAreaElement> & {
+  label: string;
+  note?: string | string[];
+};
+
+export const Textarea = ({ label, note, ...props }: Props) => {
   return (
     <label className={styles.host}>
       <span className={styles.label}>{label}</span>

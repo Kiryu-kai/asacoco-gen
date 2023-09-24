@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
+
+import styles from '@/components/structures/Header.module.scss';
+
 import logo from '@/images/logo.png';
-import styles from '@/components/Header.module.scss';
 
 export const Header = () => {
   useEffect(() => {
