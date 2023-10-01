@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/asacoco-gen/static/css/main.69d14558.css",
-    "main.js": "/asacoco-gen/static/js/main.f4362c26.js",
+    "main.css": "/asacoco-gen/static/css/main.bbfafb09.css",
+    "main.js": "/asacoco-gen/static/js/main.4d31db9b.js",
     "static/js/787.3d585af6.chunk.js": "/asacoco-gen/static/js/787.3d585af6.chunk.js",
     "static/media/lamy--3dtehepero.png": "/asacoco-gen/static/media/lamy--3dtehepero.d722b67000e71d506212.png",
     "static/media/lamy--3dpose.png": "/asacoco-gen/static/media/lamy--3dpose.ab710519e78b8b86fd2b.png",
@@ -66,12 +66,12 @@
     "static/media/ribbon--anti-new.png": "/asacoco-gen/static/media/ribbon--anti-new.64d8e3f177b880db96a0.png",
     "static/media/ribbon.png": "/asacoco-gen/static/media/ribbon.8c34f0f7f0c62ddb4242.png",
     "index.html": "/asacoco-gen/index.html",
-    "main.69d14558.css.map": "/asacoco-gen/static/css/main.69d14558.css.map",
-    "main.f4362c26.js.map": "/asacoco-gen/static/js/main.f4362c26.js.map",
+    "main.bbfafb09.css.map": "/asacoco-gen/static/css/main.bbfafb09.css.map",
+    "main.4d31db9b.js.map": "/asacoco-gen/static/js/main.4d31db9b.js.map",
     "787.3d585af6.chunk.js.map": "/asacoco-gen/static/js/787.3d585af6.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.69d14558.css",
-    "static/js/main.f4362c26.js"
+    "static/css/main.bbfafb09.css",
+    "static/js/main.4d31db9b.js"
   ]
 }
