@@ -35,7 +35,7 @@ type Props = {
   isMasked: boolean;
   useBlindfold: boolean;
   comment: string;
-  commentClip: number;
+  commentCrop: number;
   streamMode: keyof typeof streamModeList;
   timeText: string;
   kaichoImgSrc: string;
@@ -62,7 +62,7 @@ type Props = {
 export const Screen = ({
   isMasked,
   comment,
-  commentClip,
+  commentCrop,
   streamMode,
   timeText,
   kaichoImgSrc,
@@ -121,7 +121,7 @@ export const Screen = ({
             />
           )}
           <NameLayer text={nameText} />
-          <CommentLayer streamMode={streamMode} comment={comment} commentClip={commentClip} />
+          <CommentLayer streamMode={streamMode} comment={comment} commentCrop={commentCrop} />
           {streamMode === 'default' && <TimeLayer text={timeText} />}
           <OtherLayer src={kaichoImgSrc} />
           <RibbonLayer text={ribbonText} />

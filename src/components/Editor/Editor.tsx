@@ -57,7 +57,7 @@ export const Editor = () => {
   const [text, setText] = useState('好きなテロップ');
   const [timeText, setTimeText] = useState('00:00');
   const [comment, setComment] = useState(convertToCommentString(shuffle(defaultComments)));
-  const [commentClip, setCommentClip] = useState(0);
+  const [commentCrop, setCommentCrop] = useState(220);
   const [commentSize, setcommentSize] = useState(93);
   const [commentColor, setcommentColor] = useState('#ffffff');
   const [commentEdgeColor, setcommentEdgeColor] = useState('#000000');
@@ -141,7 +141,7 @@ export const Editor = () => {
         version={version}
         isMasked={isMasked}
         useBlindfold={useBlindfold}
-        commentClip={commentClip}
+        commentCrop={commentCrop}
         comment={comment}
         timeText={timeText}
         streamMode={streamMode}
@@ -485,8 +485,8 @@ export const Editor = () => {
           <InputComment
             comment={comment}
             setComment={setComment}
-            commentClip={commentClip}
-            setCommentClip={setCommentClip}
+            commentCrop={commentCrop}
+            setCommentCrop={setCommentCrop}
           />
         )}
 

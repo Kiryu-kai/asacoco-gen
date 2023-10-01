@@ -13,10 +13,10 @@ import emergencyImg from '@/images/emergency.png';
 type Props = {
   streamMode: keyof typeof streamModeList;
   comment: string;
-  commentClip: number;
+  commentCrop: number;
 };
 
-export const CommentLayer = ({ streamMode, comment, commentClip }: Props) => {
+export const CommentLayer = ({ streamMode, comment, commentCrop }: Props) => {
   let y = 101;
   const attrs = {
     // y: version === '2' ? 137 : 103, // ver3.0だと少し下
@@ -27,11 +27,11 @@ export const CommentLayer = ({ streamMode, comment, commentClip }: Props) => {
     verticalAlign: 'top',
     wrap: 'char',
     width: 380,
-    height: 500 + commentClip,
+    height: 770 - commentCrop,
   };
   const commentData = formatComment({ comment: comment });
   const commentElement = (
-    <Group x={0} y={0} clipY={y + 9} clipX={0} clipWidth={1600} clipHeight={400 + commentClip}>
+    <Group x={0} y={0} clipY={y + 9} clipX={0} clipWidth={1600} clipHeight={620 - commentCrop}>
       {commentData.map(([_name, msg], i) => {
         const isMember = /^[\!！]/.test(_name);
         const name = _name.replace(/^[\!！]/, '');
