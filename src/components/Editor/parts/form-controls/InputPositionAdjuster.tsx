@@ -1,7 +1,7 @@
 import React from 'react';
 
-import uniqueStyles from '@/components/form-controls/InputPositionAdjuster.module.scss';
-import styles from '@/components/form-controls/parts/Common.module.scss';
+import uniqueStyles from '@/components/Editor/parts/form-controls/InputPositionAdjuster.module.scss';
+import styles from '@/components/Editor/parts/form-controls/parts/Common.module.scss';
 
 type Component = React.FC<
   React.ButtonHTMLAttributes<HTMLButtonElement> & {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image } from 'react-konva';
 
-import { createImage } from '@/components/Screen/create-image';
+import { createImage } from '@/components/Editor/parts/Screen/create-image';
 
 type Props = {
   src: string;

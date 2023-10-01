@@ -1,18 +1,18 @@
 import React from 'react';
 
 import styles from '@/components/App.module.scss';
-import { Input, Textarea } from '@/components/form-controls/parts';
+import { Input, Textarea } from '@/components/Editor/parts/form-controls/parts';
 
 import { convertToCommentString, formatComment } from '@/utils/comment';
 
 type Props = {
   comment: string;
   setComment: React.Dispatch<React.SetStateAction<string>>;
-  commentClip: number;
-  setCommentClip: React.Dispatch<React.SetStateAction<number>>;
+  commentCrop: number;
+  setCommentCrop: React.Dispatch<React.SetStateAction<number>>;
 };
 
-export const InputComment = ({ comment, setComment, commentClip, setCommentClip }: Props) => {
+export const InputComment = ({ comment, setComment, commentCrop, setCommentCrop }: Props) => {
   return (
     <>
       <p className={styles.ui__child}>
@@ -67,15 +67,14 @@ export const InputComment = ({ comment, setComment, commentClip, setCommentClip 
       {/* </div> */}
 
       <p className={styles.ui__child}>
-        {/* TODO: 上下を反転させる */}
         <Input
-          label="コメントクリップ"
+          label="コメントクロップ"
           type="range"
-          min={-80}
+          min={0}
           step={10}
-          max={220}
-          onChange={(e) => setCommentClip(Number(e.target.value))}
-          value={commentClip}
+          max={300}
+          onChange={(e) => setCommentCrop(Number(e.target.value))}
+          value={commentCrop}
         />
       </p>
     </>

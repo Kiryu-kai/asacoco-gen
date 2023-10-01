@@ -3,8 +3,8 @@ import { Image, Layer, Stage } from 'react-konva';
 
 import { baseImgSrc, maskImgSrc, streamModeList } from '@/contants/dataset';
 
-import styles from '@/components/Screen/Screen.module.scss';
-import { createImage } from '@/components/Screen/create-image';
+import styles from '@/components/Editor/parts/Screen/Screen.module.scss';
+import { createImage } from '@/components/Editor/parts/Screen/create-image';
 import {
   BlindfoldLayer,
   CommentLayer,
@@ -14,7 +14,7 @@ import {
   RibbonLayer,
   TelopLayer,
   TimeLayer,
-} from '@/components/Screen/parts';
+} from '@/components/Editor/parts/Screen/parts';
 
 import cursorImg from '@/images/cursor.png';
 
@@ -35,7 +35,7 @@ type Props = {
   isMasked: boolean;
   useBlindfold: boolean;
   comment: string;
-  commentClip: number;
+  commentCrop: number;
   streamMode: keyof typeof streamModeList;
   timeText: string;
   kaichoImgSrc: string;
@@ -62,7 +62,7 @@ type Props = {
 export const Screen = ({
   isMasked,
   comment,
-  commentClip,
+  commentCrop,
   streamMode,
   timeText,
   kaichoImgSrc,
@@ -121,7 +121,7 @@ export const Screen = ({
             />
           )}
           <NameLayer text={nameText} />
-          <CommentLayer streamMode={streamMode} comment={comment} commentClip={commentClip} />
+          <CommentLayer streamMode={streamMode} comment={comment} commentCrop={commentCrop} />
           {streamMode === 'default' && <TimeLayer text={timeText} />}
           <OtherLayer src={kaichoImgSrc} />
           <RibbonLayer text={ribbonText} />

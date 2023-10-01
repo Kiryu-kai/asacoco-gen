@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from '@/components/form-controls/parts/Common.module.scss';
+import styles from '@/components/Editor/parts/form-controls/parts/Common.module.scss';
 
 type Props = React.InputHTMLAttributes<HTMLInputElement> & {
   /** アクセシビリティネーム */
