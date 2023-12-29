@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/asacoco-gen/static/css/main.bbfafb09.css",
-    "main.js": "/asacoco-gen/static/js/main.4d31db9b.js",
+    "main.js": "/asacoco-gen/static/js/main.30d3eb1a.js",
     "static/js/787.3d585af6.chunk.js": "/asacoco-gen/static/js/787.3d585af6.chunk.js",
     "static/media/lamy--3dtehepero.png": "/asacoco-gen/static/media/lamy--3dtehepero.d722b67000e71d506212.png",
     "static/media/lamy--3dpose.png": "/asacoco-gen/static/media/lamy--3dpose.ab710519e78b8b86fd2b.png",
@@ -11,15 +11,19 @@
     "static/media/shiranui-flare--02smile.png": "/asacoco-gen/static/media/shiranui-flare--02smile.11d34dc7b249e1790616.png",
     "static/media/lamy--3dnohohon.png": "/asacoco-gen/static/media/lamy--3dnohohon.1fa8dffbe47151e915d9.png",
     "static/media/lamy--3dsad.png": "/asacoco-gen/static/media/lamy--3dsad.6a7385e2d0d6fdafe1fd.png",
+    "static/media/mococo-abyssgard--smile.png": "/asacoco-gen/static/media/mococo-abyssgard--smile.15677d1d6e4bd6bc27d2.png",
     "static/media/tsunomaki-watame--smile.png": "/asacoco-gen/static/media/tsunomaki-watame--smile.29f09a81491992c8f411.png",
     "static/media/tsunomaki-watame--03doya.png": "/asacoco-gen/static/media/tsunomaki-watame--03doya.aae75b144c8ad661c6c3.png",
+    "static/media/mococo-abyssgard.png": "/asacoco-gen/static/media/mococo-abyssgard.d548661bcd1f2282c56a.png",
     "static/media/tsunomaki-watame--3dgangimari.png": "/asacoco-gen/static/media/tsunomaki-watame--3dgangimari.501be00a19e9aa21b5e5.png",
     "static/media/coco--a.png": "/asacoco-gen/static/media/coco--a.2eb9c6061aabe8726582.png",
     "static/media/lamy--3dkeibetsu.png": "/asacoco-gen/static/media/lamy--3dkeibetsu.8879906d13d55f47dc4f.png",
     "static/media/tsunomaki-watame--3dsunglass.png": "/asacoco-gen/static/media/tsunomaki-watame--3dsunglass.bdf9fcb2e3e09c56eb9d.png",
     "static/media/tsunomaki-watame--gangimari.png": "/asacoco-gen/static/media/tsunomaki-watame--gangimari.19ac736de4b1863cfa0b.png",
     "static/media/coco--a2.png": "/asacoco-gen/static/media/coco--a2.812338ae1c671e5b86a3.png",
+    "static/media/mask--asamoco.png": "/asacoco-gen/static/media/mask--asamoco.739402a0761c98213596.png",
     "static/media/okami-mio--02sad.png": "/asacoco-gen/static/media/okami-mio--02sad.c12d31c01387a5b70341.png",
+    "static/media/base--asamoco.png": "/asacoco-gen/static/media/base--asamoco.6d246cf2651e8cc794b2.png",
     "static/media/haato--gangimari.png": "/asacoco-gen/static/media/haato--gangimari.15e2218fde5124534f66.png",
     "static/media/base.png": "/asacoco-gen/static/media/base.99c694b20de09766111a.png",
     "static/media/base--3.png": "/asacoco-gen/static/media/base--3.343434f8daaff610a622.png",
@@ -28,6 +32,7 @@
     "static/media/tsunomaki-watame--kossori.png": "/asacoco-gen/static/media/tsunomaki-watame--kossori.15aa316f7c43623f1151.png",
     "static/media/base--anti.png": "/asacoco-gen/static/media/base--anti.cdc0e84f8fba75fbe9fb.png",
     "static/media/pekora.png": "/asacoco-gen/static/media/pekora.7abe94c7cc11cecf2a99.png",
+    "static/media/mococo-abyssgard--faceleft.png": "/asacoco-gen/static/media/mococo-abyssgard--faceleft.9e65d592509be9d392b3.png",
     "static/media/gangimari.png": "/asacoco-gen/static/media/gangimari.31d5a1e77dd1ee3c3a07.png",
     "static/media/v2--eyeright.png": "/asacoco-gen/static/media/v2--eyeright.ddab056e43a6cc976d60.png",
     "static/media/base--peko.png": "/asacoco-gen/static/media/base--peko.98422930476446512b4a.png",
@@ -46,12 +51,14 @@
     "static/media/ban-stream.png": "/asacoco-gen/static/media/ban-stream.f368f872d107b5d57518.png",
     "static/media/coco--c.png": "/asacoco-gen/static/media/coco--c.f9fc9a79bd3bb2a04b9e.png",
     "static/media/coco--c2.png": "/asacoco-gen/static/media/coco--c2.49279e0ee59d2dbcaa0f.png",
+    "static/media/ribbon-moco--news.png": "/asacoco-gen/static/media/ribbon-moco--news.e47f8817bae736ecb383.png",
     "static/media/ribbon--kusozako.png": "/asacoco-gen/static/media/ribbon--kusozako.710cdf57ee8b89128f38.png",
     "static/media/anti.png": "/asacoco-gen/static/media/anti.6e9daeca94ecae9b95d7.png",
     "service-worker.js": "/asacoco-gen/service-worker.js",
     "static/media/emergency.png": "/asacoco-gen/static/media/emergency.35c66fab8f464d791587.png",
     "static/media/cursor.png": "/asacoco-gen/static/media/cursor.ed6076b28a29eaa7a7b3.png",
     "static/media/dummy.png": "/asacoco-gen/static/media/dummy.d7abfbe6232ae6c9f40a.png",
+    "static/media/live--moco.png": "/asacoco-gen/static/media/live--moco.7e9f3418322ab77384bf.png",
     "static/media/ribbon--detawane.png": "/asacoco-gen/static/media/ribbon--detawane.8cc7f0dd59e9afc6cdfc.png",
     "static/media/ribbon--gebokawa2.png": "/asacoco-gen/static/media/ribbon--gebokawa2.04f0b45d7dd23a51161b.png",
     "static/media/ribbon--omedetei.png": "/asacoco-gen/static/media/ribbon--omedetei.310be08b9f57e50b8601.png",
@@ -67,11 +74,11 @@
     "static/media/ribbon.png": "/asacoco-gen/static/media/ribbon.8c34f0f7f0c62ddb4242.png",
     "index.html": "/asacoco-gen/index.html",
     "main.bbfafb09.css.map": "/asacoco-gen/static/css/main.bbfafb09.css.map",
-    "main.4d31db9b.js.map": "/asacoco-gen/static/js/main.4d31db9b.js.map",
+    "main.30d3eb1a.js.map": "/asacoco-gen/static/js/main.30d3eb1a.js.map",
     "787.3d585af6.chunk.js.map": "/asacoco-gen/static/js/787.3d585af6.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.bbfafb09.css",
-    "static/js/main.4d31db9b.js"
+    "static/js/main.30d3eb1a.js"
   ]
 }
