@@ -1,11 +1,13 @@
 import base2Img from '@/images/base--2.png';
 import base3Img from '@/images/base--3.png';
 import baseAntiImg from '@/images/base--anti.png';
+import baseMocoImg from '@/images/base--asamoco.png';
 import basepekoImg from '@/images/base--peko.png';
 import baseImg from '@/images/base.png';
 import mask2Img from '@/images/mask--2.png';
 import mask3Img from '@/images/mask--3.png';
 import maskAntiImg from '@/images/mask--anti.png';
+import maskMocoImg from '@/images/mask--asamoco.png';
 import maskpekoImg from '@/images/mask--peko.png';
 import maskImg from '@/images/mask.png';
 
@@ -21,6 +23,7 @@ export const baseImgSrc = {
   '2': base3Img,
   peko: basepekoImg,
   anti: baseAntiImg,
+  moco: baseMocoImg,
 };
 
 export const maskImgSrc: typeof baseImgSrc = {
@@ -29,6 +32,7 @@ export const maskImgSrc: typeof baseImgSrc = {
   '2': mask3Img,
   peko: maskpekoImg,
   anti: maskAntiImg,
+  moco: maskMocoImg,
 };
 
 export const versionList: [string, keyof typeof baseImgSrc][] = [
@@ -37,5 +41,6 @@ export const versionList: [string, keyof typeof baseImgSrc][] = [
   ['3.0', '2'],
   ['PekoNews!', 'peko'],
   ['あさアンチLIVE', 'anti'],
+  ['あさモコLIVE', 'moco'],
   // ['1.0', base3Img],
 ];

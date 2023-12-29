@@ -122,9 +122,9 @@ export const Screen = ({
           )}
           <NameLayer text={nameText} />
           <CommentLayer streamMode={streamMode} comment={comment} commentCrop={commentCrop} />
-          {streamMode === 'default' && <TimeLayer text={timeText} />}
+          {streamMode === 'default' && <TimeLayer text={timeText} version={version} />}
           <OtherLayer src={kaichoImgSrc} />
-          <RibbonLayer text={ribbonText} />
+          <RibbonLayer text={ribbonText} version={version} />
           <TelopLayer
             text={telopText}
             commentSize={commentSize}

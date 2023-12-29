@@ -1,6 +1,8 @@
 import React from 'react';
 import { Image, Text } from 'react-konva';
 
+import { maskImgSrc } from '@/contants/dataset';
+
 import { createImage } from '@/components/Editor/parts/Screen/create-image';
 
 import { ribbons } from '@/utils/ribbon-img-loader';
@@ -8,14 +10,14 @@ import { ribbons } from '@/utils/ribbon-img-loader';
 import ribbonLGTMImgSrc from '@/images/ribbon--lgtm.png';
 import ribbonImg from '@/images/ribbon.png';
 
-const getSrc = ({ keyword }: { keyword: string }) => {
+const getSrc = ({ keyword, version }: { keyword: string; version: keyof typeof maskImgSrc }) => {
   if (/lgtm/i.test(keyword)) {
     return ribbonLGTMImgSrc;
   }
 
   return ribbons.find(([name, _, callback]) => {
     if (callback) {
-      return callback(keyword);
+      return callback(keyword, version);
     }
 
     return name === keyword;
@@ -28,16 +30,16 @@ const Ribbon = ({ src }: RibbonProps) => {
   return <Image image={createImage({ src })} x={44} y={100} width={892 / 3.2} height={542 / 3.2} />;
 };
 
-type Props = { text: string };
+type Props = { text: string; version: keyof typeof maskImgSrc };
 
-export const RibbonLayer = ({ text }: Props) => {
+export const RibbonLayer = ({ text, version }: Props) => {
   const trimedText = text.trim();
 
   if (trimedText === '') {
     return <></>;
   }
 
-  const src = getSrc({ keyword: trimedText });
+  const src = getSrc({ keyword: trimedText, version });
 
   if (src) {
     return <Ribbon src={src} />;

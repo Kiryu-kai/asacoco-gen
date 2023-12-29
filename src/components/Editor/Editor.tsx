@@ -461,9 +461,13 @@ export const Editor = () => {
             list="リボン"
           />
           <datalist id="リボン">
-            {[...ribbons.map(([label]) => label)].map((value) => (
-              <option value={value} key={value} />
-            ))}
+            {[...ribbons.map(([label]) => label)].map((value) => {
+              if (version !== 'moco' && value === 'NEWS') {
+                return <></>;
+              }
+
+              return <option value={value} key={value} />;
+            })}
           </datalist>
         </p>
 

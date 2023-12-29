@@ -10,18 +10,21 @@ import ribbonKusoDasaImg from '@/images/ribbon--kusodasa.png';
 import ribbonKusoZakoImg from '@/images/ribbon--kusozako.png';
 import ribbonNewImg from '@/images/ribbon--new.png';
 import ribbonOmedeteiImg from '@/images/ribbon--omedetei.png';
+import ribbonMocoNews from '@/images/ribbon-moco--news.png';
 
-export const ribbons: ([string, string] | [string, string, (_: string) => boolean])[] = [
-  ['NEW', ribbonNewImg, (value) => /^new$/i.test(value)],
-  ['クソザコ', ribbonKusoZakoImg],
-  ['クソダサ', ribbonKusoDasaImg],
-  ['ゲボカワ', ribbonGeboKawaImg],
-  ['げぼかわ', ribbonGeboKawa2Img],
-  ['ガチコイ', ribbonGachikoiImg],
-  ['ガチこい', ribbonGachikoi2Img],
-  ['でたわね', ribbonDetawaneImg],
-  ['おめでてい', ribbonOmedeteiImg],
-  ['でかパイ', ribbonDekapaiImg], // https://www.youtube.com/watch?v=fAoNvVCRQ60
-  ['ARK', ribbonArkImg, (value) => /^ark$/i.test(value)], // https://www.youtube.com/watch?v=fAoNvVCRQ60
-  ['NEWアンチ', ribbonAntiNewImg, (value) => /^newアンチ$/i.test(value)], // https://www.youtube.com/watch?v=fAoNvVCRQ60
-];
+export const ribbons: ([string, string] | [string, string, (_: string, __?: string) => boolean])[] =
+  [
+    ['NEW', ribbonNewImg, (value) => /^new$/i.test(value)],
+    ['クソザコ', ribbonKusoZakoImg],
+    ['クソダサ', ribbonKusoDasaImg],
+    ['ゲボカワ', ribbonGeboKawaImg],
+    ['げぼかわ', ribbonGeboKawa2Img],
+    ['ガチコイ', ribbonGachikoiImg],
+    ['ガチこい', ribbonGachikoi2Img],
+    ['でたわね', ribbonDetawaneImg],
+    ['おめでてい', ribbonOmedeteiImg],
+    ['でかパイ', ribbonDekapaiImg], // https://www.youtube.com/watch?v=fAoNvVCRQ60
+    ['ARK', ribbonArkImg, (value) => /^ark$/i.test(value)], // https://www.youtube.com/watch?v=fAoNvVCRQ60
+    ['NEWアンチ', ribbonAntiNewImg, (value) => /^newアンチ$/i.test(value)], // https://www.youtube.com/watch?v=fAoNvVCRQ60
+    ['NEWS', ribbonMocoNews, (value, version) => /^news$/i.test(value) && version === 'moco'], // https://www.youtube.com/watch?v=fAoNvVCRQ60
+  ];
