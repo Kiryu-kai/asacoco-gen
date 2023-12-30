@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/asacoco-gen/static/css/main.a87e0c2f.css",
-    "main.js": "/asacoco-gen/static/js/main.4f5190ed.js",
+    "main.js": "/asacoco-gen/static/js/main.8f3db8e0.js",
     "static/js/787.3d585af6.chunk.js": "/asacoco-gen/static/js/787.3d585af6.chunk.js",
     "static/media/lamy--3dtehepero.png": "/asacoco-gen/static/media/lamy--3dtehepero.d722b67000e71d506212.png",
     "static/media/lamy--3dpose.png": "/asacoco-gen/static/media/lamy--3dpose.ab710519e78b8b86fd2b.png",
@@ -21,24 +21,24 @@
     "static/media/tsunomaki-watame--3dsunglass.png": "/asacoco-gen/static/media/tsunomaki-watame--3dsunglass.bdf9fcb2e3e09c56eb9d.png",
     "static/media/tsunomaki-watame--gangimari.png": "/asacoco-gen/static/media/tsunomaki-watame--gangimari.19ac736de4b1863cfa0b.png",
     "static/media/coco--a2.png": "/asacoco-gen/static/media/coco--a2.812338ae1c671e5b86a3.png",
-    "static/media/mask--asamoco.png": "/asacoco-gen/static/media/mask--asamoco.739402a0761c98213596.png",
+    "static/media/mask--asamoco.png": "/asacoco-gen/static/media/mask--asamoco.806f07c90fd6496ae2e1.png",
     "static/media/okami-mio--02sad.png": "/asacoco-gen/static/media/okami-mio--02sad.c12d31c01387a5b70341.png",
-    "static/media/base--asamoco.png": "/asacoco-gen/static/media/base--asamoco.6d246cf2651e8cc794b2.png",
+    "static/media/base--asamoco.png": "/asacoco-gen/static/media/base--asamoco.f16614138c2573abc186.png",
     "static/media/haato--gangimari.png": "/asacoco-gen/static/media/haato--gangimari.15e2218fde5124534f66.png",
     "static/media/base.png": "/asacoco-gen/static/media/base.99c694b20de09766111a.png",
     "static/media/base--3.png": "/asacoco-gen/static/media/base--3.343434f8daaff610a622.png",
     "static/media/base--2.png": "/asacoco-gen/static/media/base--2.cef7f781184ddde1405b.png",
-    "static/media/shiori--k.png": "/asacoco-gen/static/media/shiori--k.0cc8ec8c48a20bf29eb5.png",
+    "static/media/shiori--k.png": "/asacoco-gen/static/media/shiori--k.a99a4a203f159f168461.png",
     "static/media/pekora--closeeyes.png": "/asacoco-gen/static/media/pekora--closeeyes.bd1aa86cc2c92cbc197c.png",
     "static/media/tsunomaki-watame--kossori.png": "/asacoco-gen/static/media/tsunomaki-watame--kossori.15aa316f7c43623f1151.png",
     "static/media/base--anti.png": "/asacoco-gen/static/media/base--anti.cdc0e84f8fba75fbe9fb.png",
-    "static/media/shiori--k2.png": "/asacoco-gen/static/media/shiori--k2.d4e146ed3288a62b6e50.png",
     "static/media/pekora.png": "/asacoco-gen/static/media/pekora.7abe94c7cc11cecf2a99.png",
     "static/media/mococo-abyssgard--faceleft.png": "/asacoco-gen/static/media/mococo-abyssgard--faceleft.9e65d592509be9d392b3.png",
     "static/media/gangimari.png": "/asacoco-gen/static/media/gangimari.31d5a1e77dd1ee3c3a07.png",
     "static/media/v2--eyeright.png": "/asacoco-gen/static/media/v2--eyeright.ddab056e43a6cc976d60.png",
     "static/media/base--peko.png": "/asacoco-gen/static/media/base--peko.98422930476446512b4a.png",
     "static/media/v2.png": "/asacoco-gen/static/media/v2.5e5b0828dd8811230457.png",
+    "static/media/shiori--k2.png": "/asacoco-gen/static/media/shiori--k2.2961b0ad633343a3e67e.png",
     "static/media/v2--eyeleft.png": "/asacoco-gen/static/media/v2--eyeleft.f781f5e2b950b458a866.png",
     "static/media/gangimari--right2.png": "/asacoco-gen/static/media/gangimari--right2.fb429cdfde38432fa535.png",
     "static/media/smile.png": "/asacoco-gen/static/media/smile.2ffa9f5ff38e288281a5.png",
@@ -78,11 +78,11 @@
     "static/media/ribbon.png": "/asacoco-gen/static/media/ribbon.8c34f0f7f0c62ddb4242.png",
     "index.html": "/asacoco-gen/index.html",
     "main.a87e0c2f.css.map": "/asacoco-gen/static/css/main.a87e0c2f.css.map",
-    "main.4f5190ed.js.map": "/asacoco-gen/static/js/main.4f5190ed.js.map",
+    "main.8f3db8e0.js.map": "/asacoco-gen/static/js/main.8f3db8e0.js.map",
     "787.3d585af6.chunk.js.map": "/asacoco-gen/static/js/787.3d585af6.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a87e0c2f.css",
-    "static/js/main.4f5190ed.js"
+    "static/js/main.8f3db8e0.js"
   ]
 }
