@@ -499,8 +499,8 @@ export const Editor = () => {
             label="肩書き・名前"
             placeholder={'「畜生ひつじ」こと\n角巻わため氏'}
             note={[
-              '肩書きと名前は改行で区切ってください',
-              '年齢は最後にかっこ書きで記述してください',
+              '肩書きと名前は改行で区切ってください。',
+              '年齢は最後にかっこ書きで「数字・？・不詳・非公開」を用いてください。',
             ]}
             onChange={(e) => setNameText(e.target.value)}
             value={nameText}

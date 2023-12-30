@@ -21,10 +21,11 @@ export const NameLayer = ({ text }: Props) => {
         str.slice(0, ageIndex),
         `（${str
           .slice(ageIndex)
-          .replace(/[^0-9０-９]/g, '')
+          .replace(/[^0-9０-９?？不詳非公開]/g, '')
           .replace(/[０-９]/g, (s) => {
             return String.fromCharCode(s.charCodeAt(0) - 0xfee0);
-          })}）`,
+          })
+          .replace(/？/g, '?')}）`,
       ];
     };
 
