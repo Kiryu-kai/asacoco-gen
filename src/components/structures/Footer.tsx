@@ -59,7 +59,7 @@ export function Footer() {
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                桐生ココ🐉 (@kiryucoco) - Twitter
+                2020年1月18日のツイート（桐生ココ🐉 @kiryucoco） - Twitter
               </a>
             </li>
             <li className={styles.material__li}>
@@ -68,7 +68,7 @@ export function Footer() {
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                桐生ココ🐉 (@kiryucoco) - Twitter
+                2020年4月6日のツイート（桐生ココ🐉 @kiryucoco） - Twitter
               </a>
             </li>
             <li className={styles.material__li}>
@@ -83,6 +83,15 @@ export function Footer() {
                 target="_blank"
               >
                 ニコカ - まるもじフォント（ニコモジ）配布所
+              </a>
+            </li>
+            <li className={styles.material__li}>
+              <a
+                href="https://www.youtube.com/watch?v=2LBUGKmvebc"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                FUWAMOCO Ch. hololive-EN - YouTube
               </a>
             </li>
           </ul>

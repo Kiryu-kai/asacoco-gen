@@ -2,6 +2,8 @@ import cocoA2 from '@/images/talents/coco--a2.png';
 import cocoA from '@/images/talents/coco--a.png';
 import cocoYushikisha2 from '@/images/talents/coco--c2.png';
 import cocoYushikisha from '@/images/talents/coco--c.png';
+import fuwawaYushikisha2 from '@/images/talents/fuwawa--f2.png';
+import fuwawaYushikisha from '@/images/talents/fuwawa--f.png';
 import haachamag from '@/images/talents/haato--gangimari.png';
 import lamy3dk from '@/images/talents/lamy--3dkeibetsu.png';
 import lamy3dn from '@/images/talents/lamy--3dnohohon.png';
@@ -10,6 +12,8 @@ import lamy3dpt from '@/images/talents/lamy--3dposetere.png';
 import lamy3ds from '@/images/talents/lamy--3dsad.png';
 import lamy3dt from '@/images/talents/lamy--3dtehepero.png';
 import mio2s from '@/images/talents/okami-mio--02sad.png';
+import shiroiYushikisha2 from '@/images/talents/shiori--k2.png';
+import shiroiYushikisha from '@/images/talents/shiori--k.png';
 import flare02 from '@/images/talents/shiranui-flare--02.png';
 import flare02ibukashige from '@/images/talents/shiranui-flare--02ibukashige.png';
 import flare02smile from '@/images/talents/shiranui-flare--02smile.png';
@@ -44,4 +48,8 @@ export const talents: [string, string][] = [
   ['watame - 角巻わため（2021新衣装ドヤ顔）', watame03d],
   ['watame - 角巻わため（3D・ガンギマリ）', watame3dg],
   ['watame - 角巻わため（3D・サングラス）', watame3ds],
+  ['fuwawa? - 有識者C氏', fuwawaYushikisha],
+  ['fuwawa? - 有識者C氏（肩書きなし）', fuwawaYushikisha2],
+  ['shiori? - Kuroi氏', shiroiYushikisha],
+  ['shiori? - Kuroi氏（肩書きなし）', shiroiYushikisha2],
 ];
