@@ -181,7 +181,7 @@ export const Editor = () => {
       >
         <p>
           <Select
-            label="Ver"
+            label="Version"
             options={versionList}
             onChange={(e) => setVersion(e.target.value as keyof typeof baseImgSrc)}
             value={version}
